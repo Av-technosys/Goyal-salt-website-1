@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, HTMLMotionProps } from "framer-motion";
 
-interface SaltButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface SaltButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
   children: React.ReactNode;
   className?: string;
   variant?: "primary" | "secondary" | "outline" | "white";
@@ -30,6 +30,7 @@ export default function SaltButton({
   variant = "primary",
   size = "md",
   onClick,
+  type = "button",
   ...props
 }: SaltButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
@@ -60,6 +61,7 @@ export default function SaltButton({
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.button
+        type={type}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         onClick={onClick}
