@@ -2,57 +2,54 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight, Handshake } from "lucide-react";
+import SaltButton from "./SaltButton";
+
 export default function DistributorCTASection() {
   return (
-    <section className="py-8 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 bg-white overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-[56px] bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 px-10 sm:px-20 py-20 text-center shadow-2xl"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-red-600 via-red-600 to-red-700 px-8 sm:px-16 py-14 sm:py-20 text-center shadow-2xl"
         >
-          {/* Decorative blobs */}
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/30 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-green-300/40 rounded-full blur-3xl" />
+          {/* Subtle Ambient Lighting Overlay */}
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
 
-          {/* Content */}
-          <h2 className="relative text-3xl sm:text-4xl xl:text-5xl font-extrabold text-gray-900">
+          {/* Category Pill */}
+          <div className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 text-white backdrop-blur-md text-xs sm:text-sm font-bold uppercase tracking-wider mb-4">
+            <Handshake className="w-4 h-4 text-white" />
+            <span>Partnership Network</span>
+          </div>
+
+          {/* Heading (Rule #6 Typography Scale) */}
+          <h2 className="relative text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
             Become Our Distributor
           </h2>
 
-          <p className="relative mt-8 text-lg sm:text-xl xl:text-2xl text-gray-800 max-w-4xl mx-auto leading-relaxed">
-            Join the <span className="font-semibold">Goyal Salt</span> network and
-            together, let’s bring the taste of
-            <span className="text-green-800 font-semibold"> purity</span> and
-            <span className="text-green-800 font-semibold"> health</span> to
-            every household in India.
+          {/* Subtitle Paragraph */}
+          <p className="relative mt-4 text-sm sm:text-base lg:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed font-normal">
+            Join the <span className="font-bold text-white underline decoration-white/40 underline-offset-4">Goyal Salt</span> network and together, let’s bring the taste of purity and health to every household in India.
           </p>
 
-          {/* CTA */}
-              <Link href="/contact">
-          <motion.button
-  whileHover={{ scale: 1.08 }}
-  whileTap={{ scale: 0.95 }}
-  className="
-    relative mt-12 inline-flex items-center gap-3
-    rounded-full bg-green-700 px-10 py-4
-    text-lg font-semibold text-white shadow-xl
-    hover:bg-green-800 transition
-    cursor-pointer
-  "
->
-  Contact Us
-  <span className="text-xl">→</span>
-</motion.button>
+          {/* CTA with Universal SaltButton */}
+          <div className="relative mt-8 sm:mt-10 flex justify-center">
+            <Link href="/contact">
+              <SaltButton variant="white" size="lg">
+                <span>Contact Us Today</span>
+                <ArrowRight className="w-5 h-5 text-red-600" />
+              </SaltButton>
+            </Link>
+          </div>
 
-          </Link>
-
-          {/* Small trust note */}
-          <div className="relative mt-8 text-sm text-gray-700">
-            Trusted by thousands of partners across India 🇮🇳
+          {/* Trust Note */}
+          <div className="relative mt-6 text-xs sm:text-sm font-medium text-white/80">
+            Trusted by thousands of partners & distributors across India 🇮🇳
           </div>
         </motion.div>
       </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { IconLoader2 } from "@tabler/icons-react";
 import Image from "next/image";
+import SaltButton from "./SaltButton";
 
 type Props = {
   isOpen: boolean;
@@ -65,54 +66,54 @@ export default function OrderPopup({ isOpen, onClose, productName }: Props) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-[2px] z-50 flex items-center justify-center">
-      <div className="bg-white rounded-2xl w-[95%] max-w-3xl overflow-hidden shadow-xl grid grid-cols-1 md:grid-cols-2 relative">
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-[2px] z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-3xl w-[95%] max-w-3xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-2 relative border border-gray-100">
 
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-4 text-lg text-gray-500 z-10"
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-red-600 flex items-center justify-center z-10 transition-colors"
         >
           ✕
         </button>
 
         {/* LEFT IMAGE */}
-        <div className="hidden md:block relative ">
+        <div className="hidden md:block relative bg-gray-50 p-6">
           <Image
             src="/Images/goyalsalt.png"   
             alt="Contact"
             fill
-            className="object-fit "
+            className="object-contain p-6"
           />
           <div className="absolute inset-0 bg-black/5" />
-          <div className="absolute bottom-6 left-6 text-black">
-            <h3 className="text-xl font-semibold">Let’s Talk</h3>
-            <p className="text-sm opacity-90">
+          <div className="absolute bottom-6 left-6 text-gray-900">
+            <h3 className="text-xl font-bold">Let’s Talk</h3>
+            <p className="text-xs text-gray-600 opacity-90 font-medium">
               We usually reply within 24 hours
             </p>
           </div>
         </div>
 
         {/* RIGHT FORM */}
-        <div className="p-5">
-          <p className="text-red-600 text-xs font-semibold mb-1 tracking-wide">
+        <div className="p-6 sm:p-8">
+          <p className="text-red-600 text-xs font-bold mb-1 tracking-wider uppercase">
             GET IN TOUCH
           </p>
 
-          <h2 className="text-2xl font-semibold mb-1">
+          <h2 className="text-2xl font-bold mb-1 text-gray-900">
             Request a Call Back
           </h2>
 
-          <p className="text-gray-600 mb-4 text-sm">
+          <p className="text-gray-600 mb-4 text-xs leading-relaxed font-normal">
             Fill out the form below and our team will reach out to you shortly.
           </p>
 
           {status.msg && (
             <div
-              className={`mb-3 p-2 rounded text-xs font-medium ${
+              className={`mb-3 p-2.5 rounded-xl text-xs font-semibold ${
                 status.type === "success"
-                  ? "bg-green-50 text-green-700"
-                  : "bg-red-50 text-red-700"
+                  ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                  : "bg-red-50 text-red-700 border border-red-200"
               }`}
             >
               {status.msg}
@@ -122,35 +123,35 @@ export default function OrderPopup({ isOpen, onClose, productName }: Props) {
           <form onSubmit={handleSubmit} className="space-y-3">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-medium">Full Name *</label>
+                <label className="text-xs font-semibold text-gray-700">Full Name *</label>
                 <input
                   name="name"
                   required
-                  className="w-full mt-1 border rounded-lg px-3 h-10 outline-none text-sm"
+                  className="w-full mt-1 border border-gray-200 rounded-xl px-3 h-10 outline-none text-xs focus:border-red-500 transition-colors"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-medium">Email Address *</label>
+                <label className="text-xs font-semibold text-gray-700">Email Address *</label>
                 <input
                   name="email"
                   type="email"
                   required
-                  className="w-full mt-1 border rounded-lg px-3 h-10 outline-none text-sm"
+                  className="w-full mt-1 border border-gray-200 rounded-xl px-3 h-10 outline-none text-xs focus:border-red-500 transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-medium">Phone Number</label>
-              <div className="flex items-center border rounded-lg h-10 mt-1">
-                <span className="px-3 text-gray-600 border-r text-sm">+91</span>
+              <label className="text-xs font-semibold text-gray-700">Phone Number</label>
+              <div className="flex items-center border border-gray-200 rounded-xl h-10 mt-1 focus-within:border-red-500 transition-colors overflow-hidden">
+                <span className="px-3 text-gray-600 border-r border-gray-200 text-xs font-medium">+91</span>
                 <input
                   name="phone"
                   required
                   maxLength={10}
                   inputMode="numeric"
-                  className="flex-1 px-3 outline-none text-sm"
+                  className="flex-1 px-3 outline-none text-xs"
                   onInput={(e) => {
                     e.currentTarget.value = e.currentTarget.value
                       .replace(/\D/g, "")
@@ -161,23 +162,28 @@ export default function OrderPopup({ isOpen, onClose, productName }: Props) {
             </div>
 
             <div>
-              <label className="text-xs font-medium">Message *</label>
+              <label className="text-xs font-semibold text-gray-700">Message *</label>
               <textarea
                 name="message"
                 required
                 rows={3}
                 placeholder={`Order request for ${productName}`}
-                className="w-full mt-1 border rounded-lg px-3 py-2 outline-none resize-none text-sm"
+                className="w-full mt-1 border border-gray-200 rounded-xl px-3 py-2 outline-none resize-none text-xs focus:border-red-500 transition-colors"
               />
             </div>
 
-            <button
-              disabled={loading}
-              className="w-full bg-red-600 text-white py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm font-semibold"
-            >
-              {loading && <IconLoader2 className="animate-spin" size={16} />}
-              {loading ? "Submitting..." : "GET IN TOUCH"}
-            </button>
+            <div className="pt-2">
+              <SaltButton
+                type="submit"
+                disabled={loading}
+                variant="primary"
+                size="md"
+                className="w-full"
+              >
+                {loading && <IconLoader2 className="animate-spin" size={16} />}
+                <span>{loading ? "Submitting..." : "GET IN TOUCH"}</span>
+              </SaltButton>
+            </div>
           </form>
         </div>
       </div>

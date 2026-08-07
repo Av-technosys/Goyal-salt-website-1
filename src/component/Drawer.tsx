@@ -1,17 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
-import { IconX, IconChevronDown } from "@tabler/icons-react";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import { IconX, IconChevronDown, IconExternalLink } from "@tabler/icons-react";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 
 import {
   Drawer as UIDrawer,
   DrawerContent,
-  DrawerHeader,
 } from "@/components/ui/drawer";
-
 
 interface MobileDrawerProps {
   open: boolean;
@@ -25,494 +23,716 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
   const [investorOpen, setInvestorOpen] = useState(false);
   const [governanceOpen, setGovernanceOpen] = useState(false);
   const [listingOpen, setListingOpen] = useState(false);
-const [openFY, setOpenFY] = useState<string | null>(null);
-const [noticeOpen, setNoticeOpen] = useState(false);
-const [agmOpen, setAgmOpen] = useState(false);
-const [boardMeetingOpen, setBoardMeetingOpen] = useState(false);
+  const [openFY, setOpenFY] = useState<string | null>(null);
+  const [noticeOpen, setNoticeOpen] = useState(false);
+  const [agmOpen, setAgmOpen] = useState(false);
+  const [boardMeetingOpen, setBoardMeetingOpen] = useState(false);
 
-useEffect(() => {
-  if (open) {
-    setOpen(false);
-  }
-}, [pathname]);
+  useEffect(() => {
+    if (open) {
+      setOpen(false);
+    }
+  }, [pathname]);
 
+  const isActiveLink = (href: string) => pathname === href;
 
   return (
     <UIDrawer open={open} direction="left" onOpenChange={setOpen}>
-     <DrawerContent
-  className="
-    fixed left-0 top-0 h-screen
-    w-[80%] max-w-sm
-    rounded-none
-    flex flex-col
-    data-[state=open]:slide-in-from-left
-    data-[state=closed]:slide-out-to-left
-    duration-300
-  "
->
-
-        {/* Header */}
-        <DrawerHeader className="relative border-b h-14">
-          <button
-            onClick={() => setOpen(false)}
-            className="absolute right-4 top-1/2 -translate-y-1/2"
-          >
-            <IconX size={22} />
-          </button>
-        </DrawerHeader>
-
-        {/* Navigation */}
-      <nav className="flex flex-col text-sm overflow-y-auto flex-1 overscroll-contain">
-
-
+      <DrawerContent
+        className="
+          fixed left-0 top-0 h-screen
+          w-[85%] max-w-sm
+          rounded-none bg-white
+          flex flex-col z-50
+          border-r border-gray-200 shadow-2xl
+          data-[state=open]:slide-in-from-left
+          data-[state=closed]:slide-out-to-left
+          duration-300
+        "
+      >
+        {/* Custom Header Row with Logo on Left and Cross Button on Right */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-white shrink-0">
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="px-4 py-3 border-b"
+            className="flex items-center"
           >
-            Home
-          </Link>
-
-          {/* About */}
-          <button
-            onClick={() => setAboutOpen(!aboutOpen)}
-            className="flex justify-between items-center px-4 py-3 border-b font-medium"
-          >
-            About
-            <IconChevronDown
-              size={16}
-              className={`transition-transform ${aboutOpen ? "rotate-180" : ""}`}
+            <Image
+              src="/logo.png"
+              alt="Goyal Salt Logo"
+              width={105}
+              height={50}
+              className="object-contain max-h-12 w-auto"
             />
-          </button>
+          </Link>
 
-          {aboutOpen && (
-  <div className="bg-gray-50">
-    <Link href="/about-us" className="block px-6 py-2">
-      About Us
-    </Link>
-
-    <Link href="/history-our-achievement" className="block px-6 py-2">
-      History & Our Achievements
-    </Link>
-
-    <Link href="/directors" className="block px-6 py-2">
-      Directors
-    </Link>
-
-    <Link href="/chairman-desk" className="block px-6 py-2">
-      Chairman’s Desk
-    </Link>
-
-    <Link href="/message-from-md" className="block px-6 py-2">
-      Message from MD
-    </Link>
-
-    <Link href="/vision-mission" className="block px-6 py-2">
-      Vision & Mission
-    </Link>
-
-    <Link href="/privacy-policy" className="block px-6 py-2">
-      Privacy Policy
-    </Link>
-  </div>
-)}
-  
-
-          {/* Who We Are */}
+          {/* Close/Cross Button strictly on the right side in line with Logo */}
           <button
-            onClick={() => setWhoOpen(!whoOpen)}
-            className="flex justify-between items-center px-4 py-3 border-b font-medium"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="w-9 h-9 rounded-full bg-gray-100 text-gray-700 hover:bg-red-50 hover:text-red-600 flex items-center justify-center transition-colors focus:outline-none shrink-0"
           >
-            Who We Are
-            <IconChevronDown
-              size={16}
-              className={`transition-transform ${whoOpen ? "rotate-180" : ""}`}
-            />
+            <IconX size={18} />
           </button>
+        </div>
 
-          {whoOpen && (
-            <div className="bg-gray-50">
-              <Link
-                href="/journey"
-                onClick={() => setOpen(false)}
-                className="block px-6 py-2"
-              >
-                Journey
-              </Link>
-              <Link
-                href="/infrastructures"
-                onClick={() => setOpen(false)}
-                className="block px-6 py-2"
-              >
-                Infrastructures
-              </Link>
-              <Link
-                href="/quality-control"
-                onClick={() => setOpen(false)}
-                className="block px-6 py-2"
-              >
-                Quality Control
-              </Link>
-              <Link
-              href="/why-goyal-salt"
-              onClick={() => setOpen(false)}
-              className="block px-6 py-2"
-              >
-  Why Goyal Salt Ltd ?
-</Link>
-            </div>
-          )}
-
-          <Link
-            href="/products"
-            onClick={() => setOpen(false)}
-            className="px-4 py-3 border-b"
-          >
-            
-Products
-          </Link>
-
-          {/* Investors */}
-          <button
-            onClick={() => setInvestorOpen(!investorOpen)}
-            className="flex justify-between items-center px-4 py-3 border-b font-medium"
-          >
-            Investors
-            <IconChevronDown
-              size={16}
-              className={`transition-transform ${investorOpen ? "rotate-180" : ""}`}
-            />
-          </button>
-
-          {investorOpen && (
-  <div className="bg-gray-50">
-
-    <Link href="/annual-return" className="block px-6 py-2">
-      Annual Return
-    </Link>
-
-    <Link href="/annual-report" className="block px-6 py-2">
-      Annual Report
-    </Link>
-
-    <Link href="/csr-document" className="block px-6 py-2">
-      CSR
-    </Link>
-
-    <Link href="/dur-46-lodr" className="block px-6 py-2">
-      Disclosure Under Regulation 46 of LODR
-    </Link>
-
-    <Link href="/financials" className="block px-6 py-2">
-      Financials
-    </Link>
-
-    {/* Governance */}
-    <button
-      onClick={() => setGovernanceOpen(!governanceOpen)}
-      className="flex justify-between items-center w-full px-6 py-2 font-medium"
-    >
-      Governance
-      <IconChevronDown
-        size={14}
-        className={`transition-transform ${
-          governanceOpen ? "rotate-180" : ""
-        }`}
-      />
-    </button>
-
-    {governanceOpen && (
-      <div className="bg-gray-100 ml-4">
-        <Link href="/governance/codes-policies" className="block px-6 py-2">
-          Codes & Policies
-        </Link>
-
-        <Link href="/governance/committees" className="block px-6 py-2">
-          Committees
-        </Link>
-
-        <Link href="/governance/shareholding-pattern" className="block px-6 py-2">
-          Shareholding Pattern
-        </Link>
-      </div>
-    )}
-
-    <Link href="/investor-grievance" className="block px-6 py-2">
-      Investor Grievance
-    </Link>
-
-   {/* Listing Compliance */}
-<button
-  onClick={() => setListingOpen(!listingOpen)}
-  className="flex justify-between items-center w-full px-6 py-2 font-medium"
->
-  Listing Compliance
-  <IconChevronDown
-    size={14}
-    className={`transition-transform ${
-      listingOpen ? "rotate-180" : ""
-    }`}
-  />
-</button>
-
-{listingOpen && (
-  <div className="bg-gray-100 ml-4">
-
-    {/* FY 2023-24 */}
-    <button
-      onClick={() =>
-        setOpenFY(openFY === "2023-24" ? null : "2023-24")
-      }
-      className="flex justify-between items-center w-full px-6 py-2"
-    >
-      F.Y. 2023-24
-      <IconChevronDown
-        size={14}
-        className={`transition-transform ${
-          openFY === "2023-24" ? "rotate-180" : ""
-        }`}
-      />
-    </button>
-
-    {openFY === "2023-24" && (
-      <div className="bg-gray-200 ml-4">
-        <Link href="/listing-compliance/2023-24/q1" className="block px-6 py-2">Quarter 1</Link>
-        <Link href="/listing-compliance/2023-24/q2" className="block px-6 py-2">Quarter 2</Link>
-        <Link href="/listing-compliance/2023-24/q3" className="block px-6 py-2">Quarter 3</Link>
-        <Link href="/listing-compliance/2023-24/q4" className="block px-6 py-2">Quarter 4</Link>
-      </div>
-    )}
-
-    {/* FY 2024-25 */}
-    <button
-      onClick={() =>
-        setOpenFY(openFY === "2024-25" ? null : "2024-25")
-      }
-      className="flex justify-between items-center w-full px-6 py-2 "
-    >
-      F.Y. 2024-25
-      <IconChevronDown
-        size={14}
-        className={`transition-transform ${
-          openFY === "2024-25" ? "rotate-180" : ""
-        }`}
-      />
-    </button>
-
-    {openFY === "2024-25" && (
-      <div className="bg-gray-200 ml-4">
-        <Link href="/listing-compliance/2024-25/q3" className="block px-6 py-2">
-          Quarter 3
-        </Link>
-        <Link href="/listing-compliance/2024-25/q4" className="block px-6 py-2">
-          Quarter 4
-        </Link>
-      </div>
-    )}
-
-   
-<button
-  onClick={() =>
-    setOpenFY(openFY === "2025-26" ? null : "2025-26")
-  }
-  className="flex justify-between items-center w-full px-6 py-2"
->
-  F.Y. 2025-26
-  <IconChevronDown
-    size={14}
-    className={`transition-transform ${
-      openFY === "2025-26" ? "rotate-180" : ""
-    }`}
-  />
-</button>
-
-{openFY === "2025-26" && (
-  <div className="bg-gray-200 ml-4">
-    <Link
-      href="/listing-compliance/2025-26/q1"
-      className="block px-6 py-2"
-    >
-      Quarter 1
-    </Link>
-
-    <Link
-      href="/listing-compliance/2025-26/q2"
-      className="block px-6 py-2"
-    >
-      Quarter 2
-    </Link>
-    <Link
-      href="/listing-compliance/2025-26/q3"
-      className="block px-6 py-2"
-    >
-      Quarter 3
-    </Link>
-  </div>
-)}
-
-
-  </div>
-)}
-
-
-
-    <Link href="/material-contracts-agreements" className="block px-6 py-2">
-      Material Contracts & Agreements
-    </Link>
-
-   {/* Notices & Announcements */}
-<button
-  onClick={() => setNoticeOpen(!noticeOpen)}
-  className="flex justify-between items-center w-full px-6 py-2 font-medium"
->
-  Notices & Announcements
-  <IconChevronDown
-    size={14}
-    className={`transition-transform ${noticeOpen ? "rotate-180" : ""}`}
-  />
-</button>
-
-{noticeOpen && (
-  <div className="bg-gray-100 ml-4">
-
-    {/* AGM Disclosures */}
-    <button
-      onClick={() => setAgmOpen(!agmOpen)}
-      className="flex justify-between items-center w-full px-6 py-2"
-    >
-      AGM Disclosures
-      <IconChevronDown
-        size={14}
-        className={`transition-transform ${agmOpen ? "rotate-180" : ""}`}
-      />
-    </button>
-
-    {agmOpen && (
-      <div className="bg-gray-200 ml-4">
-        <Link
-          href="/notices-announcements/agm/2024-25"
-          className="block px-6 py-2"
-        >
-          F.Y. 2024-25
-        </Link>
-
-        <Link
-          href="/notices-announcements/agm/2023-24"
-          className="block px-6 py-2"
-        >
-          F.Y. 2023-24
-        </Link>
-      </div>
-    )}
-
-   {/* Board Meetings Disclosure */}
-<button
-  onClick={() => setBoardMeetingOpen(!boardMeetingOpen)}
-  className="flex justify-between items-center w-full px-6 py-2"
->
-  Board Meetings Disclosure
-  <IconChevronDown
-    size={14}
-    className={`transition-transform ${
-      boardMeetingOpen ? "rotate-180" : ""
-    }`}
-  />
-</button>
-
-{boardMeetingOpen && (
-  <div className="bg-gray-200 ml-4">
-    <Link
-      href="/notices-announcements/board-meetings-disclosure/2025-26"
-      className="block px-6 py-2"
-    >
-      F.Y. 2025-26
-    </Link>
-
-    <Link
-      href="/notices-announcements/board-meetings-disclosure/2024-25"
-      className="block px-6 py-2"
-    >
-      F.Y. 2024-25
-    </Link>
-
-    <Link
-      href="/notices-announcements/board-meetings-disclosure/2023-24"
-      className="block px-6 py-2"
-    >
-      F.Y. 2023-24
-    </Link>
-  </div>
-)}
-
-
-    <Link
-      href="/notices-announcements/disclosures-under-regulation-30"
-      className="block px-6 py-2"
-    >
-      Disclosures Under Regulation 30
-    </Link>
-
-    <Link
-      href="/notices-announcements/investors-meet-disclosure"
-      className="block px-6 py-2"
-    >
-      Investors Meet Disclosure
-    </Link>
-
-    <Link
-      href="/notices-announcements/others"
-      className="block px-6 py-2"
-    >
-      Others
-    </Link>
-  </div>
-)}
-
-  </div>
-)}
-
-          <Link
-            href="/offer-documents"
-            onClick={() => setOpen(false)}
-            className="px-4 py-3 border-b"
-          >
-           Offer Documents
-          </Link>
-
-              <Link
-            href="/csr"
-            onClick={() => setOpen(false)}
-            className="px-4 py-3 border-b"
-          >
-           CSR
-          </Link>
-
-      <Link
-            href="/gallery"
-            onClick={() => setOpen(false)}
-            className="px-4 py-3 border-b"
-          >
-           Gallery
-          </Link>
-
-        <Link
-  href="https://www.nseindia.com/get-quote/equity/GOYALSALT/Goyal-Salt-Limited"
-  target="_blank"
-  rel="noopener noreferrer"
-  onClick={() => setOpen(false)}
-  className="px-4 py-3 border-b block"
->
-  NSE
-</Link>
-
+        {/* Navigation Content */}
+        <nav className="flex flex-col text-sm overflow-y-auto flex-1 overscroll-contain p-4 space-y-1 divide-y divide-gray-100">
           
-         <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className="px-4 py-3"
-          >
-            Contact Us
-          </Link>
+          {/* Home */}
+          <div className="pb-1">
+            <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
+                isActiveLink("/")
+                  ? "bg-red-600 text-white font-semibold shadow-md"
+                  : "text-gray-800 hover:bg-red-50 hover:text-red-600"
+              }`}
+            >
+              <span>Home</span>
+            </Link>
+          </div>
+
+          {/* About Accordion */}
+          <div className="py-1">
+            <button
+              onClick={() => setAboutOpen(!aboutOpen)}
+              className="flex justify-between items-center w-full px-4 py-3 rounded-xl font-medium text-gray-800 hover:bg-red-50 hover:text-red-600 transition-colors"
+            >
+              <span>About</span>
+              <IconChevronDown
+                size={18}
+                className={`transition-transform duration-200 text-gray-400 ${
+                  aboutOpen ? "rotate-180 text-red-600" : ""
+                }`}
+              />
+            </button>
+
+            {aboutOpen && (
+              <div className="mt-1 ml-3 pl-3 border-l-2 border-red-500 space-y-1">
+                <Link
+                  href="/about-us"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/about-us")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  About Us
+                </Link>
+
+                <Link
+                  href="/history-our-achievement"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/history-our-achievement")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  History & Our Achievements
+                </Link>
+
+                <Link
+                  href="/directors"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/directors")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Directors
+                </Link>
+
+                <Link
+                  href="/chairman-desk"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/chairman-desk")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Chairman’s Desk
+                </Link>
+
+                <Link
+                  href="/message-from-md"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/message-from-md")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Message from MD
+                </Link>
+
+                <Link
+                  href="/vision-mission"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/vision-mission")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Vision & Mission
+                </Link>
+
+                <Link
+                  href="/privacy-policy"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/privacy-policy")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Privacy Policy
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Who We Are Accordion */}
+          <div className="py-1">
+            <button
+              onClick={() => setWhoOpen(!whoOpen)}
+              className="flex justify-between items-center w-full px-4 py-3 rounded-xl font-medium text-gray-800 hover:bg-red-50 hover:text-red-600 transition-colors"
+            >
+              <span>Who We Are</span>
+              <IconChevronDown
+                size={18}
+                className={`transition-transform duration-200 text-gray-400 ${
+                  whoOpen ? "rotate-180 text-red-600" : ""
+                }`}
+              />
+            </button>
+
+            {whoOpen && (
+              <div className="mt-1 ml-3 pl-3 border-l-2 border-red-500 space-y-1">
+                <Link
+                  href="/journey"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/journey")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Journey
+                </Link>
+
+                <Link
+                  href="/infrastructures"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/infrastructures")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Infrastructures
+                </Link>
+
+                <Link
+                  href="/quality-control"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/quality-control")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Quality Control
+                </Link>
+
+                <Link
+                  href="/why-goyal-salt"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/why-goyal-salt")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Why Goyal Salt Ltd ?
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Products Direct */}
+          <div className="py-1">
+            <Link
+              href="/products"
+              onClick={() => setOpen(false)}
+              className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
+                isActiveLink("/products")
+                  ? "bg-red-600 text-white font-semibold shadow-md"
+                  : "text-gray-800 hover:bg-red-50 hover:text-red-600"
+              }`}
+            >
+              <span>Products</span>
+            </Link>
+          </div>
+
+          {/* Investors Accordion */}
+          <div className="py-1">
+            <button
+              onClick={() => setInvestorOpen(!investorOpen)}
+              className="flex justify-between items-center w-full px-4 py-3 rounded-xl font-medium text-gray-800 hover:bg-red-50 hover:text-red-600 transition-colors"
+            >
+              <span>Investors</span>
+              <IconChevronDown
+                size={18}
+                className={`transition-transform duration-200 text-gray-400 ${
+                  investorOpen ? "rotate-180 text-red-600" : ""
+                }`}
+              />
+            </button>
+
+            {investorOpen && (
+              <div className="mt-1 ml-3 pl-3 border-l-2 border-red-500 space-y-1">
+                <Link
+                  href="/annual-return"
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                >
+                  Annual Return
+                </Link>
+
+                <Link
+                  href="/annual-report"
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                >
+                  Annual Report
+                </Link>
+
+                <Link
+                  href="/csr-document"
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                >
+                  CSR
+                </Link>
+
+                <Link
+                  href="/dur-46-lodr"
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                >
+                  Disclosure Under Regulation 46 of LODR
+                </Link>
+
+                <Link
+                  href="/financials"
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                >
+                  Financials
+                </Link>
+
+                {/* Governance Nested Accordion */}
+                <button
+                  onClick={() => setGovernanceOpen(!governanceOpen)}
+                  className="flex justify-between items-center w-full px-3 py-2 rounded-lg text-xs font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50"
+                >
+                  <span>Governance</span>
+                  <IconChevronDown
+                    size={14}
+                    className={`transition-transform ${
+                      governanceOpen ? "rotate-180 text-red-600" : ""
+                    }`}
+                  />
+                </button>
+
+                {governanceOpen && (
+                  <div className="ml-3 pl-2 border-l border-red-300 space-y-1">
+                    <Link
+                      href="/governance/codes-policies"
+                      onClick={() => setOpen(false)}
+                      className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
+                    >
+                      Codes & Policies
+                    </Link>
+
+                    <Link
+                      href="/governance/committees"
+                      onClick={() => setOpen(false)}
+                      className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
+                    >
+                      Committees
+                    </Link>
+
+                    <Link
+                      href="/governance/shareholding-pattern"
+                      onClick={() => setOpen(false)}
+                      className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
+                    >
+                      Shareholding Pattern
+                    </Link>
+                  </div>
+                )}
+
+                <Link
+                  href="/investor-grievance"
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                >
+                  Investor Grievance
+                </Link>
+
+                {/* Listing Compliance Nested Accordion */}
+                <button
+                  onClick={() => setListingOpen(!listingOpen)}
+                  className="flex justify-between items-center w-full px-3 py-2 rounded-lg text-xs font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50"
+                >
+                  <span>Listing Compliance</span>
+                  <IconChevronDown
+                    size={14}
+                    className={`transition-transform ${
+                      listingOpen ? "rotate-180 text-red-600" : ""
+                    }`}
+                  />
+                </button>
+
+                {listingOpen && (
+                  <div className="ml-3 pl-2 border-l border-red-300 space-y-1">
+                    {/* FY 2023-24 */}
+                    <button
+                      onClick={() =>
+                        setOpenFY(openFY === "2023-24" ? null : "2023-24")
+                      }
+                      className="flex justify-between items-center w-full px-3 py-1.5 rounded-md text-[11px] text-gray-600 hover:text-red-600"
+                    >
+                      <span>F.Y. 2023-24</span>
+                      <IconChevronDown
+                        size={12}
+                        className={`transition-transform ${
+                          openFY === "2023-24" ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {openFY === "2023-24" && (
+                      <div className="ml-2 pl-2 space-y-1">
+                        <Link
+                          href="/listing-compliance/2023-24/q1"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 1
+                        </Link>
+                        <Link
+                          href="/listing-compliance/2023-24/q2"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 2
+                        </Link>
+                        <Link
+                          href="/listing-compliance/2023-24/q3"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 3
+                        </Link>
+                        <Link
+                          href="/listing-compliance/2023-24/q4"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 4
+                        </Link>
+                      </div>
+                    )}
+
+                    {/* FY 2024-25 */}
+                    <button
+                      onClick={() =>
+                        setOpenFY(openFY === "2024-25" ? null : "2024-25")
+                      }
+                      className="flex justify-between items-center w-full px-3 py-1.5 rounded-md text-[11px] text-gray-600 hover:text-red-600"
+                    >
+                      <span>F.Y. 2024-25</span>
+                      <IconChevronDown
+                        size={12}
+                        className={`transition-transform ${
+                          openFY === "2024-25" ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {openFY === "2024-25" && (
+                      <div className="ml-2 pl-2 space-y-1">
+                        <Link
+                          href="/listing-compliance/2024-25/q3"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 3
+                        </Link>
+                        <Link
+                          href="/listing-compliance/2024-25/q4"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 4
+                        </Link>
+                      </div>
+                    )}
+
+                    {/* FY 2025-26 */}
+                    <button
+                      onClick={() =>
+                        setOpenFY(openFY === "2025-26" ? null : "2025-26")
+                      }
+                      className="flex justify-between items-center w-full px-3 py-1.5 rounded-md text-[11px] text-gray-600 hover:text-red-600"
+                    >
+                      <span>F.Y. 2025-26</span>
+                      <IconChevronDown
+                        size={12}
+                        className={`transition-transform ${
+                          openFY === "2025-26" ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {openFY === "2025-26" && (
+                      <div className="ml-2 pl-2 space-y-1">
+                        <Link
+                          href="/listing-compliance/2025-26/q1"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 1
+                        </Link>
+                        <Link
+                          href="/listing-compliance/2025-26/q2"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 2
+                        </Link>
+                        <Link
+                          href="/listing-compliance/2025-26/q3"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 3
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <Link
+                  href="/material-contracts-agreements"
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                >
+                  Material Contracts & Agreements
+                </Link>
+
+                {/* Notices & Announcements Accordion */}
+                <button
+                  onClick={() => setNoticeOpen(!noticeOpen)}
+                  className="flex justify-between items-center w-full px-3 py-2 rounded-lg text-xs font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50"
+                >
+                  <span>Notices & Announcements</span>
+                  <IconChevronDown
+                    size={14}
+                    className={`transition-transform ${
+                      noticeOpen ? "rotate-180 text-red-600" : ""
+                    }`}
+                  />
+                </button>
+
+                {noticeOpen && (
+                  <div className="ml-3 pl-2 border-l border-red-300 space-y-1">
+                    {/* AGM Disclosures */}
+                    <button
+                      onClick={() => setAgmOpen(!agmOpen)}
+                      className="flex justify-between items-center w-full px-3 py-1.5 rounded-md text-[11px] text-gray-600 hover:text-red-600"
+                    >
+                      <span>AGM Disclosures</span>
+                      <IconChevronDown
+                        size={12}
+                        className={`transition-transform ${
+                          agmOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {agmOpen && (
+                      <div className="ml-2 pl-2 space-y-1">
+                        <Link
+                          href="/notices-announcements/agm/2024-25"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          F.Y. 2024-25
+                        </Link>
+                        <Link
+                          href="/notices-announcements/agm/2023-24"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          F.Y. 2023-24
+                        </Link>
+                      </div>
+                    )}
+
+                    {/* Board Meetings */}
+                    <button
+                      onClick={() => setBoardMeetingOpen(!boardMeetingOpen)}
+                      className="flex justify-between items-center w-full px-3 py-1.5 rounded-md text-[11px] text-gray-600 hover:text-red-600"
+                    >
+                      <span>Board Meetings Disclosure</span>
+                      <IconChevronDown
+                        size={12}
+                        className={`transition-transform ${
+                          boardMeetingOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {boardMeetingOpen && (
+                      <div className="ml-2 pl-2 space-y-1">
+                        <Link
+                          href="/notices-announcements/board-meetings-disclosure/2025-26"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          F.Y. 2025-26
+                        </Link>
+                        <Link
+                          href="/notices-announcements/board-meetings-disclosure/2024-25"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          F.Y. 2024-25
+                        </Link>
+                        <Link
+                          href="/notices-announcements/board-meetings-disclosure/2023-24"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          F.Y. 2023-24
+                        </Link>
+                      </div>
+                    )}
+
+                    <Link
+                      href="/notices-announcements/disclosures-under-regulation-30"
+                      onClick={() => setOpen(false)}
+                      className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
+                    >
+                      Disclosures Under Regulation 30
+                    </Link>
+
+                    <Link
+                      href="/notices-announcements/investors-meet-disclosure"
+                      onClick={() => setOpen(false)}
+                      className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
+                    >
+                      Investors Meet Disclosure
+                    </Link>
+
+                    <Link
+                      href="/notices-announcements/others"
+                      onClick={() => setOpen(false)}
+                      className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
+                    >
+                      Others
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Offer Documents */}
+          <div className="py-1">
+            <Link
+              href="/offer-documents"
+              onClick={() => setOpen(false)}
+              className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
+                isActiveLink("/offer-documents")
+                  ? "bg-red-600 text-white font-semibold shadow-md"
+                  : "text-gray-800 hover:bg-red-50 hover:text-red-600"
+              }`}
+            >
+              <span>Offer Documents</span>
+            </Link>
+          </div>
+
+          {/* CSR */}
+          <div className="py-1">
+            <Link
+              href="/csr"
+              onClick={() => setOpen(false)}
+              className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
+                isActiveLink("/csr")
+                  ? "bg-red-600 text-white font-semibold shadow-md"
+                  : "text-gray-800 hover:bg-red-50 hover:text-red-600"
+              }`}
+            >
+              <span>CSR</span>
+            </Link>
+          </div>
+
+          {/* Gallery */}
+          <div className="py-1">
+            <Link
+              href="/gallery"
+              onClick={() => setOpen(false)}
+              className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
+                isActiveLink("/gallery")
+                  ? "bg-red-600 text-white font-semibold shadow-md"
+                  : "text-gray-800 hover:bg-red-50 hover:text-red-600"
+              }`}
+            >
+              <span>Gallery</span>
+            </Link>
+          </div>
+
+          {/* NSE External Link */}
+          <div className="py-1">
+            <Link
+              href="https://www.nseindia.com/get-quote/equity/GOYALSALT/Goyal-Salt-Limited"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between px-4 py-3 rounded-xl font-semibold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200/60 transition-all"
+            >
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>NSE Stock Quote</span>
+              </div>
+              <IconExternalLink size={16} />
+            </Link>
+          </div>
+
+          {/* Red Contact Us Direct Button */}
+          <div className="pt-2 pb-4">
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-center w-full py-3 px-4 rounded-xl font-bold bg-red-600 text-white shadow-lg hover:bg-red-700 transition-all text-center"
+            >
+              Contact Us
+            </Link>
+          </div>
         </nav>
       </DrawerContent>
     </UIDrawer>
