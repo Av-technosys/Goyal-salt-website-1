@@ -42,7 +42,10 @@ export default function HeroVideoSection() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-lg">
            
             <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
-              Goyal Salt Brand Film
+              Goyal Salt Brand FilmRequest a Call Back
+Fill out the form below and our team will reach out to you shortly.
+
+
             </span>
           </div>
         </div>
