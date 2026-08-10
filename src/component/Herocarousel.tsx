@@ -1,108 +1,145 @@
 "use client";
 
-import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
+import { useState, useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Play, 
+  Pause, 
+  Volume2, 
+  VolumeX, 
+  Sparkles, 
+  RotateCcw 
+} from "lucide-react";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
+export default function HeroVideoSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [showControls, setShowControls] = useState(false);
 
-const slides = [
-  {
-    id: 1,
-    image: "/Images/goyal-banner1.jpg",
-    alt: "Goyal Salt Premium Refined & Iodised Salt",
-  },
-  {
-    id: 2,
-    image: "/Images/goyal-banner2.jpg",
-    alt: "Purity & Nutrition in Every Grain",
-  },
-  {
-    id: 3,
-    image: "/Images/goyal-banner3.jpg",
-    alt: "Trusted Salt Manufacturer & Exporter",
-  },
-];
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
-export default function HeroCarousel() {
-  const swiperRef = useRef<any>(null);
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
+  const handleRestart = () => {
+    if (!videoRef.current) return;
+    videoRef.current.currentTime = 0;
+    videoRef.current.play();
+    setIsPlaying(true);
+  };
 
   return (
-    <section className="relative w-full overflow-hidden bg-gray-950 group/hero">
-      <Swiper
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        modules={[Autoplay, Pagination, Navigation, EffectFade]}
-        effect="fade"
-        speed={1000}
-        autoplay={{ delay: 4500, disableOnInteraction: false }}
-        loop
-        pagination={{ clickable: true }}
-        className="w-full h-[280px] sm:h-[420px] md:h-[520px] lg:h-[620px] xl:h-[700px]"
-      >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id} className="relative w-full h-full">
-            <div className="relative w-full h-full overflow-hidden">
+    <section 
+      className="relative w-full overflow-hidden bg-gray-950 group/hero"
+      onMouseEnter={() => setShowControls(true)}
+      onMouseLeave={() => setShowControls(false)}
+    >
+      {/* Background Ambient Blur to Fill Edge-to-Edge seamlessly on Ultra-Wide Monitors */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+        <Image
+          src="/Images/Goyal-Salt-Slider.jpg"
+          alt=""
+          fill
+          className="object-cover blur-3xl scale-125"
+        />
+      </div>
 
-              {/* Ambient Blurred Background Layer to Eliminate Any Edge Gaps */}
-              <Image
-                src={slide.image}
-                alt=""
-                fill
-                className="object-cover blur-2xl scale-110 opacity-70 pointer-events-none"
-              />
+      {/* Main Hero Video Player */}
+      <div className="relative w-full h-[320px] sm:h-[460px] md:h-[560px] lg:h-[680px] xl:h-[760px] flex items-center justify-center bg-black">
+        <video
+          ref={videoRef}
+          src="/Images/vedio1.mp4"
+          poster="/Images/Goyal-Salt-Slider.jpg"
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover relative z-10"
+        />
 
-              {/* Main Full-Width Edge-to-Edge Banner */}
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                fill
-                priority={slide.id === 1}
-                sizes="100vw"
-                className="object-cover object-[center_35%] w-full h-full relative z-10"
-              />
+        {/* Cinematic Subtle Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-15 pointer-events-none" />
 
-              {/* Soft Ambient Overlay for high visual elegance */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/5 z-15 pointer-events-none" />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        {/* Top Brand Identity Badge */}
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 flex items-center gap-2">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-lg">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+            </span>
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+              Goyal Salt Brand Film
+            </span>
+          </div>
+        </div>
 
-      {/* Navigation Arrows with Glassmorphic Styling */}
-      <button
-        onClick={() => swiperRef.current?.slidePrev()}
-        aria-label="Previous Hero Slide"
-        className="
-          absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20
-          w-10 h-10 sm:w-12 sm:h-12 rounded-full
-          bg-white/75 hover:bg-red-600 backdrop-blur-md border border-white/40
-          text-gray-900 hover:text-white shadow-lg
-          flex items-center justify-center transition-all duration-300
-          opacity-0 group-hover/hero:opacity-100 hover:scale-110 active:scale-95
-        "
-      >
-        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
-      </button>
+        {/* Bottom Floating Interactive Control Bar */}
+        <div className="absolute bottom-6 sm:bottom-8 left-4 right-4 sm:left-8 sm:right-8 z-20 flex items-center justify-between pointer-events-auto">
+          
+          {/* Title Text Badge */}
+          <div className="bg-black/60 backdrop-blur-md border border-white/20 px-4 py-2.5 rounded-2xl text-white shadow-xl max-w-xs sm:max-w-md">
+            <p className="text-xs sm:text-sm font-extrabold leading-tight text-white flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              Ek Chutki Swaad
+            </p>
+            <p className="text-[10px] sm:text-xs text-gray-300 font-medium mt-0.5 truncate">
+              Taste that elevates every meal across India
+            </p>
+          </div>
 
-      <button
-        onClick={() => swiperRef.current?.slideNext()}
-        aria-label="Next Hero Slide"
-        className="
-          absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20
-          w-10 h-10 sm:w-12 sm:h-12 rounded-full
-          bg-white/75 hover:bg-red-600 backdrop-blur-md border border-white/40
-          text-gray-900 hover:text-white shadow-lg
-          flex items-center justify-center transition-all duration-300
-          opacity-0 group-hover/hero:opacity-100 hover:scale-110 active:scale-95
-        "
-      >
-        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
-      </button>
+          {/* Quick Action Buttons (Play/Pause, Mute/Unmute, Restart) */}
+          <div className="flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md border border-white/20 p-1.5 sm:p-2 rounded-2xl shadow-xl">
+            
+            {/* Play/Pause Button */}
+            <button
+              onClick={togglePlay}
+              aria-label={isPlaying ? "Pause Video" : "Play Video"}
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/15 hover:bg-red-600 text-white flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+            >
+              {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5 fill-current" />}
+            </button>
+
+            {/* Sound Toggle Button */}
+            <button
+              onClick={toggleMute}
+              aria-label={isMuted ? "Unmute Audio" : "Mute Audio"}
+              className={`
+                w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95
+                ${isMuted ? "bg-white/15 hover:bg-white/30 text-white" : "bg-red-600 text-white shadow-lg shadow-red-600/30"}
+              `}
+            >
+              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            </button>
+
+            {/* Restart Video Button */}
+            <button
+              onClick={handleRestart}
+              aria-label="Restart Video"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/15 hover:bg-white/30 text-white flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+            >
+              <RotateCcw size={16} />
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
     </section>
   );
 }
