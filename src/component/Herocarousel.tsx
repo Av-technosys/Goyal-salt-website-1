@@ -1,52 +1,14 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Play, 
-  Pause, 
-  Volume2, 
-  VolumeX, 
-  Sparkles, 
-  RotateCcw 
-} from "lucide-react";
 
 export default function HeroVideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [showControls, setShowControls] = useState(false);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
-
-  const handleRestart = () => {
-    if (!videoRef.current) return;
-    videoRef.current.currentTime = 0;
-    videoRef.current.play();
-    setIsPlaying(true);
-  };
 
   return (
     <section 
       className="relative w-full overflow-hidden bg-gray-950 group/hero"
-      onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(false)}
     >
       {/* Background Ambient Blur to Fill Edge-to-Edge seamlessly on Ultra-Wide Monitors */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
@@ -66,77 +28,42 @@ export default function HeroVideoSection() {
           poster="/Images/Goyal-Salt-Slider.jpg"
           autoPlay
           loop
-          muted={isMuted}
+          muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover relative z-10"
+          className="w-full h-full object-cover relative z-10 pointer-events-none"
         />
 
         {/* Cinematic Subtle Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-15 pointer-events-none" />
 
         {/* Top Brand Identity Badge */}
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 flex items-center gap-2">
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 flex items-center gap-2 pointer-events-none">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-lg">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
-            </span>
+           
             <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
-              Goyal Salt Brand Film
+              Goyal Salt Brand FilmRequest a Call Back
+Fill out the form below and our team will reach out to you shortly.
+
+
             </span>
           </div>
         </div>
 
-        {/* Bottom Floating Interactive Control Bar */}
-        <div className="absolute bottom-6 sm:bottom-8 left-4 right-4 sm:left-8 sm:right-8 z-20 flex items-center justify-between pointer-events-auto">
-          
-          {/* Title Text Badge */}
-          <div className="bg-black/60 backdrop-blur-md border border-white/20 px-4 py-2.5 rounded-2xl text-white shadow-xl max-w-xs sm:max-w-md">
-            <p className="text-xs sm:text-sm font-extrabold leading-tight text-white flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+        {/* Active Video Overlay (Left Middle, No Box, Larger Text) */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-6 sm:left-12 z-20 text-white flex flex-col gap-2 pointer-events-none">
+          <div className="flex items-center gap-3">
+            <span className="relative flex h-3 w-3 sm:h-4 sm:w-4 mt-1">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 sm:h-4 sm:w-4 bg-red-600 shadow-[0_0_10px_rgba(220,38,38,1)]"></span>
+            </span>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]">
               Ek Chutki Swaad
-            </p>
-            <p className="text-[10px] sm:text-xs text-gray-300 font-medium mt-0.5 truncate">
-              Taste that elevates every meal across India
-            </p>
+            </h3>
           </div>
-
-          {/* Quick Action Buttons (Play/Pause, Mute/Unmute, Restart) */}
-          <div className="flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md border border-white/20 p-1.5 sm:p-2 rounded-2xl shadow-xl">
-            
-            {/* Play/Pause Button */}
-            <button
-              onClick={togglePlay}
-              aria-label={isPlaying ? "Pause Video" : "Play Video"}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/15 hover:bg-red-600 text-white flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
-            >
-              {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5 fill-current" />}
-            </button>
-
-            {/* Sound Toggle Button */}
-            <button
-              onClick={toggleMute}
-              aria-label={isMuted ? "Unmute Audio" : "Mute Audio"}
-              className={`
-                w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95
-                ${isMuted ? "bg-white/15 hover:bg-white/30 text-white" : "bg-red-600 text-white shadow-lg shadow-red-600/30"}
-              `}
-            >
-              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-            </button>
-
-            {/* Restart Video Button */}
-            <button
-              onClick={handleRestart}
-              aria-label="Restart Video"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/15 hover:bg-white/30 text-white flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
-            >
-              <RotateCcw size={16} />
-            </button>
-
-          </div>
-
+          <p className="text-sm sm:text-lg lg:text-xl text-gray-100 font-bold ml-6 sm:ml-7 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] max-w-sm sm:max-w-md">
+            Taste that elevates every meal across India
+          </p>
         </div>
 
       </div>
