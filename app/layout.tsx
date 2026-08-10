@@ -1,13 +1,21 @@
 import "./globals.css";
-import { Poppins } from "next/font/google";
+import { Epilogue, Inter } from "next/font/google";
 import Footer from "@/src/component/Footer";
 import Navbar from "@/src/component/Header";
+import WhatsAppButton from "@/src/component/WhatsAppButton";
 import type { Metadata } from "next";
 import Script from "next/script"; 
 
-const poppins = Poppins({
+const epilogue = Epilogue({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-body",
   display: "swap",
 });
@@ -60,7 +68,7 @@ export default function RootLayout({
         {/* End Google Tag Manager */}
       </head>
 
-      <body className={poppins.variable}>
+      <body className={`${inter.variable} ${epilogue.variable} antialiased`}>
 
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -102,6 +110,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

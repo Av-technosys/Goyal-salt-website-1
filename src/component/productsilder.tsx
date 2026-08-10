@@ -235,7 +235,7 @@ export default function ProductCarousel() {
                       }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                       className={`
-                        group relative flex flex-col justify-between h-[400px] sm:h-[430px]
+                        group relative flex flex-col justify-between h-[460px] sm:h-[480px]
                         rounded-3xl bg-white/95 backdrop-blur-xl
                         border border-gray-200/80 shadow-xl hover:shadow-2xl
                         transition-all duration-500 overflow-hidden cursor-pointer
@@ -281,7 +281,7 @@ export default function ProductCarousel() {
                       </div>
 
                       {/* Bottom Info Section */}
-                      <div className="relative z-10 p-5 sm:p-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent border-t border-gray-100">
+                      <div className="relative z-10 px-5 sm:px-6 pt-3 pb-6 sm:pb-7 bg-gradient-to-t from-white via-white/95 to-transparent border-t border-gray-100">
                         <span className="text-xs font-medium text-red-600 tracking-wide uppercase block mb-0.5">
                           {product.subtitle}
                         </span>

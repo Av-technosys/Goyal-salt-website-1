@@ -38,7 +38,7 @@ export default function SaltButton({
   // Variant Styles
   const variantStyles = {
     primary:
-      "bg-red-600 text-white hover:bg-red-700 shadow-md shadow-red-600/20 hover:shadow-lg",
+      "bg-red-600 text-white hover:bg-red-700 shadow-md shadow-red-600/20 hover:shadow-lg hover:shadow-red-600/30",
     secondary:
       "bg-gray-900 text-white hover:bg-gray-800 shadow-md hover:shadow-lg",
     outline:
@@ -50,7 +50,7 @@ export default function SaltButton({
   // Size Styles
   const sizeStyles = {
     sm: "px-4 py-2 text-xs font-semibold rounded-full",
-    md: "px-6 py-3 text-sm font-semibold rounded-full",
+    md: "px-6 py-2.5 text-sm font-semibold rounded-full",
     lg: "px-8 py-3.5 text-base font-semibold rounded-full",
   };
 
