@@ -1,93 +1,67 @@
-"use client"
+import AccordionGallery from "./AccordionGallery";
 
-import * as React from "react"
-import Image from "next/image"
-import Autoplay from "embla-carousel-autoplay"
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"
-
-const Images = [
-  "/Images/about1.jpg",
-  "/Images/about2.jpg",
-  "/Images/about3.jpg",
-]
+const galleryItems = [
+  { image: "/Images/about1.jpg", label: "Goyal Salt team", alt: "Goyal Salt team" },
+  { image: "/Images/about2.jpg", label: "Salt refining facility", alt: "Salt refining facility" },
+  { image: "/Images/about3.jpg", label: "Goyal Salt building", alt: "Goyal Salt building" },
+];
 
 const AboutBanner = () => {
-  const plugin = React.useRef(
-    Autoplay({ delay: 1000, stopOnInteraction: false })
-  )
-
   return (
-    <section className="w-full py-16 sm:py-16 lg:py-16">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
-        {/* LEFT CONTENT */}
-        <div>
-          <h1 className="text-4xl font-serif font-semibold mb-4">
-            About Goyal Salt Limited
-          </h1>
+    <section className="about-hero-ui">
+      <div className="about-shell-ui about-hero-ui__grid">
+        <div className="about-hero-ui__copy">
+          <h1>About Goyal Salt Limited</h1>
 
-          <h3 className="text-lg font-semibold tracking-widest text-gray-800 mb-6">
-            A TRUSTED NAME IN SALT MANUFACTURING
+          <h3>
+            A TRUSTED NAME IN <span>SALT MANUFACTURING</span>
           </h3>
+          <span className="about-ui-rule" aria-hidden="true" />
 
-          <p className="text-gray-600 leading-relaxed text-sm">
-            Goyal Salt Limited was incorporated in the year 2010 under the name
-            “Goyal Salt Pvt. Ltd.” and has grown into one of the largest
-            manufacturers and dealers of Sodium Chloride (NaCl) in India.
-            <br />
-            With a strong commitment to quality, consistency, and customer
-            satisfaction, the company specializes in manufacturing all varieties
-            of salt, catering to diverse industrial, commercial, and consumer
-            needs. Backed by modern infrastructure and efficient processes,
-            Goyal Salt Limited continues to set high standards in salt production
-            while ensuring purity and reliability in every grain.
-            <br />
-            Driven by innovation and excellence, the company has established
-            itself as a trusted partner across industries, steadily strengthening
-            its presence in the Indian salt market.
-          </p>
+          <div className="about-hero-ui__body">
+            <p>
+              Goyal Salt Limited was incorporated in the year 2010 under the name
+              “Goyal Salt Pvt. Ltd.” and has grown into one of the largest
+              manufacturers and dealers of Sodium Chloride (NaCl) in India.
+            </p>
+            <p>
+              With a strong commitment to quality, consistency, and customer
+              satisfaction, the company specializes in manufacturing all varieties
+              of salt, catering to diverse industrial, commercial, and consumer
+              needs. Backed by modern infrastructure and efficient processes,
+              Goyal Salt Limited continues to set high standards in salt production
+              while ensuring purity and reliability in every grain.
+            </p>
+            <p>
+              Driven by innovation and excellence, the company has established
+              itself as a trusted partner across industries, steadily strengthening
+              its presence in the Indian salt market.
+            </p>
+          </div>
         </div>
 
-        {/* RIGHT IMAGE SLIDER */}
-        <div className="relative">
-          <Carousel
-            opts={{
-              loop: true,
-              align: "start",
-            }}
-            plugins={[plugin.current]}
-            className="w-full"
-          >
-            <CarouselContent>
-              {Images.map((src, index) => (
-                <CarouselItem
-                  key={index}
-                  className="basis-full md:basis-1/2"
-                >
-                  <div className="overflow-hidden rounded-xl px-2">
-                    <Image
-                      src={src}
-                      alt="Salt Refinery"
-                      width={800}
-                      height={500}
-                      className="w-full h-[350px] object-cover"
-                      priority={index === 0}
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+        <div className="about-hero-ui__gallery">
+          <AccordionGallery
+            items={galleryItems}
+            defaultIndex={1}
+            accentColor="#dc0713"
+            overlayColor="#101722"
+            height={500}
+            gap={10}
+            radius={8}
+            expandRatio={0.62}
+            duration={0.7}
+            parallax={0.35}
+            tilt={0}
+            trigger="hover"
+            grayscale={false}
+            showLabels={false}
+            className="about-hero-ui__accordion"
+          />
         </div>
-
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutBanner
+export default AboutBanner;

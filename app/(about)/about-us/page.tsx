@@ -1,8 +1,8 @@
-
 import AboutBanner from '@/src/component/aboutbanner'
-import AboutCarusal from '@/src/component/aboutcarusal'
 import AboutDocument from '@/src/component/aboutdocument'
-import AboutSlider from '@/src/component/aboutslider'
+import AdvancedSaltRefining from '@/src/component/AdvancedSaltRefining'
+import ImportanceOfSalt from '@/src/component/ImportanceOfSalt'
+import QualitySaltCommitment from '@/src/component/QualitySaltCommitment'
 import React from 'react'
 
 export const metadata = {
@@ -16,12 +16,15 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className='p-4'>
+    <main className='about-page-ui'>
       <AboutBanner/>
-      <AboutSlider/>
-      <AboutCarusal/>
+      <section className="about-salt-story-ui" aria-label="Salt quality and refining">
+        <QualitySaltCommitment/>
+        <AdvancedSaltRefining/>
+      </section>
+      <ImportanceOfSalt/>
       <AboutDocument/>
-    </div>
+    </main>
   )
 }
 

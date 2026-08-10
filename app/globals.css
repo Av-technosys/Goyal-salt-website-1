@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "../src/component/AccordionGallery.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -148,4 +149,793 @@
   opacity: 1 !important;
   width: 32px !important;
   border-radius: 6px !important;
+}
+
+/* About page visual system */
+.about-page-ui {
+  --about-red: #dc0713;
+  --about-ink: #202937;
+  --about-copy: #596171;
+  overflow: hidden;
+  background: #fff;
+}
+
+.about-page-ui *,
+.about-page-ui *::before,
+.about-page-ui *::after {
+  box-sizing: border-box;
+}
+
+.about-shell-ui {
+  position: relative;
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding-right: clamp(24px, 6.5vw, 104px);
+  padding-left: clamp(24px, 6.5vw, 104px);
+}
+
+.about-ui-rule {
+  display: block;
+  width: 58px;
+  height: 3px;
+  margin: 18px 0 26px;
+  background: var(--about-red);
+}
+
+.about-hero-ui {
+  position: relative;
+  min-height: 640px;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, #fff 0 52%, rgba(248, 250, 252, 0.96) 52% 100%);
+}
+
+.about-hero-ui::after {
+  position: absolute;
+  z-index: -1;
+  top: 10%;
+  right: -14%;
+  width: 54%;
+  height: 76%;
+  content: "";
+  background:
+    linear-gradient(135deg, rgba(231, 235, 240, 0.72), rgba(255, 255, 255, 0));
+  border-radius: 999px 0 0 999px;
+  filter: blur(1px);
+}
+
+.about-hero-ui__grid {
+  display: grid;
+  grid-template-columns: minmax(365px, 39%) minmax(0, 61%);
+  min-height: 640px;
+  align-items: center;
+}
+
+.about-hero-ui__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  padding: 62px 0 52px;
+}
+
+.about-hero-ui__copy h1 {
+  margin: 0 0 13px;
+  color: var(--about-red);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.about-hero-ui__copy h3,
+.about-commitment-ui h2 {
+  margin: 0;
+  color: var(--about-ink);
+  font-family: Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+  font-stretch: condensed;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
+.about-hero-ui__copy h3 {
+  max-width: 390px;
+  font-size: clamp(38px, 3.2vw, 50px);
+}
+
+.about-hero-ui__copy h3 span {
+  display: block;
+  color: var(--about-red);
+}
+
+.about-hero-ui__body {
+  max-width: 405px;
+}
+
+.about-hero-ui__body p {
+  margin: 0;
+  color: var(--about-copy);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.72;
+}
+
+.about-hero-ui__body p + p {
+  margin-top: 14px;
+}
+
+.about-hero-ui__gallery {
+  position: relative;
+  align-self: center;
+  width: min(100%, 760px);
+  margin: 58px 0 52px 44px;
+  isolation: isolate;
+}
+
+.about-hero-ui__gallery::before {
+  display: none;
+}
+
+.about-hero-ui__accordion {
+  position: relative;
+  overflow: visible;
+  background: transparent !important;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.about-hero-ui__accordion .ag-panel {
+  box-shadow: 0 12px 26px rgba(31, 39, 51, 0.12);
+}
+
+.about-hero-ui__accordion .ag-panel:nth-child(1) img {
+  object-position: 50% 48%;
+}
+
+.about-hero-ui__accordion .ag-panel:nth-child(2) img {
+  object-position: 49% 50%;
+}
+
+.about-hero-ui__accordion .ag-panel:nth-child(3) img {
+  object-position: 50% 50%;
+  filter: saturate(0.5) contrast(1.02) brightness(1.04);
+}
+
+.about-commitment-ui {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(112deg, #fbfcfd 0%, #f5f6f8 58%, #fff 100%);
+}
+
+.about-salt-story-ui {
+  --about-story-card-height: clamp(450px, 28vw, 480px);
+  --about-story-card-width: 500px;
+  margin-top: clamp(52px, 5vw, 84px);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.5) 46%, rgba(255, 255, 255, 0.9) 100%),
+    url("/Images/salt_commitment.png") center top / 100% 100% no-repeat,
+    #f8fafc;
+}
+
+.about-salt-story-ui .about-commitment-ui {
+  background: transparent;
+}
+
+.about-commitment-ui--quality-section {
+  margin-top: 0;
+  margin-bottom: 0;
+  min-height: clamp(470px, 33.333vw, 620px);
+  background: transparent;
+}
+
+.about-commitment-ui__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.about-commitment-ui__quality {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  min-height: 459px;
+  align-items: center;
+}
+
+.about-commitment-ui--quality-section .about-commitment-ui__quality {
+  grid-template-columns: minmax(var(--about-story-card-width), var(--about-story-card-width)) minmax(0, 1fr);
+  min-height: clamp(470px, 33.333vw, 620px);
+  align-items: center;
+  gap: clamp(42px, 5vw, 86px);
+}
+
+.about-commitment-ui--quality-section .about-commitment-ui__quality-copy,
+.about-commitment-ui__refining-copy {
+  position: relative;
+  z-index: 3;
+  width: var(--about-story-card-width);
+  max-width: var(--about-story-card-width);
+  height: var(--about-story-card-height);
+  padding: clamp(34px, 3.4vw, 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.82);
+  border: 0;
+  border-radius: 24px;
+  box-shadow: 0 16px 38px rgba(45, 53, 65, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.about-commitment-ui--quality-section .about-commitment-ui__quality-copy {
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.about-commitment-ui h2 {
+  font-size: clamp(31px, 3vw, 43px);
+}
+
+.about-commitment-ui--quality-section h2,
+.about-commitment-ui__refining-copy h2 {
+  max-width: 380px;
+  color: var(--about-ink);
+  font-family: Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+  font-size: clamp(35px, 2.7vw, 48px);
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.about-card-heading-accent {
+  display: block;
+  color: var(--about-red) !important;
+}
+
+.about-commitment-ui--quality-section .about-commitment-ui__quality-copy .about-ui-rule,
+.about-commitment-ui__refining-copy .about-ui-rule {
+  width: 64px;
+  height: 3px;
+  margin: 20px 0 24px;
+  background: var(--about-red);
+}
+
+.about-commitment-ui__quality-copy p,
+.about-commitment-ui__refining-copy p {
+  margin: 0 0 21px;
+  color: var(--about-copy);
+  font-size: 12px;
+  line-height: 1.72;
+}
+
+.about-commitment-ui--quality-section .about-commitment-ui__quality-copy p,
+.about-commitment-ui__refining-copy p {
+  max-width: 385px;
+  margin: 0 0 18px;
+  color: #596171;
+  font-size: clamp(13px, 0.95vw, 15.5px);
+  line-height: 1.68;
+}
+
+.about-commitment-ui__quality-image {
+  position: relative;
+  align-self: end;
+  justify-self: center;
+  width: min(100%, 670px);
+  height: 382px;
+  margin-bottom: 10px;
+  transform: translateX(2%);
+}
+
+.about-commitment-ui--quality-section .about-commitment-ui__quality-image {
+  z-index: 1;
+  align-self: center;
+  justify-self: end;
+  width: min(100%, 820px);
+  height: clamp(292px, 24vw, 430px);
+  margin: clamp(26px, 3vw, 48px) -1.5% 0 0;
+  transform: none;
+}
+
+.about-commitment-ui__refining {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(var(--about-story-card-width), var(--about-story-card-width));
+  min-height: clamp(455px, 30vw, 540px);
+  margin-right: calc((100vw - min(100vw, 1440px)) / -2 - clamp(24px, 6.5vw, 104px));
+  margin-left: calc((100vw - min(100vw, 1440px)) / -2 - clamp(24px, 6.5vw, 104px));
+  padding-top: clamp(40px, 4vw, 70px);
+  padding-right: calc((100vw - min(100vw, 1440px)) / 2 + clamp(24px, 6.5vw, 104px));
+  padding-bottom: clamp(48px, 4.4vw, 78px);
+  padding-left: calc((100vw - min(100vw, 1440px)) / 2 + clamp(24px, 6.5vw, 104px));
+  align-items: center;
+  gap: clamp(42px, 5vw, 86px);
+  overflow: hidden;
+  background: transparent;
+}
+
+.about-commitment-ui__refining-image {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 690px);
+  height: clamp(315px, 23.5vw, 410px);
+  margin-left: calc(clamp(0px, 1vw, 18px) * -1);
+  overflow: visible;
+  isolation: isolate;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.about-commitment-ui__refining-image::before {
+  position: absolute;
+  right: 13%;
+  bottom: 7%;
+  left: 12%;
+  height: 15%;
+  content: "";
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(30, 39, 53, 0.035), rgba(220, 7, 19, 0.035), rgba(30, 39, 53, 0.025));
+  border-radius: 999px;
+  filter: blur(14px);
+  transform: scaleX(0.82);
+}
+
+.about-commitment-ui__refining-image img {
+  z-index: 1;
+  padding: 0 !important;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 18px rgba(24, 31, 42, 0.11));
+}
+
+.about-industries-ui {
+  position: relative;
+  padding: clamp(42px, 4.5vw, 72px) 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.about-industries-ui::before {
+  display: none;
+}
+
+.about-industries-ui__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 43% 57%;
+  min-height: 260px;
+  padding-top: clamp(42px, 4vw, 58px);
+  padding-bottom: clamp(42px, 4vw, 58px);
+  align-items: center;
+  gap: clamp(34px, 5vw, 78px);
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 248, 249, 0.58)),
+    linear-gradient(115deg, rgba(220, 7, 19, 0.055), rgba(220, 7, 19, 0.012) 58%, rgba(255, 255, 255, 0.44));
+  border: 1px solid rgba(220, 7, 19, 0.08);
+  border-radius: 32px;
+  box-shadow:
+    0 22px 56px rgba(220, 7, 19, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(14px);
+}
+
+.about-industries-ui__copy {
+  position: relative;
+  z-index: 1;
+  color: var(--about-ink);
+}
+
+.about-industries-ui__copy h2 {
+  max-width: 360px;
+  margin: 0 0 13px;
+  font-family: Impact, "Arial Narrow", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.012em;
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+.about-industries-ui__copy p {
+  max-width: 410px;
+  margin: 0;
+  color: var(--about-copy);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.about-industries-ui__desktop-rail {
+  position: relative;
+  z-index: 1;
+  height: 148px;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.about-industries-ui__card {
+  display: flex;
+  min-height: 78px;
+  padding: 16px 20px;
+  align-items: center;
+  gap: 13px;
+  color: var(--about-red);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(255, 246, 247, 0.58));
+  border: 1px solid rgba(220, 7, 19, 0.075);
+  border-radius: 999px;
+  box-shadow:
+    0 12px 26px rgba(220, 7, 19, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(12px);
+}
+
+.about-industries-ui__card > div {
+  color: var(--about-red) !important;
+}
+
+.about-industries-ui__card h3 {
+  color: var(--about-red) !important;
+  font-size: 12px !important;
+  line-height: 1.25;
+}
+
+.about-industries-ui__rail {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.about-certificates-ui {
+  position: relative;
+  padding: 78px 0;
+  background: #fff;
+}
+
+.about-certificates-ui__heading {
+  max-width: 600px;
+  margin: 0 auto 43px;
+  text-align: center;
+}
+
+.about-certificates-ui__heading h2 {
+  color: var(--about-ink) !important;
+  font-family: Impact, "Arial Narrow", sans-serif;
+  font-weight: 500 !important;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+}
+
+.about-certificates-ui__heading p {
+  color: var(--about-copy) !important;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.about-certificates-ui__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 750px;
+  margin: 0 auto;
+  gap: 45px;
+}
+
+.about-certificates-ui__certificate {
+  display: grid;
+  place-items: center;
+}
+
+.about-certificates-ui__certificate > div {
+  padding: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #eceef0;
+  border-radius: 13px;
+  box-shadow: 0 15px 35px rgba(45, 53, 65, 0.12);
+}
+
+/* The supplied desktop reference uses a compact red navigation bar on this route. */
+body:has(.about-page-ui) header {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  background: linear-gradient(105deg, #d9000c, #ee0b17) !important;
+  box-shadow: none !important;
+}
+
+body:has(.about-page-ui) header > div:first-child {
+  display: none;
+}
+
+body:has(.about-page-ui) header nav > a,
+body:has(.about-page-ui) header nav > .group > button {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+body:has(.about-page-ui) header nav > .group > button svg {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body:has(.about-page-ui) header nav > .ml-2 > a > button {
+  min-height: 0 !important;
+  padding: 0.42rem 0.56rem !important;
+  color: #fff !important;
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.44) !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  body:has(.about-page-ui) header .max-w-\[1440px\] {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  body:has(.about-page-ui) header nav {
+    gap: 0 !important;
+    font-size: 10px !important;
+  }
+
+  body:has(.about-page-ui) header nav > a,
+  body:has(.about-page-ui) header nav > .group > button {
+    padding: 0.38rem 0.43rem !important;
+    font-size: 10px !important;
+    white-space: nowrap;
+  }
+
+  body:has(.about-page-ui) header nav > a:nth-of-type(6) {
+    margin-left: 0 !important;
+    padding-right: 0.35rem !important;
+    padding-left: 0.35rem !important;
+    border: 0 !important;
+  }
+
+  body:has(.about-page-ui) header nav > a:nth-of-type(6) > span:first-child,
+  body:has(.about-page-ui) header nav > a:nth-of-type(6) > svg {
+    display: none;
+  }
+
+  body:has(.about-page-ui) header nav > .ml-2 {
+    margin-left: 0.2rem !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .about-hero-ui,
+  .about-hero-ui__grid {
+    min-height: 0;
+  }
+
+  .about-hero-ui__grid {
+    display: block;
+  }
+
+  .about-hero-ui__copy {
+    max-width: 590px;
+    padding: 57px 0 32px;
+  }
+
+  .about-hero-ui__gallery {
+    width: min(690px, 100%);
+    margin: 0 auto 48px;
+  }
+
+  .about-hero-ui__accordion {
+    height: 430px !important;
+  }
+
+  .about-hero-ui__gallery::before {
+    inset: -16px;
+  }
+
+  .about-commitment-ui__quality,
+  .about-commitment-ui__refining,
+  .about-industries-ui__inner {
+    display: block;
+    min-height: 0;
+  }
+
+  .about-commitment-ui__quality-copy {
+    max-width: 410px;
+    margin-left: 28px;
+    padding-top: 54px;
+  }
+
+  .about-salt-story-ui {
+    margin-top: 50px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.52) 48%, rgba(255, 255, 255, 0.92) 100%),
+      url("/Images/salt_commitment.png") center top / auto 100% no-repeat,
+      #f8fafc;
+  }
+
+  .about-commitment-ui--quality-section {
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: 590px;
+    background: transparent;
+  }
+
+  .about-commitment-ui--quality-section .about-commitment-ui__quality {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 590px;
+    padding-top: 48px;
+    padding-bottom: 34px;
+  }
+
+  .about-commitment-ui--quality-section .about-commitment-ui__quality-copy {
+    max-width: 560px;
+    width: min(100%, 560px);
+    height: auto;
+    margin-left: 0;
+    padding: 34px;
+  }
+
+  .about-commitment-ui__quality-image {
+    height: 360px;
+    margin: -28px auto 0;
+  }
+
+  .about-commitment-ui--quality-section .about-commitment-ui__quality-image {
+    display: block;
+    justify-self: center;
+    width: min(100%, 660px);
+    height: 270px;
+    margin: -8px auto 0;
+  }
+
+  .about-commitment-ui__refining {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 0;
+    margin-right: calc((100vw - min(100vw, 1440px)) / -2 - clamp(24px, 6.5vw, 104px));
+    margin-left: calc((100vw - min(100vw, 1440px)) / -2 - clamp(24px, 6.5vw, 104px));
+    padding: 58px calc((100vw - min(100vw, 1440px)) / 2 + clamp(24px, 6.5vw, 104px)) 64px;
+    gap: 34px;
+  }
+
+  .about-commitment-ui__refining-image {
+    justify-self: center;
+    width: min(100%, 640px);
+    height: 290px;
+    margin: 0;
+  }
+
+  .about-commitment-ui__refining-copy {
+    max-width: 560px;
+    width: min(100%, 560px);
+    height: auto;
+    padding: 34px;
+  }
+
+  .about-industries-ui__inner {
+    padding-top: 47px;
+    padding-bottom: 48px;
+  }
+
+  .about-industries-ui__copy {
+    margin-bottom: 30px;
+  }
+
+  .about-industries-ui__rail {
+    display: block;
+  }
+
+  .about-certificates-ui {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .about-shell-ui {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .about-hero-ui__copy h3 {
+    font-size: 40px;
+  }
+
+  .about-hero-ui__body p,
+  .about-commitment-ui__quality-copy p,
+  .about-commitment-ui__refining-copy p {
+    font-size: 11px;
+  }
+
+  .about-hero-ui__gallery {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .about-hero-ui__accordion {
+    height: 520px !important;
+  }
+
+  .about-hero-ui__gallery::before {
+    inset: -18px -14px -18px;
+    transform: none;
+  }
+
+  .about-hero-ui__accordion .ag-panel {
+    transform: none !important;
+  }
+
+  .about-commitment-ui__quality-copy {
+    margin-left: 12px;
+    padding-left: 21px;
+  }
+
+  .about-salt-story-ui {
+    margin-top: 42px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0 44%, rgba(255, 255, 255, 0.72) 100%),
+      url("/Images/salt_commitment.png") center top / auto 100% no-repeat,
+      #f8fafc;
+  }
+
+  .about-commitment-ui--quality-section .about-commitment-ui__quality {
+    min-height: 600px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+
+  .about-commitment-ui--quality-section .about-commitment-ui__quality-copy {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+    padding: 28px 22px;
+  }
+
+  .about-commitment-ui--quality-section {
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: 600px;
+    background: transparent;
+  }
+
+  .about-commitment-ui--quality-section h2,
+  .about-commitment-ui__refining-copy h2 {
+    font-size: 34px;
+  }
+
+  .about-commitment-ui__quality-image {
+    height: 245px;
+    margin-top: -5px;
+  }
+
+  .about-commitment-ui--quality-section .about-commitment-ui__quality-image {
+    display: block;
+    width: min(100%, 480px);
+    height: 185px;
+    margin-top: 2px;
+  }
+
+  .about-commitment-ui__refining {
+    margin: 0 -24px;
+    padding: 46px 24px 52px;
+    gap: 24px;
+  }
+
+  .about-commitment-ui__refining-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .about-commitment-ui__refining-copy {
+    width: 100%;
+    height: auto;
+    padding: 28px 22px;
+  }
+
+  .about-commitment-ui--quality-section .about-commitment-ui__quality-copy p,
+  .about-commitment-ui__refining-copy p {
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .about-certificates-ui__grid {
+    grid-template-columns: 1fr;
+  }
 }
