@@ -42,28 +42,30 @@ export default function HeroVideoSection() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-lg">
            
             <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
-              Goyal Salt Brand FilmRequest a Call Back
-Fill out the form below and our team will reach out to you shortly.
+              Goyal Salt Brand Film
 
 
             </span>
           </div>
         </div>
 
-        {/* Active Video Overlay (Left Middle, No Box, Larger Text) */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-6 sm:left-12 z-20 text-white flex flex-col gap-2 pointer-events-none">
-          <div className="flex items-center gap-3">
-            <span className="relative flex h-3 w-3 sm:h-4 sm:w-4 mt-1">
+        {/* Bottom Right Rounded Badge: Ek Chutki Swaad */}
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 z-20 pointer-events-none">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl">
+            <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 sm:h-4 sm:w-4 bg-red-600 shadow-[0_0_10px_rgba(220,38,38,1)]"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-red-600 shadow-[0_0_8px_rgba(220,38,38,1)]"></span>
             </span>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]">
-              Ek Chutki Swaad
-            </h3>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+              <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
+                Ek Chutki Swaad
+              </span>
+              <span className="hidden sm:inline text-white/40">•</span>
+              <span className="text-[11px] sm:text-xs text-gray-300 font-medium hidden sm:inline">
+                Taste that elevates every meal
+              </span>
+            </div>
           </div>
-          <p className="text-sm sm:text-lg lg:text-xl text-gray-100 font-bold ml-6 sm:ml-7 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] max-w-sm sm:max-w-md">
-            Taste that elevates every meal across India
-          </p>
         </div>
 
       </div>

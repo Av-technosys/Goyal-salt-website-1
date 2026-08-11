@@ -9,10 +9,10 @@ const AboutDocument = () => {
         
         {/* Heading */}
         <div className="about-certificates-ui__heading">
-          <h2 className="text-4xl font-bold text-gray-900">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight leading-snug">
             Certificates
           </h2>
-          <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
+          <p className="mt-4 text-sm sm:text-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Our modern plant uses advanced technology and infrastructure for salt refining
             and strict quality checks to deliver top products.
           </p>

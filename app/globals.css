@@ -245,17 +245,16 @@
 .about-commitment-ui h2 {
   margin: 0;
   color: var(--about-ink);
-  font-family: Impact, Haettenschweiler, "Arial Narrow", sans-serif;
-  font-stretch: condensed;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1.02;
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.16;
   text-transform: uppercase;
 }
 
 .about-hero-ui__copy h3 {
   max-width: 390px;
-  font-size: clamp(38px, 3.2vw, 50px);
+  font-size: clamp(30px, 2.7vw, 36px);
 }
 
 .about-hero-ui__copy h3 span {
@@ -270,9 +269,9 @@
 .about-hero-ui__body p {
   margin: 0;
   color: var(--about-copy);
-  font-size: 13.5px;
+  font-size: clamp(14px, 1.05vw, 16px);
   font-weight: 400;
-  line-height: 1.72;
+  line-height: 1.7;
 }
 
 .about-hero-ui__body p + p {
@@ -387,17 +386,17 @@
 }
 
 .about-commitment-ui h2 {
-  font-size: clamp(31px, 3vw, 43px);
+  font-size: clamp(28px, 2.4vw, 36px);
 }
 
 .about-commitment-ui--quality-section h2,
 .about-commitment-ui__refining-copy h2 {
   max-width: 380px;
   color: var(--about-ink);
-  font-family: Impact, Haettenschweiler, "Arial Narrow", sans-serif;
-  font-size: clamp(35px, 2.7vw, 48px);
-  letter-spacing: 0;
-  line-height: 1.05;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(28px, 2.4vw, 36px);
+  letter-spacing: -0.01em;
+  line-height: 1.16;
 }
 
 .about-card-heading-accent {
@@ -417,8 +416,8 @@
 .about-commitment-ui__refining-copy p {
   margin: 0 0 21px;
   color: var(--about-copy);
-  font-size: 12px;
-  line-height: 1.72;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .about-commitment-ui--quality-section .about-commitment-ui__quality-copy p,
@@ -426,8 +425,8 @@
   max-width: 385px;
   margin: 0 0 18px;
   color: #596171;
-  font-size: clamp(13px, 0.95vw, 15.5px);
-  line-height: 1.68;
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.7;
 }
 
 .about-commitment-ui__quality-image {
@@ -545,10 +544,10 @@
 .about-industries-ui__copy h2 {
   max-width: 360px;
   margin: 0 0 13px;
-  font-family: Impact, "Arial Narrow", sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.012em;
-  line-height: 1.08;
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.16;
   text-transform: uppercase;
 }
 
@@ -556,8 +555,8 @@
   max-width: 410px;
   margin: 0;
   color: var(--about-copy);
-  font-size: 12px;
-  line-height: 1.65;
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.7;
 }
 
 .about-industries-ui__desktop-rail {
@@ -591,7 +590,7 @@
 
 .about-industries-ui__card h3 {
   color: var(--about-red) !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   line-height: 1.25;
 }
 
@@ -615,15 +614,16 @@
 
 .about-certificates-ui__heading h2 {
   color: var(--about-ink) !important;
-  font-family: Impact, "Arial Narrow", sans-serif;
-  font-weight: 500 !important;
-  letter-spacing: 0.012em;
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  line-height: 1.16;
   text-transform: uppercase;
 }
 
 .about-certificates-ui__heading p {
   color: var(--about-copy) !important;
-  font-size: 13px;
+  font-size: clamp(14px, 1.05vw, 16px);
   line-height: 1.7;
 }
 
@@ -784,13 +784,13 @@
   }
 
   .about-hero-ui__copy h3 {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .about-hero-ui__body p,
   .about-commitment-ui__quality-copy p,
   .about-commitment-ui__refining-copy p {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .about-hero-ui__gallery {
@@ -846,7 +846,7 @@
 
   .about-commitment-ui--quality-section h2,
   .about-commitment-ui__refining-copy h2 {
-    font-size: 34px;
+    font-size: 28px;
   }
 
   .about-commitment-ui__quality-image {
@@ -880,8 +880,8 @@
 
   .about-commitment-ui--quality-section .about-commitment-ui__quality-copy p,
   .about-commitment-ui__refining-copy p {
-    font-size: 12px;
-    line-height: 1.65;
+    font-size: 14px;
+    line-height: 1.7;
   }
 
   .about-certificates-ui__grid {

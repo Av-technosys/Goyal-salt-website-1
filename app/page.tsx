@@ -9,6 +9,7 @@ import DistributorCTASection from "@/src/component/DistributorCTA";
 import SaltFaqSection from "@/src/component/FaqSection";
 import HeroCarousel from "@/src/component/Herocarousel";
 import InstagramSection from "@/src/component/Instasecion";
+import ContactBanner from "@/src/component/ContactBanner";
 import Popup from "@/src/component/popup";
 import SaltProductsShowcase from "@/src/component/Productshowcase";
 import ProductCarousel from "@/src/component/productsilder";
@@ -43,7 +44,7 @@ export default function Home() {
       <DistributorCTASection/>
       <SaltFaqSection/>
       <InstagramSection/>
-      
+      <ContactBanner />
     </div>
   );
 }

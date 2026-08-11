@@ -14,7 +14,7 @@ const AboutBanner = () => {
           <h1>About Goyal Salt Limited</h1>
 
           <h3>
-            A TRUSTED NAME IN <span>SALT MANUFACTURING</span>
+            A TRUSTED NAME IN <span>MANUFACTURING</span>
           </h3>
           <span className="about-ui-rule" aria-hidden="true" />
 

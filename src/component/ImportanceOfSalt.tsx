@@ -27,10 +27,10 @@ const ImportanceOfSalt = () => {
     <section className="about-industries-ui">
       <div className="about-shell-ui about-industries-ui__inner">
         <div className="about-industries-ui__copy">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 leading-snug tracking-tight">
             Importance Of Salt in Various Industries
           </h2>
-          <p className="text-base sm:text-lg opacity-90 max-w-xl">
+          <p className="text-sm sm:text-base opacity-90 max-w-xl leading-relaxed">
             Our modern plant uses advanced technology and infrastructure for salt
             refining and strict quality checks to deliver top products.
           </p>
@@ -52,7 +52,7 @@ const ImportanceOfSalt = () => {
                 className="about-industries-ui__card min-w-[260px]"
               >
                 <div className="text-green-600">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-sm sm:text-base font-semibold text-gray-900">
                   {item.title}
                 </h3>
               </div>
@@ -77,7 +77,7 @@ const ImportanceOfSalt = () => {
                   className="about-industries-ui__card w-[310px]"
                 >
                   <div className="text-green-600">{item.icon}</div>
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-sm sm:text-base font-semibold text-gray-900">
                     {item.title}
                   </h3>
                 </div>

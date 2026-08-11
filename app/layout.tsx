@@ -3,6 +3,7 @@ import { Epilogue, Inter } from "next/font/google";
 import Footer from "@/src/component/Footer";
 import Navbar from "@/src/component/Header";
 import WhatsAppButton from "@/src/component/WhatsAppButton";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import type { Metadata } from "next";
 import Script from "next/script"; 
 
@@ -108,6 +109,7 @@ export default function RootLayout({
         </Script>
 
         <Navbar />
+        <SmoothScrollProvider />
         {children}
         <Footer />
         <WhatsAppButton />
