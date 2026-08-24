@@ -17,7 +17,7 @@ import {
 
 export default function HealthSaltSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#F0FDF4] via-[#ECFDF5] to-[#F0FDF4] pt-20 sm:pt-28 lg:pt-36 pb-20 sm:pb-28 lg:pb-36 select-none">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#F0FDF4] via-[#ECFDF5] to-[#F0FDF4] pt-20 sm:pt-28 lg:pt-36 pb-20 sm:pb-28 lg:pb-36">
       
       {/* ========================================================================= */}
       {/* TOP ORGANIC WAVE (LAHAR) DIVIDER                                          */}
@@ -233,7 +233,7 @@ export default function HealthSaltSection() {
 
 
         {/* ========================================================================= */}
-        {/* 2. IDEAL SALT (Alternating Narrative Layout)                               */}
+        {/* 2. idea SALT (Alternating Narrative Layout)                               */}
         {/* ========================================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-10 border-t border-emerald-200/60">
           
@@ -273,7 +273,7 @@ export default function HealthSaltSection() {
             <div className="relative w-64 sm:w-72 md:w-80 h-[340px] sm:h-[400px] md:h-[440px] transition-transform duration-700 hover:scale-105 group cursor-pointer">
               <Image
                 src="/Images/idea-packet-copy-scaled.png"
-                alt="Goyal Ideal Salt"
+                alt="Goyal idea Salt"
                 fill
                 sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 360px"
                 className="object-contain drop-shadow-[0_25px_40px_rgba(16,185,129,0.2)] group-hover:drop-shadow-[0_30px_50px_rgba(16,185,129,0.28)] transition-all duration-500"
@@ -299,7 +299,7 @@ export default function HealthSaltSection() {
 
             {/* Editorial Title */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-gray-950 tracking-tight leading-[1.12]">
-              Ideal <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Salt</span>
+              idea <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Salt</span>
             </h2>
 
             {/* Lead Narrative Text */}
@@ -366,7 +366,7 @@ export default function HealthSaltSection() {
                 href="/products"
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm sm:text-base shadow-[0_10px_25px_rgba(16,185,129,0.3)] hover:shadow-[0_15px_30px_rgba(16,185,129,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 group cursor-pointer"
               >
-                <span>Discover Ideal Salt</span>
+                <span>Discover idea Salt</span>
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
               </Link>
             </div>

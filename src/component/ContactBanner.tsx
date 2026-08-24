@@ -8,7 +8,7 @@ import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
 
 export default function ContactBanner() {
   return (
-    <section className="relative pt-12 sm:pt-20 md:pt-28 lg:pt-40 pb-20 sm:pb-24 lg:pb-24 bg-white overflow-x-clip overflow-y-visible select-none">
+    <section className="relative pt-12 sm:pt-20 md:pt-28 lg:pt-40 pb-20 sm:pb-24 lg:pb-24 bg-white overflow-x-clip overflow-y-visible">
       
       {/* Background Soft Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-yellow-100/40 rounded-full blur-3xl pointer-events-none -z-10" />

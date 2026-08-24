@@ -22,7 +22,7 @@ const faqs = [
     num: "03",
     question: "Is Goyal Salt suitable for daily cooking?",
     answer:
-      "Absolutely. Our refined salts are free-flowing, moisture-resistant, and ideal for everyday use in all types of dishes.",
+      "Absolutely. Our refined salts are free-flowing, moisture-resistant, and idea for everyday use in all types of dishes.",
   },
   {
     num: "04",

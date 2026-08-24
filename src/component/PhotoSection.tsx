@@ -76,7 +76,7 @@ const PhotoSection = () => {
   }, [selectedIndex]);
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-16 sm:py-20 lg:py-24 overflow-hidden select-none">
+    <section className="relative w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
       {/* Subtle Ambient Red Glows */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-red-500/5 blur-3xl pointer-events-none rounded-full" />
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-red-500/5 blur-3xl pointer-events-none rounded-full" />
@@ -104,7 +104,7 @@ const PhotoSection = () => {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-tight max-w-3xl"
           >
-            Our <span className="text-red-600 font-extrabold">Media & Activity</span> Gallery
+            Our <span className="text-red-600 font-extrabold">Activity</span> & Media Coverage Highlights 
           </motion.h1>
 
           <motion.p
@@ -167,7 +167,7 @@ const PhotoSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-4 sm:p-6 select-none"
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-between p-4 sm:p-6"
             onClick={handleClose}
           >
             {/* Top Bar Controls */}

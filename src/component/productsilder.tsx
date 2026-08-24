@@ -126,7 +126,7 @@ const products: Product[] = [
     image: "/Images/goyal-black-salt.png",
     badge: "Ayurvedic Care",
     weight: "500g Pack",
-    description: "Traditional volcanic black salt (Kala Namak) rich in iron and sulfur minerals, ideal for digestive wellness.",
+    description: "Traditional volcanic black salt (Kala Namak) rich in iron and sulfur minerals, idea for digestive wellness.",
     highlights: ["Ayurvedic Formula", "Enhances Digestion", "Distinct Tangy Taste"],
     gradient: "from-purple-500/10 via-indigo-500/5 to-transparent",
     glow: "rgba(168, 85, 247, 0.25)",
@@ -211,7 +211,7 @@ export default function ProductCarousel() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden flex flex-col justify-between py-10 sm:py-12 lg:py-14 select-none"
+      className="relative min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden flex flex-col justify-between py-10 sm:py-12 lg:py-14"
     >
       {/* Warm Ambient Red & Rose Lighting Background */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-red-100/40 via-rose-50/20 to-transparent blur-3xl pointer-events-none rounded-full" />

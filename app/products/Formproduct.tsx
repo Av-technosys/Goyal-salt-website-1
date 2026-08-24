@@ -76,7 +76,7 @@ const products = [
     image: "/Images/idea.png",
     title: "Idea Salt",
     description:
-      "Smart Choice for Taste: Goyal Idea Salt is refined, free-flowing, and rich in iodine, adding healthy flavor to every recipe. Its smooth texture makes it easy to use, while its quality ensures consistent results. An ideal salt for smart households that value both health and flavor in cooking.",
+      "Smart Choice for Taste: Goyal Idea Salt is refined, free-flowing, and rich in iodine, adding healthy flavor to every recipe. Its smooth texture makes it easy to use, while its quality ensures consistent results. An idea salt for smart households that value both health and flavor in cooking.",
     note:
       "Meets BIS standards for daily household consumption.",
   },

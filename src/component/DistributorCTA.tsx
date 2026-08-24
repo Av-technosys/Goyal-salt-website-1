@@ -82,7 +82,7 @@ export default function DistributorCTASection({
   enableClawAnimation = true,
 }: DistributorCTAProps) {
   return (
-    <section className="py-12 sm:py-16 lg:py-24 bg-white overflow-hidden select-none">
+    <section className="py-12 sm:py-16 lg:py-24 bg-white overflow-hidden">
       
       {/* Self-contained CSS for ticket borders, highlighter effect, and claw bobbing animation */}
       <style jsx>{`
