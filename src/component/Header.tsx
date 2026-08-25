@@ -46,7 +46,7 @@ const NavItem = ({
 
     {/* Dropdown Container */}
     <div
-      className="absolute left-0 top-[calc(100%+4px)] hidden group-hover:block bg-white rounded-xl shadow-2xl border border-gray-100 min-w-[260px] z-50 overflow-hidden transform origin-top-left transition-all duration-200 animate-in fade-in slide-in-from-top-2"
+      className="absolute left-0 top-[calc(100%+4px)] hidden group-hover:block bg-white rounded-xl shadow-2xl border border-gray-100 min-w-[260px] z-50 transform origin-top-left transition-all duration-200 animate-in fade-in slide-in-from-top-2"
       style={{
         boxShadow:
           "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(220, 38, 38, 0.08)",
@@ -91,6 +91,111 @@ const DropdownLink = ({
         />
       )}
     </Link>
+  );
+};
+
+/* ---------- Flyout Item (2nd Level Submenu) ---------- */
+const FlyoutItem = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <div
+        onClick={() => setIsOpen((prev) => !prev)}
+        className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm transition-all duration-150 cursor-pointer font-medium ${
+          isOpen
+            ? "bg-red-50 text-red-600 font-semibold"
+            : "text-gray-700 hover:bg-red-50/80 hover:text-red-600"
+        }`}
+      >
+        <span>{label}</span>
+        <IconChevronRight
+          size={15}
+          className={`transition-transform duration-200 ${
+            isOpen ? "rotate-90 text-red-600" : "text-gray-400"
+          }`}
+        />
+      </div>
+
+      {isOpen && (
+        <>
+          <div className="absolute left-[calc(100%-8px)] top-0 w-6 h-full z-40" />
+          <div
+            className="absolute left-full top-0 ml-1 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 z-50 animate-in fade-in slide-in-from-left-2 space-y-0.5"
+            style={{
+              boxShadow:
+                "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(220, 38, 38, 0.08)",
+            }}
+          >
+            {children}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+/* ---------- Nested Flyout Item (3rd Level Submenu) ---------- */
+const NestedFlyoutItem = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen((prev) => !prev);
+        }}
+        className={`flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all duration-150 cursor-pointer font-medium ${
+          isOpen
+            ? "bg-red-50 text-red-600 font-semibold"
+            : "text-gray-700 hover:bg-red-50/80 hover:text-red-600"
+        }`}
+      >
+        <span>{label}</span>
+        <IconChevronRight
+          size={14}
+          className={`transition-transform duration-200 ${
+            isOpen ? "rotate-90 text-red-600" : "text-gray-400"
+          }`}
+        />
+      </div>
+
+      {isOpen && (
+        <>
+          <div className="absolute left-[calc(100%-8px)] top-0 w-6 h-full z-40" />
+          <div
+            className="absolute left-full top-0 ml-1 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 z-50 animate-in fade-in slide-in-from-left-2 space-y-0.5"
+            style={{
+              boxShadow:
+                "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(220, 38, 38, 0.08)",
+            }}
+          >
+            {children}
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 
@@ -229,30 +334,20 @@ export default function Navbar() {
                 <DropdownLink href="/financials" label="Financials" />
 
                 {/* Governance Flyout */}
-                <div className="relative group/governance">
-                  <div className="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium cursor-pointer transition-all">
-                    <span>Governance</span>
-                    <IconChevronRight size={15} className="text-gray-400 group-hover/governance:text-red-600" />
-                  </div>
-
-                  {/* Bridge */}
-                  <div className="absolute left-full top-0 w-3 h-full"></div>
-
-                  <div className="absolute left-full top-0 ml-1.5 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/governance:block z-50 animate-in fade-in slide-in-from-left-2">
-                    <DropdownLink
-                      href="/governance/codes-policies"
-                      label="Codes & Policies"
-                    />
-                    <DropdownLink
-                      href="/governance/committees"
-                      label="Committees"
-                    />
-                    <DropdownLink
-                      href="/governance/shareholding-pattern"
-                      label="Shareholding Pattern"
-                    />
-                  </div>
-                </div>
+                <FlyoutItem label="Governance">
+                  <DropdownLink
+                    href="/governance/codes-policies"
+                    label="Codes & Policies"
+                  />
+                  <DropdownLink
+                    href="/governance/committees"
+                    label="Committees"
+                  />
+                  <DropdownLink
+                    href="/governance/shareholding-pattern"
+                    label="Shareholding Pattern"
+                  />
+                </FlyoutItem>
 
                 <DropdownLink
                   href="/investor-grievance"
@@ -260,105 +355,67 @@ export default function Navbar() {
                 />
 
                 {/* Listing Compliance Flyout */}
-                <div className="relative group/listing">
-                  <div className="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium cursor-pointer transition-all">
-                    <span>Listing Compliance</span>
-                    <IconChevronRight size={15} className="text-gray-400 group-hover/listing:text-red-600" />
-                  </div>
+                <FlyoutItem label="Listing Compliance">
+                  {/* FY 2023-24 */}
+                  <NestedFlyoutItem label="F.Y. 2023-24">
+                    <DropdownLink
+                      href="/listing-compliance/2023-24/q3"
+                      label="Quarter 3"
+                    />
+                    <DropdownLink
+                      href="/listing-compliance/2023-24/q4"
+                      label="Quarter 4"
+                    />
+                  </NestedFlyoutItem>
 
-                  {/* Hover bridge */}
-                  <div className="absolute left-full top-0 w-3 h-full"></div>
+                  {/* FY 2024-25 */}
+                  <NestedFlyoutItem label="F.Y. 2024-25">
+                    <DropdownLink
+                      href="/listing-compliance/2024-25/q1"
+                      label="Quarter 1"
+                    />
+                    <DropdownLink
+                      href="/listing-compliance/2024-25/q2"
+                      label="Quarter 2"
+                    />
+                    <DropdownLink
+                      href="/listing-compliance/2024-25/q3"
+                      label="Quarter 3"
+                    />
+                    <DropdownLink
+                      href="/listing-compliance/2024-25/q4"
+                      label="Quarter 4"
+                    />
+                  </NestedFlyoutItem>
 
-                  <div className="absolute left-full top-0 ml-1.5 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/listing:block z-50 animate-in fade-in slide-in-from-left-2 space-y-1">
-                    {/* FY 2023-24 */}
-                    <div className="relative group/fy">
-                      <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 cursor-pointer">
-                        <span>F.Y. 2023-24</span>
-                        <IconChevronRight size={14} className="text-gray-400 group-hover/fy:text-red-600" />
-                      </div>
-                      <div className="absolute left-full top-0 w-3 h-full"></div>
-                      <div className="absolute left-full top-0 ml-1.5 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/fy:block z-50 animate-in fade-in slide-in-from-left-2">
-                        <DropdownLink
-                          href="/listing-compliance/2023-24/q3"
-                          label="Quarter 3"
-                        />
-                        <DropdownLink
-                          href="/listing-compliance/2023-24/q4"
-                          label="Quarter 4"
-                        />
-                      </div>
-                    </div>
+                  {/* FY 2025-26 */}
+                  <NestedFlyoutItem label="F.Y. 2025-26">
+                    <DropdownLink
+                      href="/listing-compliance/2025-26/q1"
+                      label="Quarter 1"
+                    />
+                    <DropdownLink
+                      href="/listing-compliance/2025-26/q2"
+                      label="Quarter 2"
+                    />
+                    <DropdownLink
+                      href="/listing-compliance/2025-26/q3"
+                      label="Quarter 3"
+                    />
+                    <DropdownLink
+                      href="/listing-compliance/2025-26/q4"
+                      label="Quarter 4"
+                    />
+                  </NestedFlyoutItem>
 
-                    {/* FY 2024-25 */}
-                    <div className="relative group/fy2">
-                      <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 cursor-pointer">
-                        <span>F.Y. 2024-25</span>
-                        <IconChevronRight size={14} className="text-gray-400 group-hover/fy2:text-red-600" />
-                      </div>
-                      <div className="absolute left-full top-0 w-3 h-full"></div>
-                      <div className="absolute left-full top-0 ml-1.5 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/fy2:block z-50 animate-in fade-in slide-in-from-left-2">
-                        <DropdownLink
-                          href="/listing-compliance/2024-25/q1"
-                          label="Quarter 1"
-                        />
-                        <DropdownLink
-                          href="/listing-compliance/2024-25/q2"
-                          label="Quarter 2"
-                        />
-                        <DropdownLink
-                          href="/listing-compliance/2024-25/q3"
-                          label="Quarter 3"
-                        />
-                        <DropdownLink
-                          href="/listing-compliance/2024-25/q4"
-                          label="Quarter 4"
-                        />
-                      </div>
-                    </div>
-
-                    {/* FY 2025-26 */}
-                    <div className="relative group/fy3">
-                      <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 cursor-pointer">
-                        <span>F.Y. 2025-26</span>
-                        <IconChevronRight size={14} className="text-gray-400 group-hover/fy3:text-red-600" />
-                      </div>
-                      <div className="absolute left-full top-0 w-3 h-full"></div>
-                      <div className="absolute left-full top-0 ml-1.5 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/fy3:block z-50 animate-in fade-in slide-in-from-left-2">
-                        <DropdownLink
-                          href="/listing-compliance/2025-26/q1"
-                          label="Quarter 1"
-                        />
-                        <DropdownLink
-                          href="/listing-compliance/2025-26/q2"
-                          label="Quarter 2"
-                        />
-                        <DropdownLink
-                          href="/listing-compliance/2025-26/q3"
-                          label="Quarter 3"
-                        />
-                        <DropdownLink
-                          href="/listing-compliance/2025-26/q4"
-                          label="Quarter 4"
-                        />
-                      </div>
-                    </div>
-
-                    {/* FY 2026-27 */}
-                    <div className="relative group/fy4">
-                      <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 cursor-pointer">
-                        <span>F.Y. 2026-27</span>
-                        <IconChevronRight size={14} className="text-gray-400 group-hover/fy4:text-red-600" />
-                      </div>
-                      <div className="absolute left-full top-0 w-3 h-full"></div>
-                      <div className="absolute left-full top-0 ml-1.5 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/fy4:block z-50 animate-in fade-in slide-in-from-left-2">
-                        <DropdownLink
-                          href="/listing-compliance/2026-27/q1"
-                          label="Quarter 1"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  {/* FY 2026-27 */}
+                  <NestedFlyoutItem label="F.Y. 2026-27">
+                    <DropdownLink
+                      href="/listing-compliance/2026-27/q1"
+                      label="Quarter 1"
+                    />
+                  </NestedFlyoutItem>
+                </FlyoutItem>
 
                 <DropdownLink
                   href="/material-contracts-agreements"
@@ -366,75 +423,52 @@ export default function Navbar() {
                 />
 
                 {/* Notices & Announcements Flyout */}
-                <div className="relative group/notices">
-                  <div className="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium cursor-pointer transition-all">
-                    <span>Notices and Announcements</span>
-                    <IconChevronRight size={15} className="text-gray-400 group-hover/notices:text-red-600" />
-                  </div>
-
-                  <div className="absolute left-full top-0 w-3 h-full"></div>
-
-                  <div className="absolute left-full top-0 ml-1.5 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/notices:block z-50 animate-in fade-in slide-in-from-left-2 space-y-1">
-                    {/* AGM Disclosures */}
-                    <div className="relative group/agm">
-                      <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 cursor-pointer">
-                        <span>AGM Disclosures</span>
-                        <IconChevronRight size={14} className="text-gray-400 group-hover/agm:text-red-600" />
-                      </div>
-                      <div className="absolute left-full top-0 w-3 h-full"></div>
-                      <div className="absolute left-full top-0 ml-1.5 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/agm:block z-50 animate-in fade-in slide-in-from-left-2">
-                        <DropdownLink
-                          href="/notices-announcements/agm/2024-25"
-                          label="F.Y. 2024-25"
-                        />
-                        <DropdownLink
-                          href="/notices-announcements/agm/2023-24"
-                          label="F.Y. 2023-24"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Board Meetings */}
-                    <div className="relative group/board">
-                      <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 cursor-pointer">
-                        <span>Board Meetings Disclosure</span>
-                        <IconChevronRight size={14} className="text-gray-400 group-hover/board:text-red-600" />
-                      </div>
-                      <div className="absolute left-full top-0 w-3 h-full"></div>
-                      <div className="absolute left-full top-0 ml-1.5 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 p-2 hidden group-hover/board:block z-50 animate-in fade-in slide-in-from-left-2">
-                        <DropdownLink
-                          href="/notices-announcements/board-meetings-disclosure/2026-27"
-                          label="F.Y. 2026-27"
-                        />
-                        <DropdownLink
-                          href="/notices-announcements/board-meetings-disclosure/2025-26"
-                          label="F.Y. 2025-26"
-                        />
-                        <DropdownLink
-                          href="/notices-announcements/board-meetings-disclosure/2024-25"
-                          label="F.Y. 2024-25"
-                        />
-                        <DropdownLink
-                          href="/notices-announcements/board-meetings-disclosure/2023-24"
-                          label="F.Y. 2023-24"
-                        />
-                      </div>
-                    </div>
-
+                <FlyoutItem label="Notices and Announcements">
+                  {/* AGM Disclosures */}
+                  <NestedFlyoutItem label="AGM Disclosures">
                     <DropdownLink
-                      href="/notices-announcements/disclosures-under-regulation-30"
-                      label="Disclosures Under Regulation 30"
+                      href="/notices-announcements/agm/2024-25"
+                      label="F.Y. 2024-25"
                     />
                     <DropdownLink
-                      href="/notices-announcements/investors-meet-disclosure"
-                      label="Investors Meet Disclosure"
+                      href="/notices-announcements/agm/2023-24"
+                      label="F.Y. 2023-24"
+                    />
+                  </NestedFlyoutItem>
+
+                  {/* Board Meetings */}
+                  <NestedFlyoutItem label="Board Meetings Disclosure">
+                    <DropdownLink
+                      href="/notices-announcements/board-meetings-disclosure/2026-27"
+                      label="F.Y. 2026-27"
                     />
                     <DropdownLink
-                      href="/notices-announcements/others"
-                      label="Others"
+                      href="/notices-announcements/board-meetings-disclosure/2025-26"
+                      label="F.Y. 2025-26"
                     />
-                  </div>
-                </div>
+                    <DropdownLink
+                      href="/notices-announcements/board-meetings-disclosure/2024-25"
+                      label="F.Y. 2024-25"
+                    />
+                    <DropdownLink
+                      href="/notices-announcements/board-meetings-disclosure/2023-24"
+                      label="F.Y. 2023-24"
+                    />
+                  </NestedFlyoutItem>
+
+                  <DropdownLink
+                    href="/notices-announcements/disclosures-under-regulation-30"
+                    label="Disclosures Under Regulation 30"
+                  />
+                  <DropdownLink
+                    href="/notices-announcements/investors-meet-disclosure"
+                    label="Investors Meet Disclosure"
+                  />
+                  <DropdownLink
+                    href="/notices-announcements/others"
+                    label="Others"
+                  />
+                </FlyoutItem>
               </NavItem>
 
               {/* Offer Documents Direct Link */}
