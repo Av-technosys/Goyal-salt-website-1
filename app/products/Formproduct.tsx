@@ -148,15 +148,7 @@ export default function Formproduct() {
             <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-200/35 blur-3xl sm:h-96 sm:w-96" />
             <div className="absolute bottom-8 left-0 right-0 mx-auto h-10 max-w-xl rounded-full bg-red-950/10 blur-xl" />
 
-            <div className="absolute left-0 top-4 h-[240px] w-[54%] sm:h-[320px] lg:top-10 lg:h-[390px]">
-              <Image
-                src="/Images/productvector.png"
-                alt="Goyal Salt Products"
-                fill
-                className="object-contain drop-shadow-2xl"
-                priority
-              />
-            </div>
+           
 
             <div className="absolute bottom-0 right-0 h-[260px] w-[68%] sm:h-[360px] lg:h-[430px]">
               <Image
@@ -202,31 +194,7 @@ export default function Formproduct() {
 
       <section id="product-range" className="bg-gradient-to-b from-white via-red-50/35 to-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.65, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.25 }}
-            className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"
-          >
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-red-600">
-                Pure Taste, Trusted Quality
-              </p>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-gray-950 sm:text-4xl">
-                Our Products
-              </h2>
-            </div>
-
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-500/20 transition hover:bg-red-700"
-            >
-              Enquire Now
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </motion.div>
+       
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((item, index) => (
