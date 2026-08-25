@@ -1,10 +1,19 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
+import { Volume2, VolumeX } from "lucide-react";
 
 export default function HeroVideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
 
   return (
     <section 
@@ -43,11 +52,29 @@ export default function HeroVideoSection() {
            
             <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
               Goyal Salt Brand Film
-
-
             </span>
           </div>
         </div>
+
+        {/* Top Right Volume Mute / Unmute Button */}
+        <button
+          onClick={toggleMute}
+          type="button"
+          aria-label={isMuted ? "Unmute video volume" : "Mute video volume"}
+          className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white shadow-xl transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 group/btn"
+        >
+          {isMuted ? (
+            <>
+              <VolumeX className="w-4 h-4 text-red-400 group-hover/btn:text-red-300 transition-colors" />
+              <span className="text-xs sm:text-sm font-bold tracking-wide">Unmute</span>
+            </>
+          ) : (
+            <>
+              <Volume2 className="w-4 h-4 text-emerald-400 group-hover/btn:text-emerald-300 transition-colors" />
+              <span className="text-xs sm:text-sm font-bold tracking-wide">Mute</span>
+            </>
+          )}
+        </button>
 
         {/* Bottom Right Rounded Badge: Ek Chutki Swaad */}
         <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 z-20 pointer-events-none">

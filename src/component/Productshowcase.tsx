@@ -62,7 +62,7 @@ const features = [
 
 export default function SaltProductsShowcase() {
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden border-t border-gray-100">
+    <section className="py-10 sm:py-20 lg:py-28 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden border-t border-gray-100">
       
       {/* Ambient Lighting Orbs */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] lg:w-[900px] h-[500px] bg-gradient-to-tr from-red-500/5 via-rose-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -75,15 +75,15 @@ export default function SaltProductsShowcase() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Heading Section */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+        <div className="text-center mb-8 sm:mb-16 lg:mb-20">
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200 shadow-2xs mb-4"
+            className="inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-red-50 border border-red-200 shadow-2xs mb-3 sm:mb-4"
           >
-            <Sparkles className="w-4 h-4 text-red-600 animate-pulse" />
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-red-600">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-600 animate-pulse" />
+            <span className="text-[11px] sm:text-sm font-bold uppercase tracking-wider text-red-600">
               Household Nutrition
             </span>
           </motion.div>
@@ -100,10 +100,10 @@ export default function SaltProductsShowcase() {
         </div>
 
         {/* 3-Column Interactive Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-center">
 
           {/* LEFT 3 FEATURES (Desktop: 4 cols) */}
-          <div className="lg:col-span-4 space-y-4 sm:space-y-6">
+          <div className="lg:col-span-4 space-y-3 sm:space-y-6">
             {features.slice(0, 3).map((item, i) => {
               const Icon = item.icon;
               return (
@@ -114,13 +114,13 @@ export default function SaltProductsShowcase() {
                   whileHover={{ y: -4, scale: 1.01 }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative p-5 sm:p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-red-50/40 border border-gray-200/80 hover:border-red-200 shadow-xs hover:shadow-xl transition-all duration-300"
+                  className="group relative p-4 sm:p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-red-50/40 border border-gray-200/80 hover:border-red-200 shadow-xs hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-3.5 sm:gap-4">
                     {/* Number Badge & Icon Avatar */}
                     <div className="flex flex-col items-center gap-1.5 shrink-0">
-                      <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 shadow-2xs">
-                        <Icon size={20} />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 shadow-2xs">
+                        <Icon size={18} className="sm:w-5 sm:h-5" />
                       </div>
                       <span className="text-[10px] font-extrabold text-gray-400 group-hover:text-red-600 transition-colors">
                         {item.num}
@@ -132,11 +132,11 @@ export default function SaltProductsShowcase() {
                       <h4 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
                         {item.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed font-normal">
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1 leading-relaxed font-normal">
                         {item.desc}
                       </p>
                       
-                      <div className="mt-4">
+                      <div className="mt-3 sm:mt-4">
                         <Link href={item.href}>
                           <SaltButton variant="outline" size="sm">
                             <span>Know More</span>
@@ -152,7 +152,7 @@ export default function SaltProductsShowcase() {
           </div>
 
           {/* CENTER PRODUCT SHOWCASE PEDESTAL (Desktop: 4 cols) */}
-          <div className="lg:col-span-4 flex justify-center my-6 lg:my-0">
+          <div className="lg:col-span-4 flex justify-center my-4 lg:my-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -161,16 +161,16 @@ export default function SaltProductsShowcase() {
               className="relative w-full max-w-sm flex flex-col items-center"
             >
               {/* Center Ambient Glow */}
-              <div className="absolute w-72 h-72 sm:w-88 sm:h-88 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute w-60 h-60 sm:w-88 sm:h-88 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
 
               {/* Glassmorphic Container */}
-              <div className="relative w-full p-6 sm:p-8 bg-gradient-to-b from-white/95 via-white/90 to-gray-50/90 rounded-3xl border border-red-100 shadow-2xl backdrop-blur-md flex flex-col items-center">
+              <div className="relative w-full p-4 sm:p-8 bg-gradient-to-b from-white/95 via-white/90 to-gray-50/90 rounded-3xl border border-red-100 shadow-2xl backdrop-blur-md flex flex-col items-center">
                 
                 {/* Floating Salt Products Image with Float Animation */}
                 <motion.div
                   animate={{ y: [-5, 5, -5] }}
                   transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative w-full h-[280px] sm:h-[340px] flex items-center justify-center"
+                  className="relative w-full h-[220px] sm:h-[340px] flex items-center justify-center"
                 >
                   <Image
                     src="/Images/Untitled-5-scaled.png"
@@ -183,13 +183,13 @@ export default function SaltProductsShowcase() {
                 </motion.div>
 
                 {/* Pedestal Bottom Shadow Ring */}
-                <div className="w-48 h-3 bg-red-900/10 rounded-full blur-md mt-2" />
+                <div className="w-40 sm:w-48 h-3 bg-red-900/10 rounded-full blur-md mt-2" />
               </div>
             </motion.div>
           </div>
 
           {/* RIGHT 3 FEATURES (Desktop: 4 cols) */}
-          <div className="lg:col-span-4 space-y-4 sm:space-y-6">
+          <div className="lg:col-span-4 space-y-3 sm:space-y-6">
             {features.slice(3).map((item, i) => {
               const Icon = item.icon;
               return (
@@ -200,13 +200,13 @@ export default function SaltProductsShowcase() {
                   whileHover={{ y: -4, scale: 1.01 }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative p-5 sm:p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-red-50/40 border border-gray-200/80 hover:border-red-200 shadow-xs hover:shadow-xl transition-all duration-300"
+                  className="group relative p-4 sm:p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-red-50/40 border border-gray-200/80 hover:border-red-200 shadow-xs hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-3.5 sm:gap-4">
                     {/* Number Badge & Icon Avatar */}
                     <div className="flex flex-col items-center gap-1.5 shrink-0">
-                      <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 shadow-2xs">
-                        <Icon size={20} />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 shadow-2xs">
+                        <Icon size={18} className="sm:w-5 sm:h-5" />
                       </div>
                       <span className="text-[10px] font-extrabold text-gray-400 group-hover:text-red-600 transition-colors">
                         {item.num}
@@ -218,11 +218,11 @@ export default function SaltProductsShowcase() {
                       <h4 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
                         {item.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed font-normal">
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1 leading-relaxed font-normal">
                         {item.desc}
                       </p>
                       
-                      <div className="mt-4">
+                      <div className="mt-3 sm:mt-4">
                         <Link href={item.href}>
                           <SaltButton variant="outline" size="sm">
                             <span>Know More</span>

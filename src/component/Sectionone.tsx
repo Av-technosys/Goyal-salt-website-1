@@ -15,12 +15,12 @@ export default function ProductInfoSection() {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white overflow-hidden relative">
+    <section className="py-10 sm:py-16 lg:py-24 bg-white overflow-hidden relative">
       {/* Background Decorative Lighting */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-red-500/5 blur-3xl pointer-events-none rounded-full" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
 
           {/* LEFT IMAGE WITH GLASSMORPHIC EMBED & AMBIENT GLOW */}
           <motion.div
@@ -33,7 +33,7 @@ export default function ProductInfoSection() {
             {/* Soft Ambient Brand Glow */}
             <div className="
               absolute -z-10
-              w-[280px] h-[280px]
+              w-[240px] h-[240px]
               sm:w-[360px] sm:h-[360px]
               lg:w-[460px] lg:h-[460px]
               bg-gradient-to-tr from-red-100/60 via-red-50/40 to-transparent
@@ -41,8 +41,8 @@ export default function ProductInfoSection() {
             " />
 
             {/* Glassmorphic Background Card Container */}
-            <div className="relative p-6 sm:p-10 bg-gradient-to-b from-gray-50/80 to-white/90 rounded-3xl border border-gray-100 shadow-xl backdrop-blur-md">
-              <div className="relative w-[260px] sm:w-[380px] lg:w-[480px] h-[260px] sm:h-[380px] lg:h-[480px] transition-transform duration-500 hover:scale-105">
+            <div className="relative p-4 sm:p-10 bg-gradient-to-b from-gray-50/80 to-white/90 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-xl backdrop-blur-md">
+              <div className="relative w-[210px] sm:w-[380px] lg:w-[480px] h-[210px] sm:h-[380px] lg:h-[480px] transition-transform duration-500 hover:scale-105">
                 <Image
                   src="/Images/Untitled-5-scaled.png"
                   alt="Goyal Salt Products"
@@ -58,14 +58,14 @@ export default function ProductInfoSection() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white/95 backdrop-blur-md px-4 py-2.5 sm:px-5 sm:py-3 rounded-2xl border border-red-100 shadow-lg flex items-center gap-3"
+                className="absolute -bottom-4 right-2 sm:bottom-6 sm:right-6 bg-white/95 backdrop-blur-md px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl border border-red-100 shadow-lg flex items-center gap-2 sm:gap-3"
               >
-                <div className="w-9 h-9 rounded-xl bg-red-50 text-red-600 flex items-center justify-center shrink-0">
-                  <ShieldCheck size={20} />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-red-50 text-red-600 flex items-center justify-center shrink-0">
+                  <ShieldCheck size={18} className="sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-900">100% Pure & Hygienic</p>
-                  <p className="text-[10px] text-gray-500 font-medium">Certified Quality Salt</p>
+                  <p className="text-[11px] sm:text-xs font-bold text-gray-900">100% Pure & Hygienic</p>
+                  <p className="text-[9.5px] sm:text-[10px] text-gray-500 font-medium">Certified Quality Salt</p>
                 </div>
               </motion.div>
             </div>
@@ -80,7 +80,7 @@ export default function ProductInfoSection() {
             className="text-center lg:text-left"
           >
             {/* Category Pill Tag */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200/80 shadow-2xs mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200/80 shadow-2xs mb-3 sm:mb-4">
               <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
               <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-red-600">
                 Premium Wellness
@@ -91,15 +91,15 @@ export default function ProductInfoSection() {
             <h2 className="
               text-2xl sm:text-3xl lg:text-4xl
               font-bold text-gray-900
-              tracking-tight leading-snug mb-4 sm:mb-6
+              tracking-tight leading-snug mb-3 sm:mb-6
             ">
               Ready for Instant and Healthy Use
             </h2>
 
             {/* Paragraph Text (Strict Typography Scale Rule #6) */}
             <p className="
-              text-sm sm:text-base text-gray-600
-              leading-relaxed font-normal mb-8
+              text-xs sm:text-base text-gray-600
+              leading-relaxed font-normal mb-6 sm:mb-8
               max-w-xl mx-auto lg:mx-0
             ">
               Experience the natural taste and wellness of premium-quality salt, sourced directly from mineral-rich regions. Whether it rock salt, black salt, or iodized varieties – our products are carefully processed to retain their purity and essential nutrients.
@@ -108,8 +108,8 @@ export default function ProductInfoSection() {
             {/* FEATURES GRID */}
             <div className="
               grid grid-cols-1 sm:grid-cols-2
-              gap-4 sm:gap-5
-              mb-8 sm:mb-10
+              gap-3 sm:gap-5
+              mb-6 sm:mb-10
               text-left max-w-xl mx-auto lg:mx-0
             ">
               {features.map((item, i) => (
@@ -120,14 +120,14 @@ export default function ProductInfoSection() {
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                   viewport={{ once: true }}
                   className="
-                    p-3.5 rounded-xl bg-gray-50/80 border border-gray-100
+                    p-3 sm:p-3.5 rounded-xl bg-gray-50/80 border border-gray-100
                     flex items-center gap-3 hover:bg-red-50/50 hover:border-red-100 transition-colors
                   "
                 >
-                  <div className="w-7 h-7 rounded-lg bg-red-100 text-red-600 flex items-center justify-center shrink-0">
-                    <CheckCircle2 size={16} />
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-red-100 text-red-600 flex items-center justify-center shrink-0">
+                    <CheckCircle2 size={15} />
                   </div>
-                  <span className="text-sm sm:text-base font-semibold text-gray-800">
+                  <span className="text-xs sm:text-base font-semibold text-gray-800">
                     {item}
                   </span>
                 </motion.div>

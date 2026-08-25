@@ -34,7 +34,7 @@ const CONFIG = {
   bgGradient: "linear-gradient(135deg, #FFE45C 0%, #FFD43B 46%, #F4B400 100%)",
   
   // Text Content
-  badgeText: "DISTRIBUTION PARTNERSHIP",
+  badgeText: "DISTRIBUTORSHIP",
   headingLine1: "Become Our",
   headingLine2: "Distributor",
   description:

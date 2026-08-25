@@ -83,12 +83,12 @@ export default function ContactBanner() {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-1.5 flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <div className="pt-1.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
                 <a
                   href="https://wa.me/917568018883?text=Hello%20Goyal%20Salt,%20I%20would%20like%20to%20inquire%20about%20your%20products."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2.5 sm:py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
                 >
                   <FaWhatsapp size={15} />
                   <span>WhatsApp</span>
@@ -96,7 +96,7 @@ export default function ContactBanner() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gray-950 hover:bg-red-600 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2.5 sm:py-2.5 rounded-full bg-gray-950 hover:bg-red-600 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
                 >
                   <span>Request Call Back</span>
                   <FaArrowRight size={11} />
