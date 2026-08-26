@@ -197,10 +197,15 @@ const documents = [
     title: "Regulation 30_Intimation for Incorporation of Subsidiary Company",
     pdf: "/Brochure/Regulation 30_Intimation for Incorporation of Subsidiary Company.pdf",
   },
-   {
-    title: "Regulation 30_Incorporation of Subsidiary Company",
-    pdf: "/Brochure/Regulation 30_Incorporation of Subsidiary Company.pdf",
-  },
+  {
+   title: "Regulation 30_Incorporation of Subsidiary Company",
+   pdf: "/Brochure/Regulation 30_Incorporation of Subsidiary Company.pdf",
+ },
+ {
+   title: "Regulation 30_Acquisition of Shares of Subsidiary Company",
+   pdf: "/Brochure/Regulation 30_Acquisition of Shares of Subsidiary Company.pdf",
+ },
+  
 ];
 
 const Page = () => {
