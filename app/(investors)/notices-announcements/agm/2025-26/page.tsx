@@ -28,7 +28,7 @@ const Page = () => {
         <div className="text-center mb-14">
          
           <h1 className="text-4xl md:text-5xl font-semibold mt-3 text-red-500">
-           AGM F.Y. 2024-25
+           AGM F.Y. 2025-26
           </h1>
           <p className="mt-4 text-xl text-black max-w-xl mx-auto">
             View our latest investor documents and financial reports.
