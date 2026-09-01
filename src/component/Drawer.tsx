@@ -572,6 +572,13 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                     {agmOpen && (
                       <div className="ml-2 pl-2 space-y-1">
+                         <Link
+                          href="/notices-announcements/agm/2025-26"
+                          onClick={() => setOpen(false)}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          F.Y. 2025-26
+                        </Link>
                         <Link
                           href="/notices-announcements/agm/2024-25"
                           onClick={() => setOpen(false)}

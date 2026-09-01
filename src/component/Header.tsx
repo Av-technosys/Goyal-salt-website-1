@@ -426,6 +426,10 @@ export default function Navbar() {
                 <FlyoutItem label="Notices and Announcements">
                   {/* AGM Disclosures */}
                   <NestedFlyoutItem label="AGM Disclosures">
+                     <DropdownLink
+                      href="/notices-announcements/agm/2025-26"
+                      label="F.Y. 2025-26"
+                    />
                     <DropdownLink
                       href="/notices-announcements/agm/2024-25"
                       label="F.Y. 2024-25"
@@ -434,6 +438,7 @@ export default function Navbar() {
                       href="/notices-announcements/agm/2023-24"
                       label="F.Y. 2023-24"
                     />
+
                   </NestedFlyoutItem>
 
                   {/* Board Meetings */}

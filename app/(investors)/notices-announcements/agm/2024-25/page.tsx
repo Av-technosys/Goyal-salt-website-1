@@ -2,7 +2,7 @@ import React from "react";
 import { Download, FileText } from "lucide-react";
 
 export const metadata = {
-  title: "AGM Notices & Announcements 2025–26 | Goyal Salt Limited",
+  title: "AGM Notices & Announcements 2024–25 | Goyal Salt Limited",
   description:
     "View the Annual General Meeting (AGM) notices and official announcements for FY 2024–25 from Goyal Salt Limited, including shareholder information.",
   alternates: {
@@ -28,18 +28,15 @@ const Page = () => {
         <div className="text-center mb-14">
          
           <h1 className="text-4xl md:text-5xl font-semibold mt-3 text-red-500">
-           AGM F.Y. 2025-26
+           AGM F.Y. 2024-25
           </h1>
           <p className="mt-4 text-xl text-black max-w-xl mx-auto">
             View our latest investor documents and financial reports.
           </p>
-          <p className="mt-4 text-xl text-gray-500 max-w-xl mx-auto">
-           Pdf not found.
-          </p>
         </div>
 
         {/* Cards */}
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {documents.map((doc, index) => (
             <a
               key={index}
@@ -65,7 +62,7 @@ const Page = () => {
               </h3>
             </a>
           ))}
-        </div> */}
+        </div>
       </div>
     </section>
   );
