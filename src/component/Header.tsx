@@ -15,6 +15,53 @@ import {
 import MobileDrawer from "./Drawer";
 import SaltButton from "./SaltButton";
 
+const isSamePage = (currentPath: string, targetHref: string) => {
+  if (!targetHref) return false;
+  const cleanHref = targetHref.split("?")[0].split("#")[0];
+  const cleanPath = currentPath.split("?")[0].split("#")[0];
+  return (
+    cleanPath === cleanHref ||
+    cleanPath.replace(/\/$/, "") === cleanHref.replace(/\/$/, "")
+  );
+};
+
+/* ---------- Base Nav Link ---------- */
+const NavLink = ({
+  href,
+  className,
+  children,
+  target,
+  rel,
+  onClick,
+}: {
+  href: string;
+  className?: string;
+  children: React.ReactNode;
+  target?: string;
+  rel?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+}) => {
+  const pathname = usePathname();
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) onClick(e);
+    if (target !== "_blank" && isSamePage(pathname, href)) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <Link
+      href={href}
+      className={className}
+      target={target}
+      rel={rel}
+      onClick={handleClick}
+    >
+      {children}
+    </Link>
+  );
+};
+
 /* ---------- Nav Item (Desktop) ---------- */
 const NavItem = ({
   label,
@@ -70,10 +117,10 @@ const DropdownLink = ({
   rel?: string;
 }) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = isSamePage(pathname, href);
 
   return (
-    <Link
+    <NavLink
       href={href}
       target={target}
       rel={rel}
@@ -90,7 +137,7 @@ const DropdownLink = ({
           className="opacity-50 group-hover/item:opacity-100 transition-opacity"
         />
       )}
-    </Link>
+    </NavLink>
   );
 };
 
@@ -258,7 +305,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20 md:h-24">
             
             {/* Logo */}
-            <Link
+            <NavLink
               href="/"
               className="relative z-10 flex items-center gap-3 transition-transform hover:scale-[1.02] duration-200 py-1"
             >
@@ -270,20 +317,20 @@ export default function Navbar() {
                 priority
                 className="object-contain max-h-14 w-auto"
               />
-            </Link>
+            </NavLink>
 
             {/* Desktop Menu Navigation */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 text-sm font-medium">
-              <Link
+              <NavLink
                 href="/"
                 className={`px-3.5 py-2 rounded-lg transition-all duration-200 ${
-                  pathname === "/"
+                  isSamePage(pathname, "/")
                     ? "bg-red-50 text-red-600 font-semibold"
                     : "text-gray-700 hover:text-red-600 hover:bg-red-50/70"
                 }`}
               >
                 Home
-              </Link>
+              </NavLink>
 
               {/* About Dropdown */}
               <NavItem label="About" isActive={isAboutActive}>
@@ -311,16 +358,16 @@ export default function Navbar() {
               </NavItem>
 
               {/* Products Direct Link */}
-              <Link
+              <NavLink
                 href="/products"
                 className={`px-3.5 py-2 rounded-lg transition-all duration-200 ${
-                  pathname === "/products"
+                  isSamePage(pathname, "/products")
                     ? "bg-red-50 text-red-600 font-semibold"
                     : "text-gray-700 hover:text-red-600 hover:bg-red-50/70"
                 }`}
               >
                 Products
-              </Link>
+              </NavLink>
 
               {/* Investors Multi-level Dropdown */}
               <NavItem label="Investors" isActive={isInvestorsActive}>
@@ -477,40 +524,40 @@ export default function Navbar() {
               </NavItem>
 
               {/* Offer Documents Direct Link */}
-              <Link
+              <NavLink
                 href="/offer-documents"
                 className={`px-3.5 py-2 rounded-lg transition-all duration-200 ${
-                  pathname === "/offer-documents"
+                  isSamePage(pathname, "/offer-documents")
                     ? "bg-red-50 text-red-600 font-semibold"
                     : "text-gray-700 hover:text-red-600 hover:bg-red-50/70"
                 }`}
               >
                 Offer Documents
-              </Link>
+              </NavLink>
 
               {/* CSR Direct Link */}
-              <Link
+              <NavLink
                 href="/csr"
                 className={`px-3.5 py-2 rounded-lg transition-all duration-200 ${
-                  pathname === "/csr"
+                  isSamePage(pathname, "/csr")
                     ? "bg-red-50 text-red-600 font-semibold"
                     : "text-gray-700 hover:text-red-600 hover:bg-red-50/70"
                 }`}
               >
                 CSR
-              </Link>
+              </NavLink>
 
               {/* Gallery Direct Link */}
-              <Link
+              <NavLink
                 href="/gallery"
                 className={`px-3.5 py-2 rounded-lg transition-all duration-200 ${
-                  pathname === "/gallery"
+                  isSamePage(pathname, "/gallery")
                     ? "bg-red-50 text-red-600 font-semibold"
                     : "text-gray-700 hover:text-red-600 hover:bg-red-50/70"
                 }`}
               >
                 Gallery
-              </Link>
+              </NavLink>
 
               {/* NSE Live Pill Badge */}
               <Link
@@ -529,11 +576,11 @@ export default function Navbar() {
 
               {/* Red Contact Us Button with Salt Sprinkle Effect */}
               <div className="ml-2">
-                <Link href="/contact">
+                <NavLink href="/contact">
                   <SaltButton variant="primary" size="md">
                     <span>Contact Us</span>
                   </SaltButton>
-                </Link>
+                </NavLink>
               </div>
             </nav>
 

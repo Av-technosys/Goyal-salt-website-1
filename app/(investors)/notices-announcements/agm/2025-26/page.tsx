@@ -14,6 +14,7 @@ export const metadata = {
 const documents = [
   { title: "GSL_Notice of 16th AGM 2025", pdf: "/Brochure/GSL_Notice_of_16th_AGM.pdf" },
   { title: "Annual Report 2025-26", pdf: "/Brochure/Annual_Report_2025-26.pdf" },
+  { title: "Newspaper Publication 16th AGM", pdf: "/Brochure/Newspaper_Publication_16th AGM.pdf" },
  
 ];
 

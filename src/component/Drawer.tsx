@@ -11,6 +11,16 @@ import {
   DrawerContent,
 } from "@/components/ui/drawer";
 
+const isSamePage = (currentPath: string, targetHref: string) => {
+  if (!targetHref) return false;
+  const cleanHref = targetHref.split("?")[0].split("#")[0];
+  const cleanPath = currentPath.split("?")[0].split("#")[0];
+  return (
+    cleanPath === cleanHref ||
+    cleanPath.replace(/\/$/, "") === cleanHref.replace(/\/$/, "")
+  );
+};
+
 interface MobileDrawerProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -34,7 +44,14 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
     }
   }, [pathname]);
 
-  const isActiveLink = (href: string) => pathname === href;
+  const handleLinkClick = (href: string, target?: string) => {
+    setOpen(false);
+    if (target !== "_blank" && isSamePage(pathname, href)) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const isActiveLink = (href: string) => isSamePage(pathname, href);
 
   return (
     <UIDrawer open={open} direction="left" onOpenChange={setOpen}>
@@ -54,7 +71,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-white shrink-0">
           <Link
             href="/"
-            onClick={() => setOpen(false)}
+            onClick={() => handleLinkClick("/")}
             className="flex items-center"
           >
             <Image
@@ -83,7 +100,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
           <div className="pb-1">
             <Link
               href="/"
-              onClick={() => setOpen(false)}
+              onClick={() => handleLinkClick("/")}
               className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
                 isActiveLink("/")
                   ? "bg-red-600 text-white font-semibold shadow-md"
@@ -113,7 +130,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
               <div className="mt-1 ml-3 pl-3 border-l-2 border-red-500 space-y-1">
                 <Link
                   href="/about-us"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/about-us")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/about-us")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -125,7 +142,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/history-our-achievement"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/history-our-achievement")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/history-our-achievement")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -137,7 +154,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/directors"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/directors")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/directors")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -149,7 +166,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/chairman-desk"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/chairman-desk")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/chairman-desk")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -161,7 +178,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/message-from-md"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/message-from-md")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/message-from-md")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -173,7 +190,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/vision-mission"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/vision-mission")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/vision-mission")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -185,7 +202,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/privacy-policy"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/privacy-policy")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/privacy-policy")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -217,7 +234,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
               <div className="mt-1 ml-3 pl-3 border-l-2 border-red-500 space-y-1">
                 <Link
                   href="/journey"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/journey")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/journey")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -229,7 +246,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/infrastructures"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/infrastructures")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/infrastructures")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -241,7 +258,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/quality-control"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/quality-control")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/quality-control")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -253,7 +270,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/why-goyal-salt"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/why-goyal-salt")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                     isActiveLink("/why-goyal-salt")
                       ? "text-red-600 font-semibold bg-red-50"
@@ -270,7 +287,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
           <div className="py-1">
             <Link
               href="/products"
-              onClick={() => setOpen(false)}
+              onClick={() => handleLinkClick("/products")}
               className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
                 isActiveLink("/products")
                   ? "bg-red-600 text-white font-semibold shadow-md"
@@ -300,7 +317,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
               <div className="mt-1 ml-3 pl-3 border-l-2 border-red-500 space-y-1">
                 <Link
                   href="/annual-return"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/annual-return")}
                   className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
                 >
                   Annual Return
@@ -308,7 +325,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/annual-report"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/annual-report")}
                   className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
                 >
                   Annual Report
@@ -316,7 +333,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/csr-document"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/csr-document")}
                   className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
                 >
                   CSR
@@ -324,7 +341,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/dur-46-lodr"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/dur-46-lodr")}
                   className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
                 >
                   Disclosure Under Regulation 46 of LODR
@@ -332,7 +349,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/financials"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/financials")}
                   className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
                 >
                   Financials
@@ -356,7 +373,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                   <div className="ml-3 pl-2 border-l border-red-300 space-y-1">
                     <Link
                       href="/governance/codes-policies"
-                      onClick={() => setOpen(false)}
+                      onClick={() => handleLinkClick("/governance/codes-policies")}
                       className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
                     >
                       Codes & Policies
@@ -364,7 +381,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                     <Link
                       href="/governance/committees"
-                      onClick={() => setOpen(false)}
+                      onClick={() => handleLinkClick("/governance/committees")}
                       className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
                     >
                       Committees
@@ -372,7 +389,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                     <Link
                       href="/governance/shareholding-pattern"
-                      onClick={() => setOpen(false)}
+                      onClick={() => handleLinkClick("/governance/shareholding-pattern")}
                       className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
                     >
                       Shareholding Pattern
@@ -382,7 +399,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/investor-grievance"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/investor-grievance")}
                   className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
                 >
                   Investor Grievance
@@ -424,28 +441,28 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                       <div className="ml-2 pl-2 space-y-1">
                         <Link
                           href="/listing-compliance/2023-24/q1"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2023-24/q1")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 1
                         </Link>
                         <Link
                           href="/listing-compliance/2023-24/q2"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2023-24/q2")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 2
                         </Link>
                         <Link
                           href="/listing-compliance/2023-24/q3"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2023-24/q3")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 3
                         </Link>
                         <Link
                           href="/listing-compliance/2023-24/q4"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2023-24/q4")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 4
@@ -473,14 +490,14 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                       <div className="ml-2 pl-2 space-y-1">
                         <Link
                           href="/listing-compliance/2024-25/q3"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2024-25/q3")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 3
                         </Link>
                         <Link
                           href="/listing-compliance/2024-25/q4"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2024-25/q4")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 4
@@ -508,21 +525,21 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                       <div className="ml-2 pl-2 space-y-1">
                         <Link
                           href="/listing-compliance/2025-26/q1"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2025-26/q1")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 1
                         </Link>
                         <Link
                           href="/listing-compliance/2025-26/q2"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2025-26/q2")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 2
                         </Link>
                         <Link
                           href="/listing-compliance/2025-26/q3"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/listing-compliance/2025-26/q3")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 3
@@ -534,7 +551,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                 <Link
                   href="/material-contracts-agreements"
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick("/material-contracts-agreements")}
                   className="block px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
                 >
                   Material Contracts & Agreements
@@ -574,21 +591,21 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                       <div className="ml-2 pl-2 space-y-1">
                          <Link
                           href="/notices-announcements/agm/2025-26"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/notices-announcements/agm/2025-26")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           F.Y. 2025-26
                         </Link>
                         <Link
                           href="/notices-announcements/agm/2024-25"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/notices-announcements/agm/2024-25")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           F.Y. 2024-25
                         </Link>
                         <Link
                           href="/notices-announcements/agm/2023-24"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/notices-announcements/agm/2023-24")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           F.Y. 2023-24
@@ -614,21 +631,21 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                       <div className="ml-2 pl-2 space-y-1">
                         <Link
                           href="/notices-announcements/board-meetings-disclosure/2025-26"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/notices-announcements/board-meetings-disclosure/2025-26")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           F.Y. 2025-26
                         </Link>
                         <Link
                           href="/notices-announcements/board-meetings-disclosure/2024-25"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/notices-announcements/board-meetings-disclosure/2024-25")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           F.Y. 2024-25
                         </Link>
                         <Link
                           href="/notices-announcements/board-meetings-disclosure/2023-24"
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleLinkClick("/notices-announcements/board-meetings-disclosure/2023-24")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           F.Y. 2023-24
@@ -638,7 +655,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                     <Link
                       href="/notices-announcements/disclosures-under-regulation-30"
-                      onClick={() => setOpen(false)}
+                      onClick={() => handleLinkClick("/notices-announcements/disclosures-under-regulation-30")}
                       className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
                     >
                       Disclosures Under Regulation 30
@@ -646,7 +663,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                     <Link
                       href="/notices-announcements/investors-meet-disclosure"
-                      onClick={() => setOpen(false)}
+                      onClick={() => handleLinkClick("/notices-announcements/investors-meet-disclosure")}
                       className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
                     >
                       Investors Meet Disclosure
@@ -654,7 +671,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                     <Link
                       href="/notices-announcements/others"
-                      onClick={() => setOpen(false)}
+                      onClick={() => handleLinkClick("/notices-announcements/others")}
                       className="block px-3 py-1.5 rounded-md text-[11px] text-gray-500 hover:text-red-600"
                     >
                       Others
@@ -669,7 +686,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
           <div className="py-1">
             <Link
               href="/offer-documents"
-              onClick={() => setOpen(false)}
+              onClick={() => handleLinkClick("/offer-documents")}
               className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
                 isActiveLink("/offer-documents")
                   ? "bg-red-600 text-white font-semibold shadow-md"
@@ -684,7 +701,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
           <div className="py-1">
             <Link
               href="/csr"
-              onClick={() => setOpen(false)}
+              onClick={() => handleLinkClick("/csr")}
               className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
                 isActiveLink("/csr")
                   ? "bg-red-600 text-white font-semibold shadow-md"
@@ -699,7 +716,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
           <div className="py-1">
             <Link
               href="/gallery"
-              onClick={() => setOpen(false)}
+              onClick={() => handleLinkClick("/gallery")}
               className={`flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all ${
                 isActiveLink("/gallery")
                   ? "bg-red-600 text-white font-semibold shadow-md"
@@ -716,7 +733,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
               href="https://www.nseindia.com/get-quote/equity/GOYALSALT/Goyal-Salt-Limited"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
+              onClick={() => handleLinkClick("https://www.nseindia.com/get-quote/equity/GOYALSALT/Goyal-Salt-Limited", "_blank")}
               className="flex items-center justify-between px-4 py-3 rounded-xl font-semibold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200/60 transition-all"
             >
               <div className="flex items-center gap-2">
@@ -734,7 +751,7 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
           <div className="pt-2 pb-4">
             <Link
               href="/contact"
-              onClick={() => setOpen(false)}
+              onClick={() => handleLinkClick("/contact")}
               className="flex items-center justify-center w-full py-3 px-4 rounded-xl font-bold bg-red-600 text-white shadow-lg hover:bg-red-700 transition-all text-center"
             >
               Contact Us
