@@ -77,9 +77,9 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
             <Image
               src="/logo.png"
               alt="Goyal Salt Logo"
-              width={105}
-              height={50}
-              className="object-contain max-h-12 w-auto"
+              width={130}
+              height={65}
+              className="object-contain max-h-14 w-auto"
             />
           </Link>
 
@@ -440,20 +440,6 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                     {openFY === "2023-24" && (
                       <div className="ml-2 pl-2 space-y-1">
                         <Link
-                          href="/listing-compliance/2023-24/q1"
-                          onClick={() => handleLinkClick("/listing-compliance/2023-24/q1")}
-                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
-                        >
-                          Quarter 1
-                        </Link>
-                        <Link
-                          href="/listing-compliance/2023-24/q2"
-                          onClick={() => handleLinkClick("/listing-compliance/2023-24/q2")}
-                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
-                        >
-                          Quarter 2
-                        </Link>
-                        <Link
                           href="/listing-compliance/2023-24/q3"
                           onClick={() => handleLinkClick("/listing-compliance/2023-24/q3")}
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
@@ -488,6 +474,20 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                     {openFY === "2024-25" && (
                       <div className="ml-2 pl-2 space-y-1">
+                        <Link
+                          href="/listing-compliance/2024-25/q1"
+                          onClick={() => handleLinkClick("/listing-compliance/2024-25/q1")}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 1
+                        </Link>
+                        <Link
+                          href="/listing-compliance/2024-25/q2"
+                          onClick={() => handleLinkClick("/listing-compliance/2024-25/q2")}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 2
+                        </Link>
                         <Link
                           href="/listing-compliance/2024-25/q3"
                           onClick={() => handleLinkClick("/listing-compliance/2024-25/q3")}
@@ -543,6 +543,41 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                           className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
                         >
                           Quarter 3
+                        </Link>
+                        <Link
+                          href="/listing-compliance/2025-26/q4"
+                          onClick={() => handleLinkClick("/listing-compliance/2025-26/q4")}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 4
+                        </Link>
+                      </div>
+                    )}
+
+                    {/* FY 2026-27 */}
+                    <button
+                      onClick={() =>
+                        setOpenFY(openFY === "2026-27" ? null : "2026-27")
+                      }
+                      className="flex justify-between items-center w-full px-3 py-1.5 rounded-md text-[11px] text-gray-600 hover:text-red-600"
+                    >
+                      <span>F.Y. 2026-27</span>
+                      <IconChevronDown
+                        size={12}
+                        className={`transition-transform ${
+                          openFY === "2026-27" ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {openFY === "2026-27" && (
+                      <div className="ml-2 pl-2 space-y-1">
+                        <Link
+                          href="/listing-compliance/2026-27/q1"
+                          onClick={() => handleLinkClick("/listing-compliance/2026-27/q1")}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 1
                         </Link>
                       </div>
                     )}
@@ -629,6 +664,13 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
 
                     {boardMeetingOpen && (
                       <div className="ml-2 pl-2 space-y-1">
+                        <Link
+                          href="/notices-announcements/board-meetings-disclosure/2026-27"
+                          onClick={() => handleLinkClick("/notices-announcements/board-meetings-disclosure/2026-27")}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          F.Y. 2026-27
+                        </Link>
                         <Link
                           href="/notices-announcements/board-meetings-disclosure/2025-26"
                           onClick={() => handleLinkClick("/notices-announcements/board-meetings-disclosure/2025-26")}

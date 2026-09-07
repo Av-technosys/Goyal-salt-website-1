@@ -312,10 +312,10 @@ export default function Navbar() {
               <Image
                 src="/logo.png"
                 alt="Goyal Salt Logo"
-                width={120}
-                height={60}
+                width={150}
+                height={70}
                 priority
-                className="object-contain max-h-14 w-auto"
+                className="object-contain max-h-16 md:max-h-[67px] w-auto transition-all duration-200"
               />
             </NavLink>
 

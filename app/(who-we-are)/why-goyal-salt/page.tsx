@@ -101,7 +101,7 @@ export default function WhyGoyalSalt() {
         {/* ================= DOWNLOAD BROCHURE BUTTON ================= */}
         <div className="flex justify-center">
           <Link
-            href="/Brochure/Brochure.pdf"
+            href="/Brochure/BrochureNew.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 via-red-700 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white font-bold text-base sm:text-lg px-8 sm:px-10 py-4 rounded-2xl shadow-xl hover:shadow-red-600/30 transition-all duration-300 hover:scale-105"

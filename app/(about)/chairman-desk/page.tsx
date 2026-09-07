@@ -85,12 +85,7 @@ export default function ChairmansDeskPage() {
                 </div>
               </div>
 
-              {/* Bottom Quote Banner */}
-              <div className="mt-8 pt-6 border-t border-white/10 w-full text-center relative z-10">
-                <p className="text-xs text-gray-300 italic">
-                  &ldquo;Building an empire built on trust, quality, and commitment.&rdquo;
-                </p>
-              </div>
+            
             </div>
 
             {/* RIGHT CONTENT SECTION */}

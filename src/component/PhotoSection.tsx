@@ -83,16 +83,16 @@ const PhotoSection = () => {
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
+        {/* Header Section - Aligned to Quality Control & Directors font size */}
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-14 max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 shadow-xs mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 shadow-sm mb-4"
           >
             <Sparkles className="w-4 h-4 text-red-600 animate-pulse" />
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-red-600">
+            <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-red-600">
               Visual Highlights
             </span>
           </motion.div>
@@ -102,9 +102,9 @@ const PhotoSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-tight max-w-3xl"
+            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight"
           >
-            Our <span className="text-red-600 font-extrabold">Activity</span> & Media Coverage Highlights 
+            Our <span className="bg-gradient-to-r from-red-600 via-red-700 to-amber-600 bg-clip-text text-transparent">Activity</span> & Media Highlights
           </motion.h1>
 
           <motion.p
@@ -112,10 +112,11 @@ const PhotoSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed font-normal max-w-2xl"
+            className="mt-3 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto font-medium"
           >
             Explore media coverage, newspaper publications, corporate milestones, and moments from Goyal Salt Limited.
           </motion.p>
+          <div className="mt-4 w-20 h-1.5 bg-gradient-to-r from-red-600 to-amber-500 mx-auto rounded-full" />
         </div>
 
         {/* Seamless Masonry Column Grid - Zero Blank Spaces */}

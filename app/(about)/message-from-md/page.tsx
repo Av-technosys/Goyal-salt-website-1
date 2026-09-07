@@ -85,12 +85,7 @@ export default function MessageFromMDPage() {
                 </div>
               </div>
 
-              {/* Bottom Tagline */}
-              <div className="mt-8 pt-6 border-t border-white/10 w-full text-center relative z-10">
-                <p className="text-xs text-gray-300 italic">
-                  &ldquo;Driving continual growth, infrastructure excellence, and innovation.&rdquo;
-                </p>
-              </div>
+           
             </div>
 
             {/* RIGHT CONTENT SECTION */}
@@ -138,7 +133,7 @@ export default function MessageFromMDPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Link
+                  <Link   
                     href="/vision-mission"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm bg-gray-900 text-white hover:bg-red-600 transition-colors shadow-md hover:shadow-lg"
                   >
