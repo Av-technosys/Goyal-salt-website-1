@@ -369,10 +369,10 @@ export default function PrivacyPolicyPage() {
                     <p>
                       Email:{" "}
                       <a
-                        href="mailto:info@goyalsaltltd.com"
+                        href="mailto:info@goyalsaltltd.in"
                         className="text-amber-400 font-bold hover:underline"
                       >
-                        info@goyalsaltltd.com
+                        info@goyalsaltltd.in
                       </a>
                     </p>
                   </div>

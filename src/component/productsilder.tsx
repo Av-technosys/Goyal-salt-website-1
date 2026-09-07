@@ -31,7 +31,7 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
-    name: "Meduplus Salt",
+    name: "Mediplus Salt",
     subtitle: "Double Fortified Protection",
     image: "/Images/mediplus-copy.png",
     badge: "Double Fortified",

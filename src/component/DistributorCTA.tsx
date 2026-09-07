@@ -60,7 +60,7 @@ const CONFIG = {
     { name: "Goyal Gold Salt", src: "/Images/goyalgold.png", rotation: "-14deg", zIndex: 12 },
     { name: "Goyal Fortuner Salt", src: "/Images/fortuner-salt.png", rotation: "12deg", zIndex: 11 },
     { name: "Goyal Himalayan Pink Salt", src: "/Images/goyal-pink.png", rotation: "-6deg", zIndex: 10 },
-    { name: "Meduplus Double Fortified Salt", src: "/Images/mediplus-copy.png", rotation: "18deg", zIndex: 9 },
+    { name: "Mediplus Double Fortified Salt", src: "/Images/mediplus-copy.png", rotation: "18deg", zIndex: 9 },
   ],
 };
 
