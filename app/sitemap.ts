@@ -8,7 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-      {
+    {
+      url: "https://goyalsaltltd.com/blog",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
       url: "https://goyalsaltltd.com/about-us",
       lastModified: new Date(),
       changeFrequency: "monthly",

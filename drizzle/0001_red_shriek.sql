@@ -1,0 +1,1 @@
+ALTER TABLE "blogs" RENAME COLUMN "cover_image_url" TO "cover_image_key";
