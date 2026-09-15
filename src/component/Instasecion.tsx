@@ -102,11 +102,11 @@ const Instasecion = () => {
 
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-xs sm:text-sm font-semibold text-gray-600">
-                  343 posts
+                  450 posts
                 </span>
                 <span className="text-gray-300">•</span>
                 <span className="text-xs sm:text-sm font-semibold text-gray-600">
-                  2.7K followers
+                  4K followers
                 </span>
               </div>
             </div>

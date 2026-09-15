@@ -141,6 +141,18 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                 </Link>
 
                 <Link
+                  href="/blog"
+                  onClick={() => handleLinkClick("/blog")}
+                  className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    isActiveLink("/blog")
+                      ? "text-red-600 font-semibold bg-red-50"
+                      : "text-gray-600 hover:text-red-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Blog & Insights
+                </Link>
+
+                <Link
                   href="/history-our-achievement"
                   onClick={() => handleLinkClick("/history-our-achievement")}
                   className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${

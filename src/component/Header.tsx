@@ -266,13 +266,14 @@ export default function Navbar() {
 
   const isAboutActive = [
     "/about-us",
+    "/blog",
     "/history-our-achievement",
     "/directors",
     "/chairman-desk",
     "/message-from-md",
     "/vision-mission",
     "/privacy-policy",
-  ].includes(pathname);
+  ].includes(pathname) || pathname.startsWith("/blog");
 
   const isWhoWeAreActive = [
     "/journey",
@@ -335,6 +336,7 @@ export default function Navbar() {
               {/* About Dropdown */}
               <NavItem label="About" isActive={isAboutActive}>
                 <DropdownLink href="/about-us" label="About Us" />
+                <DropdownLink href="/blog" label="Blog & Insights" />
                 <DropdownLink
                   href="/history-our-achievement"
                   label="History & Our Achievements"
