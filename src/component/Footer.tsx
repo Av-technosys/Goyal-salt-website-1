@@ -42,65 +42,74 @@ export default function Footer() {
             </div>
 
             {/* Social Icons */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
-                Connect With Us
-              </h4>
-              <div className="flex flex-wrap gap-2.5">
-                {/* Facebook */}
-                <Link
-                  href="https://www.facebook.com/goyal.salt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
-                >
-                  <FaFacebookF size={16} />
-                </Link>
+            <div className="space-y-4">
+              <Link
+                href="/blog"
+                className="inline-flex text-sm font-bold text-red-600 transition-colors hover:text-red-700 hover:underline"
+              >
+                Blog & Insights
+              </Link>
 
-                {/* Instagram */}
-                <Link
-                  href="https://www.instagram.com/goyal.salt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
-                >
-                  <FaInstagram size={16} />
-                </Link>
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+                  Connect With Us
+                </h4>
+                <div className="flex flex-wrap gap-2.5">
+                  {/* Facebook */}
+                  <Link
+                    href="https://www.facebook.com/goyal.salt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
+                  >
+                    <FaFacebookF size={16} />
+                  </Link>
 
-                {/* YouTube */}
-                <Link
-                  href="https://www.youtube.com/@GoyalSalt-limited"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
-                >
-                  <FaYoutube size={16} />
-                </Link>
+                  {/* Instagram */}
+                  <Link
+                    href="https://www.instagram.com/goyal.salt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
+                  >
+                    <FaInstagram size={16} />
+                  </Link>
 
-                {/* LinkedIn */}
-                <Link
-                  href="https://www.linkedin.com/company/goyal-salt-limited/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
-                >
-                  <FaLinkedinIn size={16} />
-                </Link>
+                  {/* YouTube */}
+                  <Link
+                    href="https://www.youtube.com/@GoyalSalt-limited"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
+                  >
+                    <FaYoutube size={16} />
+                  </Link>
 
-                {/* Pinterest */}
-                <Link
-                  href="https://in.pinterest.com/goyalsalt65/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Pinterest"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
-                >
-                  <FaPinterestP size={16} />
-                </Link>
+                  {/* LinkedIn */}
+                  <Link
+                    href="https://www.linkedin.com/company/goyal-salt-limited/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
+                  >
+                    <FaLinkedinIn size={16} />
+                  </Link>
+
+                  {/* Pinterest */}
+                  <Link
+                    href="https://in.pinterest.com/goyalsalt65/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Pinterest"
+                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-xs hover:scale-110"
+                  >
+                    <FaPinterestP size={16} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -200,9 +209,11 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="bg-gray-900 text-white py-5">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
-          <p className="text-gray-300 text-center sm:text-left">
-            © <span className="text-red-500 font-semibold">Goyal Salt</span> 2026. All Rights Reserved.
-          </p>
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-gray-300">
+            <p className="text-center sm:text-left">
+              © <span className="text-red-500 font-semibold">Goyal Salt</span> 2026. All Rights Reserved.
+            </p>
+          </div>
 
           <p className="text-gray-400 text-center sm:text-right">
             Developed By{" "}
