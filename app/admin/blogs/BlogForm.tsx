@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import RichTextEditor from "./RichTextEditor";
 import type { Blog } from "@/src/db/schema";
 import { generateSlug } from "@/src/lib/blogs/slug";
 import {
@@ -350,17 +351,15 @@ export default function BlogForm({ blog, mode }: BlogFormProps) {
                 />
               </label>
 
-              <label className="block space-y-2">
+              <div className="block space-y-2">
                 <span className="text-sm font-semibold text-gray-700">
                   Content
                 </span>
-                <Textarea
+                <RichTextEditor
                   value={state.content}
-                  onChange={(event) => updateField("content", event.target.value)}
-                  className="min-h-[420px] resize-y bg-white leading-6"
-                  required
+                  onChange={(html) => updateField("content", html)}
                 />
-              </label>
+              </div>
             </CardContent>
           </Card>
         </div>
