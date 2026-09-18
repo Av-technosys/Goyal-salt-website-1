@@ -138,6 +138,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
             fill
             className="object-cover"
             priority
+            unoptimized
           />
         </div>
 

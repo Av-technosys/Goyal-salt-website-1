@@ -91,6 +91,7 @@ export default async function BlogPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     priority
+                    unoptimized
                   />
                   <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-red-600 text-white shadow-md">
