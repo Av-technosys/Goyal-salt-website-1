@@ -251,9 +251,9 @@ const ContactFormPage = () => {
             className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-gray-200/80 shadow-xl shadow-slate-100 relative overflow-hidden"
           >
             <div className="mb-8">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
                 Request a Call Back
-              </h2>
+              </h1>
               <p className="text-sm text-gray-600 mt-2">
                 Fill out the form below and our team will reach out to you shortly.
               </p>

@@ -229,9 +229,9 @@ export default function ProductCarousel() {
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight leading-snug">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight leading-snug">
             Our <span className="text-red-600 font-extrabold">Premium Products</span>
-          </h2>
+          </h1>
 
           <p className="mt-2.5 text-sm sm:text-base text-gray-600 leading-relaxed font-normal max-w-2xl">
             Crafted with ultimate purity, trusted by millions of households and top industries across India.

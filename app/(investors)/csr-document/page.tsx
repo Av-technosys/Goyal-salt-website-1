@@ -2,7 +2,7 @@ import React from "react";
 import { Download, FileText, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "CSR | Goyal Salt Limited",
+  title: "CSR Documents and Financial Reports | Goyal Salt Limited",
   description:
     "View the CSR information of Goyal Salt Limited, including statutory filings, compliance details, and official company records for reference.",
   alternates: {

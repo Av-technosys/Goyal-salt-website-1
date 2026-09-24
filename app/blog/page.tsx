@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export const metadata = {
-  title: "Blogs & Articles | Goyal Salt Limited",
+  title: "Salt Industry Insights & Blogs | Goyal Salt Limited",
   description:
     "Explore the latest blogs, news, health insights, and industry updates from Goyal Salt Limited. Learn about refined salt processing, double fortified salt, and quality control.",
   alternates: {
