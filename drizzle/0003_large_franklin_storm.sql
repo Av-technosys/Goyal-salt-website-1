@@ -1,0 +1,1 @@
+ALTER TABLE "blogs" ADD COLUMN "author_name" text;

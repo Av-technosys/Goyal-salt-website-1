@@ -39,6 +39,7 @@ interface FormState {
   slug: string;
   excerpt: string;
   content: string;
+  authorName: string;
   coverImageKey: string;
   seoTitle: string;
   seoDescription: string;
@@ -69,6 +70,7 @@ function toPayload(state: FormState): CreateBlogInput {
     slug: state.slug,
     excerpt: state.excerpt,
     content: state.content,
+    authorName: state.authorName || null,
     coverImageKey: state.coverImageKey || null,
     seoTitle: state.seoTitle || null,
     seoDescription: state.seoDescription || null,
@@ -95,6 +97,7 @@ export default function BlogForm({ blog, mode }: BlogFormProps) {
     slug: blog?.slug ?? "",
     excerpt: blog?.excerpt ?? "",
     content: blog?.content ?? "",
+    authorName: blog?.authorName ?? "",
     coverImageKey: blog?.coverImageKey ?? "",
     seoTitle: blog?.seoTitle ?? "",
     seoDescription: blog?.seoDescription ?? "",
@@ -335,6 +338,18 @@ export default function BlogForm({ blog, mode }: BlogFormProps) {
                   }}
                   className="h-10 bg-white font-mono text-sm"
                   required
+                />
+              </label>
+
+              <label className="block space-y-2">
+                <span className="text-sm font-semibold text-gray-700">
+                  Author Name
+                </span>
+                <Input
+                  value={state.authorName}
+                  onChange={(event) => updateField("authorName", event.target.value)}
+                  placeholder="e.g. Goyal Salt Team"
+                  className="h-10 bg-white"
                 />
               </label>
 

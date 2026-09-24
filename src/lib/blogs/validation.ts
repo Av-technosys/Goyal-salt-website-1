@@ -54,6 +54,7 @@ const blogFields = {
     .transform((value) => (value ? generateSlug(value) : undefined)),
   excerpt: z.string().trim().min(10).max(500),
   content: z.string().trim().min(20),
+  authorName: optionalText(120),
   coverImageKey: optionalImageKey,
   seoTitle: optionalText(180),
   seoDescription: optionalText(300),
