@@ -127,6 +127,18 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </Link>
         </div>
 
+        {/* COVER IMAGE — above the heading */}
+        <div className="relative w-full h-[280px] sm:h-[420px] lg:h-[480px] rounded-3xl overflow-hidden shadow-xl mb-10 bg-gray-100 border border-gray-200/80">
+          <Image
+            src={getCoverImageSrc(post)}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+            unoptimized
+          />
+        </div>
+
         {/* ARTICLE HEADER */}
         <header className="space-y-6 mb-10 text-center sm:text-left">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
@@ -154,21 +166,17 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 <Calendar className="w-4 h-4 text-red-600" />
                 Published {formatDate(post.publishedAt)}
               </span>
+              {post.authorName && (
+                <span className="flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  {post.authorName}
+                </span>
+              )}
             </div>
           </div>
         </header>
-
-        {/* COVER IMAGE */}
-        <div className="relative w-full h-[280px] sm:h-[420px] lg:h-[480px] rounded-3xl overflow-hidden shadow-xl mb-12 bg-gray-100 border border-gray-200/80">
-          <Image
-            src={getCoverImageSrc(post)}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-            unoptimized
-          />
-        </div>
 
         {/* MAIN ARTICLE BODY CONTENT */}
         <div className="bg-white/90 backdrop-blur-md rounded-3xl border border-gray-100 shadow-xl p-6 sm:p-12 mb-12">

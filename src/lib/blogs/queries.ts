@@ -97,6 +97,7 @@ export async function createBlog(input: CreateBlogInput) {
     slug: getBlogSlug(input.title, input.slug),
     excerpt: input.excerpt,
     content: input.content,
+    authorName: input.authorName ?? null,
     coverImageKey: input.coverImageKey ?? null,
     seoTitle: input.seoTitle ?? null,
     seoDescription: input.seoDescription ?? null,
@@ -139,6 +140,7 @@ export async function updateBlog(id: string, input: UpdateBlogInput) {
   if (input.slug !== undefined) values.slug = getBlogSlug(input.title ?? existing.title, input.slug);
   if (input.excerpt !== undefined) values.excerpt = input.excerpt;
   if (input.content !== undefined) values.content = input.content;
+  if (input.authorName !== undefined) values.authorName = input.authorName ?? null;
   if (input.coverImageKey !== undefined) values.coverImageKey = input.coverImageKey ?? null;
   if (input.seoTitle !== undefined) values.seoTitle = input.seoTitle ?? null;
   if (input.seoDescription !== undefined) {
