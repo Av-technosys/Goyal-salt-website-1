@@ -37,6 +37,34 @@ function getReadTime(content: string) {
   return Math.max(1, Math.ceil(wordCount / 200));
 }
 
+/**
+ * Sanitize stored HTML so it renders consistently on the public page:
+ * - Strips inline color/text-decoration styles from <a> tags (so CSS controls them)
+ * - Converts className="..." → class="..." (editor inserts JSX-style attributes)
+ */
+function sanitizeContent(html: string): string {
+  return html
+    // Fix className -> class (editor table HTML uses JSX syntax)
+    .replace(/className=/g, "class=")
+    // Remove inline color styles from <a> tags so our CSS takes over
+    .replace(
+      /<a(\s[^>]*?)style="([^"]*)"/gi,
+      (match, attrs, styleValue) => {
+        const cleaned = styleValue
+          .split(";")
+          .filter(
+            (s: string) =>
+              !/^\s*color\s*:/i.test(s) &&
+              !/^\s*text-decoration\s*:/i.test(s)
+          )
+          .join(";");
+        return cleaned.trim()
+          ? `<a${attrs}style="${cleaned}"`
+          : `<a${attrs}`;
+      }
+    );
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const post = await getPublishedBlogBySlug(slug);
@@ -50,7 +78,7 @@ export async function generateMetadata({ params }: PageProps) {
   const coverImage = getImageUrl(post.coverImageKey);
 
   return {
-    title: `${post.seoTitle || post.title} | Goyal Salt Limited Blog`,
+    title: `${post.seoTitle || post.title}`,
     description: post.seoDescription || post.excerpt,
     alternates: {
       canonical: `https://goyalsaltltd.com/blog/${post.slug}`,
@@ -145,17 +173,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
         {/* MAIN ARTICLE BODY CONTENT */}
         <div className="bg-white/90 backdrop-blur-md rounded-3xl border border-gray-100 shadow-xl p-6 sm:p-12 mb-12">
           <div
-            className="prose prose-lg sm:prose-xl max-w-none text-gray-700 leading-relaxed
-              prose-headings:font-bold prose-headings:text-gray-900 prose-headings:tracking-tight
-              prose-h2:text-2xl prose-h2:sm:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:border-l-4 prose-h2:border-red-600 prose-h2:pl-3
-              prose-h3:text-xl prose-h3:sm:text-2xl prose-h3:mt-6 prose-h3:mb-3 prose-h3:text-red-700
-              prose-p:mb-5 prose-p:text-gray-700 prose-p:text-base prose-p:sm:text-lg
-              prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-li:mb-2 prose-li:text-gray-700
-              prose-blockquote:border-l-4 prose-blockquote:border-amber-500 prose-blockquote:bg-amber-50/60 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:italic prose-blockquote:text-gray-800 prose-blockquote:my-6
-              prose-strong:text-gray-900 prose-strong:font-bold"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            className="blog-content"
+            dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content) }}
           />
         </div>
+
 
         {/* RELATED ARTICLES SECTION */}
         {relatedPosts.length > 0 && (

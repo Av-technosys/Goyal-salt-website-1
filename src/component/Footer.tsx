@@ -51,9 +51,9 @@ export default function Footer() {
               </Link>
 
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
                   Connect With Us
-                </h4>
+                </p>
                 <div className="flex flex-wrap gap-2.5">
                   {/* Facebook */}
                   <Link
@@ -119,7 +119,7 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-2.5 text-red-600 font-bold text-lg mb-4">
                 <FaBuilding className="text-red-600 shrink-0" size={20} />
-                <h3>Registered & Corp Office</h3>
+                <p>Registered & Corp Office</p>
               </div>
 
               <div className="space-y-1 mb-4 text-xs sm:text-sm">
@@ -170,7 +170,7 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-2.5 text-red-600 font-bold text-lg mb-4">
                 <FaIndustry className="text-red-600 shrink-0" size={20} />
-                <h3>Factory & Administrator Office</h3>
+                <p>Factory & Administrator Office</p>
               </div>
 
               {/* Unit 1 */}

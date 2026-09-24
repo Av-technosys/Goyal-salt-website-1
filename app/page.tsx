@@ -4,7 +4,7 @@
 import BrandVideoSection from "@/src/component/Brandvideo";
 import CommunityQuoteSection from "@/src/component/Communitysection";
 import DistributorCTASection from "@/src/component/DistributorCTA";
-
+import Trustedmanufacturer from "@/src/component/Trustedmanufacturer";
 
 import SaltFaqSection from "@/src/component/FaqSection";
 import HeroCarousel from "@/src/component/Herocarousel";
@@ -35,6 +35,7 @@ export default function Home() {
     <div>
       <Popup/>
       <HeroCarousel />
+      <Trustedmanufacturer/>
       <ProductCarousel />
       <Sectionone />
       <HealthSaltSection/>
