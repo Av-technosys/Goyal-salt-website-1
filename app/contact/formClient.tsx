@@ -92,7 +92,7 @@ const ContactFormPage = () => {
 
   return (
     <div className="bg-gradient-to-b from-white via-slate-50/50 to-white min-h-screen relative overflow-hidden">
-      
+
       {/* Decorative Ambient Halos */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] sm:w-[1100px] h-[450px] bg-gradient-to-b from-red-500/10 via-rose-500/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/3 -left-32 w-96 h-96 bg-red-400/5 rounded-full blur-3xl pointer-events-none" />
@@ -123,9 +123,9 @@ const ContactFormPage = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-tight"
           >
-            Request a{" "}
+            Contact{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-600 to-red-700 font-extrabold">
-              Call Back
+              Us
             </span>
           </motion.h1>
 
@@ -141,7 +141,7 @@ const ContactFormPage = () => {
 
         {/* ================= 3 TOP INTERACTIVE CONTACT CARDS ================= */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 sm:mb-16">
-          
+
           {/* Card 1: Office */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -251,9 +251,9 @@ const ContactFormPage = () => {
             className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-gray-200/80 shadow-xl shadow-slate-100 relative overflow-hidden"
           >
             <div className="mb-8">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
                 Request a Call Back
-              </h1>
+              </h2>
               <p className="text-sm text-gray-600 mt-2">
                 Fill out the form below and our team will reach out to you shortly.
               </p>
@@ -266,11 +266,10 @@ const ContactFormPage = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className={`mb-6 p-4 rounded-2xl text-sm font-semibold flex items-start gap-3 ${
-                    status.type === "success"
-                      ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
-                      : "bg-rose-50 text-rose-800 border border-rose-200"
-                  }`}
+                  className={`mb-6 p-4 rounded-2xl text-sm font-semibold flex items-start gap-3 ${status.type === "success"
+                    ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                    : "bg-rose-50 text-rose-800 border border-rose-200"
+                    }`}
                 >
                   {status.type === "success" ? (
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
@@ -284,9 +283,9 @@ const ContactFormPage = () => {
 
             {/* Form with 4 Clean Fields */}
             <form onSubmit={handleSubmit} className="space-y-5">
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                
+
                 {/* 1. Full Name */}
                 <div className="space-y-1.5">
                   <label className="text-sm font-semibold text-gray-800">
@@ -399,13 +398,13 @@ const ContactFormPage = () => {
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-6"
           >
-            
+
             {/* Corporate Location Details Card */}
             <div className="p-7 sm:p-8 rounded-3xl bg-red-600 text-white shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-              
+
               <div className="relative z-10 space-y-6">
-                
+
                 <div>
                   <p className="text-xs font-bold text-red-200 uppercase tracking-wider mb-1">
                     VISIT US
@@ -417,7 +416,7 @@ const ContactFormPage = () => {
                 </div>
 
                 <div className="space-y-4 pt-1 text-sm text-white">
-                  
+
                   <div className="flex items-start gap-3.5">
                     <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
                       <IconMapPin size={20} />
@@ -425,7 +424,7 @@ const ContactFormPage = () => {
                     <div>
                       <p className="font-semibold text-white">Corporate Office</p>
                       <p className="text-xs text-white/90 leading-relaxed">
-                        Jaipur, Rajasthan 
+                        Jaipur, Rajasthan
                       </p>
                     </div>
                   </div>

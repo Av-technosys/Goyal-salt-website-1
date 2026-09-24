@@ -5,9 +5,9 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { 
-  Sparkles, 
-  CheckCircle2, 
+import {
+  Sparkles,
+  CheckCircle2,
   ArrowRight,
   X
 } from "lucide-react";
@@ -229,9 +229,9 @@ export default function ProductCarousel() {
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight leading-snug">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight leading-snug">
             Our <span className="text-red-600 font-extrabold">Premium Products</span>
-          </h1>
+          </h2>
 
           <p className="mt-2.5 text-sm sm:text-base text-gray-600 leading-relaxed font-normal max-w-2xl">
             Crafted with ultimate purity, trusted by millions of households and top industries across India.
@@ -245,9 +245,8 @@ export default function ProductCarousel() {
       <div className="w-full flex-1 flex items-center overflow-hidden my-auto py-3">
         <div
           ref={rowRef}
-          className={`flex items-stretch gap-6 sm:gap-8 pl-4 sm:pl-8 lg:pl-16 pr-8 sm:pr-20 w-max ${
-            isReducedMotion ? "overflow-x-auto w-full snap-x pb-4" : ""
-          }`}
+          className={`flex items-stretch gap-6 sm:gap-8 pl-4 sm:pl-8 lg:pl-16 pr-8 sm:pr-20 w-max ${isReducedMotion ? "overflow-x-auto w-full snap-x pb-4" : ""
+            }`}
         >
           {products.map((product) => (
             <div
@@ -263,8 +262,8 @@ export default function ProductCarousel() {
               `}
             >
               {/* Ambient Radial Background Glow */}
-              <div 
-                className={`absolute inset-0 bg-gradient-to-b ${product.gradient} opacity-90 transition-opacity duration-500`} 
+              <div
+                className={`absolute inset-0 bg-gradient-to-b ${product.gradient} opacity-90 transition-opacity duration-500`}
               />
 
               {/* Top Bar: Badge & Weight */}
@@ -279,7 +278,7 @@ export default function ProductCarousel() {
 
               {/* Product Image Area */}
               <div className="relative z-10 flex-1 flex items-center justify-center p-3 my-1">
-                <div 
+                <div
                   className="absolute w-40 h-40 rounded-full blur-2xl transition-all duration-500 pointer-events-none opacity-0 group-hover:opacity-100"
                   style={{ backgroundColor: product.glow }}
                 />
@@ -301,7 +300,7 @@ export default function ProductCarousel() {
                   <span className="text-[11px] font-bold text-red-600 tracking-wide uppercase block mb-1">
                     {product.subtitle}
                   </span>
-                  
+
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 tracking-tight leading-snug group-hover:text-red-600 transition-colors min-h-[50px] sm:min-h-[54px] flex items-center">
                     {product.name}
                   </h3>
@@ -311,7 +310,7 @@ export default function ProductCarousel() {
                   <span className="inline-flex items-center text-xs font-semibold text-gray-700 group-hover:text-red-600 transition-colors">
                     Product Details
                   </span>
-                  
+
                   <div className={`p-2 rounded-full ${product.btnStyle} transition-all duration-300 transform group-hover:translate-x-1`}>
                     <ArrowRight className="w-4 h-4" />
                   </div>

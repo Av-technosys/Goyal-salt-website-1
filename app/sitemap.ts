@@ -1,7 +1,24 @@
 import { MetadataRoute } from "next";
+import { listBlogs } from "@/src/lib/blogs/queries";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Fetch all published blog posts (up to 500)
+  const { data: blogs } = await listBlogs({
+    page: 1,
+    limit: 500,
+    search: "",
+    status: "published",
+  });
+
+  const blogUrls: MetadataRoute.Sitemap = blogs.map((blog) => ({
+    url: `https://goyalsaltltd.com/blog/${blog.slug}`,
+    lastModified: blog.updatedAt ?? blog.publishedAt ?? new Date(),
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
   return [
+    ...blogUrls,
     {
       url: "https://goyalsaltltd.com/",
       lastModified: new Date(),
