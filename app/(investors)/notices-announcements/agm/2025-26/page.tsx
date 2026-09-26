@@ -15,6 +15,7 @@ const documents = [
   { title: "Annual Report 2025-26", pdf: "/Brochure/Annual_Report_2025-26.pdf" },
   { title: "Newspaper Publication 16th AGM", pdf: "/Brochure/Newspaper_Publication_16th AGM.pdf" },
   { title: "Proceedings of AGM dated 25.09.2026", pdf: "/Brochure/Proceeding_of_AGM_dated_25.09.2026.pdf" },
+  { title: "Voting Result and Scrutinizer's Report", pdf: "/Brochure/Voting_Result_and_Scrutinizer's_Report.pdf" },
 ];
 
 const Page = () => {
