@@ -79,50 +79,52 @@ export default async function BlogPage() {
           <>
             {/* FEATURED POST */}
             <div className="mb-14">
-              <div className="group relative bg-white border border-gray-200/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-red-300 transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0">
-                {/* Cover Image */}
-                <Link
-                  href={`/blog/${featuredPost.slug}`}
-                  className="lg:col-span-7 relative min-h-[300px] sm:min-h-[380px] lg:min-h-[440px] overflow-hidden bg-gray-100"
-                >
+              <div className="group relative border border-gray-200/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-red-300 transition-all duration-300 min-h-[400px] sm:min-h-[450px] lg:min-h-[500px] flex items-center">
+                {/* Background Cover Image with Overlay */}
+                <Link href={`/blog/${featuredPost.slug}`} className="absolute inset-0 z-0">
                   <Image
                     src={getCoverImageSrc(featuredPost)}
                     alt={featuredPost.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                     priority
                     unoptimized
                   />
-                  <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-red-600 text-white shadow-md">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      Featured Article
-                    </span>
-                  </div>
+                  {/* Dark Overlay for Readability */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 lg:from-black/90 lg:via-black/30 lg:to-transparent z-10" />
                 </Link>
 
-                {/* Details */}
-                <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500">
+                {/* Content Overlay */}
+                <div className="relative z-20 w-full lg:w-1/2 p-6 sm:p-10 lg:p-12 flex flex-col justify-center h-full pointer-events-none">
+                  <div className="mb-6 pointer-events-auto">
+                    <Link href={`/blog/${featuredPost.slug}`}>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-red-600 text-white shadow-md hover:bg-red-700 transition-colors">
+                        <Sparkles className="w-3.5 h-3.5" />
+                        Featured Article
+                      </span>
+                    </Link>
+                  </div>
+                  
+                  <div className="space-y-4 pointer-events-auto">
+                    <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-300">
                       <span className="flex items-center gap-1.5">
-                        <Calendar className="w-4 h-4 text-amber-500" />
+                        <Calendar className="w-4 h-4 text-amber-400" />
                         {formatDate(featuredPost.publishedAt)}
                       </span>
                     </div>
 
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 group-hover:text-red-600 transition-colors leading-snug">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white group-hover:text-gray-200 transition-colors leading-tight drop-shadow-md">
                       <Link href={`/blog/${featuredPost.slug}`}>
                         {featuredPost.title}
                       </Link>
                     </h2>
 
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed line-clamp-3">
+                    <p className="text-sm sm:text-lg text-gray-200 leading-relaxed line-clamp-3 max-w-2xl drop-shadow-sm">
                       {featuredPost.excerpt}
                     </p>
                   </div>
 
-                  <div className="pt-6 mt-6 border-t border-gray-100">
+                  <div className="pt-8 mt-8 border-t border-gray-400/30 pointer-events-auto">
                     <Link
                       href={`/blog/${featuredPost.slug}`}
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-amber-600 text-white font-bold text-sm shadow-md hover:shadow-lg hover:from-red-700 hover:to-amber-700 transition-all duration-200 group-hover:gap-3"
@@ -150,18 +152,25 @@ export default async function BlogPage() {
                     key={post.id}
                     className="group relative bg-white border border-gray-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-red-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                   >
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
 
                     <div>
-                      <Link
+                    <Link
                         href={`/blog/${post.slug}`}
-                        className="relative block h-48 sm:h-52 overflow-hidden bg-gray-100"
+                        className="relative block h-64 sm:h-72 overflow-hidden bg-[#ff842d]"
                       >
                         <Image
                           src={getCoverImageSrc(post)}
                           alt={post.title}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                          className="
+                            object-cover
+                            object-[100%_center]
+                            scale-[1.18]
+                            origin-bottom-right
+                            group-hover:scale-[1.22]
+                            transition-transform duration-500
+                          "
                         />
                       </Link>
 

@@ -8,9 +8,12 @@ import { getImageUrl } from "@/src/lib/blogs/images";
 import { getPublishedBlogBySlug, listBlogs } from "@/src/lib/blogs/queries";
 import type { Blog } from "@/src/db";
 
-interface PageProps {
+import type { Metadata } from "next";
+
+type PageProps = {
   params: Promise<{ slug: string }>;
-}
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -65,7 +68,7 @@ function sanitizeContent(html: string): string {
     );
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPublishedBlogBySlug(slug);
 
@@ -115,7 +118,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
       {/* Ambient Background Glows */}
       <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-tr from-red-500/10 via-amber-500/10 to-transparent blur-3xl pointer-events-none rounded-full" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* BACK TO BLOG LINK */}
         <div className="mb-8">
           <Link
@@ -127,59 +130,67 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </Link>
         </div>
 
-        {/* COVER IMAGE — above the heading */}
-        <div className="relative w-full h-[280px] sm:h-[420px] lg:h-[480px] rounded-3xl overflow-hidden shadow-xl mb-10 bg-gray-100 border border-gray-200/80">
-          <Image
-            src={getCoverImageSrc(post)}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-            unoptimized
-          />
-        </div>
+        {/* FEATURED STYLE HEADER */}
+        <div className="mb-12">
+          <div className="relative bg-[#130b06] border border-gray-200/80 rounded-3xl overflow-hidden shadow-xl min-h-[400px] sm:min-h-[450px] lg:min-h-[500px] flex items-center">
+            {/* Background Cover Image with Overlay */}
+            <div className="absolute inset-0 z-0 flex justify-end">
+              <div className="relative w-full lg:w-[60%] h-full">
+                <Image
+                  src={getCoverImageSrc(post)}
+                  alt={post.title}
+                  fill
+                  className="object-cover object-center lg:object-right transition-transform duration-700"
+                  priority
+                  unoptimized
+                />
+              </div>
+              {/* Dark Overlay ending at 3/4 of the card */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#130b06]/80 to-[#130b06]/40 lg:from-[#130b06] lg:from-[40%] lg:via-[#130b06]/80 lg:via-[55%] lg:to-transparent lg:to-[75%] z-10" />
+            </div>
 
-        {/* ARTICLE HEADER */}
-        <header className="space-y-6 mb-10 text-center sm:text-left">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-            <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-red-50 text-red-600 border border-red-200/80">
-              Blog
-            </span>
-            <span className="inline-flex items-center gap-1 text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-              <Clock className="w-3.5 h-3.5 text-amber-500" />
-              {getReadTime(post.content)} min read
-            </span>
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
-            {post.title}
-          </h1>
-
-          <p className="text-base sm:text-xl text-gray-600 font-medium leading-relaxed">
-            {post.excerpt}
-          </p>
-
-          {/* METADATA BAR */}
-          <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-100 text-xs sm:text-sm text-gray-600">
-            <div className="flex items-center gap-4 text-xs font-medium text-gray-500">
-              <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-red-600" />
-                Published {formatDate(post.publishedAt)}
-              </span>
-              {post.authorName && (
-                <span className="flex items-center gap-1.5">
-                  <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  {post.authorName}
+            {/* Content Overlay */}
+            <div className="relative z-20 w-full lg:w-3/5 p-6 sm:p-10 lg:p-12 flex flex-col justify-center h-full pointer-events-none">
+              <div className="mb-6 pointer-events-auto flex items-center gap-3">
+                <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-red-600 text-white shadow-md">
+                  Blog
                 </span>
-              )}
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-200 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/20">
+                  <Clock className="w-3.5 h-3.5 text-amber-400" />
+                  {getReadTime(post.content)} min read
+                </span>
+              </div>
+              
+              <div className="space-y-5 pointer-events-auto">
+                <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-300">
+                  <span className="flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4 text-amber-400" />
+                    Published {formatDate(post.publishedAt)}
+                  </span>
+                  {post.authorName && (
+                    <span className="flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                      {post.authorName}
+                    </span>
+                  )}
+                </div>
+
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight drop-shadow-md">
+                  {post.title}
+                </h1>
+
+                <p className="text-sm sm:text-lg text-gray-200 leading-relaxed max-w-2xl drop-shadow-sm">
+                  {post.excerpt}
+                </p>
+              </div>
             </div>
           </div>
-        </header>
+        </div>
 
-        {/* MAIN ARTICLE BODY CONTENT */}
-        <div className="bg-white/90 backdrop-blur-md rounded-3xl border border-gray-100 shadow-xl p-6 sm:p-12 mb-12">
+        {/* MAIN ARTICLE BODY CONTENT (Full width to match banner) */}
+        <div className="w-full mb-16">
           <div
             className="blog-content"
             dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content) }}
@@ -210,12 +221,20 @@ export default async function BlogDetailPage({ params }: PageProps) {
                   className="group bg-white border border-gray-200/80 rounded-2xl p-5 shadow-xs hover:shadow-md hover:border-red-300 transition-all flex flex-col justify-between"
                 >
                   <div>
-                    <div className="relative h-40 rounded-xl overflow-hidden mb-4 bg-gray-100">
+                    <div className="relative h-48 rounded-xl overflow-hidden mb-4 bg-[#ff842d]">
                       <Image
                         src={getCoverImageSrc(rel)}
                         alt={rel.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                        className="
+                          object-cover
+                          object-[100%_center]
+                          scale-[1.18]
+                          origin-bottom-right
+                          group-hover:scale-[1.22]
+                          transition-transform duration-500
+                        "
                       />
                     </div>
                     <span className="text-[11px] font-bold text-red-600 uppercase tracking-wide">
