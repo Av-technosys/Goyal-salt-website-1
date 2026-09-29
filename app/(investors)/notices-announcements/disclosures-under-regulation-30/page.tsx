@@ -202,6 +202,14 @@ const documents = [
     title: "Regulation 30_Acquisition of Shares of Subsidiary Company",
     pdf: "/Brochure/Regulation 30_Acquisition of Shares of Subsidiary Company.pdf",
   },
+  {
+    title: "Regulation 30_Acquisition of Shares of Subsidiary Company 1",
+    pdf: "/Brochure/Regulation 30_Acquisition of Shares of Subsidiary Company 1.pdf",
+  },
+  {
+    title: "Regulation 30_Acquisition of Shares of Subsidiary Company 2",
+    pdf: "/Brochure/Regulation 30_Acquisition of Shares of Subsidiary Company 2.pdf",
+  },
 ];
 
 const Page = () => {

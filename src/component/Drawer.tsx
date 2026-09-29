@@ -591,6 +591,13 @@ const MobileDrawer = ({ open, setOpen }: MobileDrawerProps) => {
                         >
                           Quarter 1
                         </Link>
+                        <Link
+                          href="/listing-compliance/2026-27/q2"
+                          onClick={() => handleLinkClick("/listing-compliance/2026-27/q2")}
+                          className="block text-[11px] text-gray-500 hover:text-red-600 py-0.5"
+                        >
+                          Quarter 2
+                        </Link>
                       </div>
                     )}
                   </div>

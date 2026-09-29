@@ -198,6 +198,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.4,
     },
     {
+      url: "https://goyalsaltltd.com/listing-compliance/2026-27/q1",
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+    {
+      url: "https://goyalsaltltd.com/listing-compliance/2026-27/q2",
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+    {
       url: "https://goyalsaltltd.com/material-contracts-agreements",
       lastModified: new Date(),
       changeFrequency: "yearly",

@@ -463,6 +463,10 @@ export default function Navbar() {
                       href="/listing-compliance/2026-27/q1"
                       label="Quarter 1"
                     />
+                    <DropdownLink
+                      href="/listing-compliance/2026-27/q2"
+                      label="Quarter 2"
+                    />
                   </NestedFlyoutItem>
                 </FlyoutItem>
 
