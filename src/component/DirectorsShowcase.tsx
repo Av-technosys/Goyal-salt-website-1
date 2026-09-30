@@ -74,7 +74,7 @@ const directorsData: Director[] = [
     image: "/Images/manisha.jpg",
     highlights: ["AIR 23 CS Foundation Ranker", "ICSI Professional Member", "M.Com & Merit Holder"],
     description:
-      "She is an Independent Director of the Company. She got 23rd All India Rank (AIR) in Company Secretaries Foundation Examination. She is Professional Member of Institute of Company Secretaries of India (ICSI) and practicing since 2014 in the name as “Manisha Godara & Associates”. She is a merit holder in All India Commerce Talent Search Examination. She holds Masters’ degree in Commerce from Rajasthan University and completed Bachelor of Commerce from Maharani College, Jaipur. She scored 94% in Rajasthan State Certificate Course in Information Technology. She joined the Company in 2023.",
+      "She is an Independent Director of the Company. She got 23rd All India Rank (AIR) in Company Secretaries Foundation Examination. She is Professional Member of Institute of Company Secretaries of India (ICSI) and practicing since 2014 in the name as “Manisha Godara & Associates”. She is a merit holder in All India Commerce Talent Search Examination. She holds a Master's degree in Commerce from Rajasthan University and completed Bachelor of Commerce from Maharani College, Jaipur. She scored 94% in Rajasthan State Certificate Course in Information Technology. She joined the Company in 2023.",
   },
 ];
 
