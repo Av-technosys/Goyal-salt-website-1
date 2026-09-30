@@ -57,7 +57,7 @@ const data = [
   " New name and the old name of the listed entity for a continuous period of one year, from the date of the last name change:Not Applicable",
 
   `Items published in newspaper:
-   (a) inancial results, as specified in regulation 33, along with the modified opinion(s) or reservation(s), if any, expressed by the auditor: Not Applicable;
+   (a) financial results, as specified in regulation 33, along with the modified opinion(s) or reservation(s), if any, expressed by the auditor: Not Applicable;
    (b) notices given to shareholders by advertisement`,
 
   "All credit ratings obtained by the entity for all its outstanding instruments, updated immediately as and when there is any revision in any of the ratings: No ratings obtained till date. Further, it will be intimated if obtained in future",
