@@ -98,8 +98,8 @@ export default function ChairmansDeskPage() {
                 {/* Intro Highlight Box */}
                 <div className="relative border-l-4 border-red-600 bg-red-50/60 p-5 rounded-r-2xl border-y border-r border-red-100/80 shadow-xs">
                   <p className="font-semibold text-gray-900 leading-relaxed">
-                    With a vision to set up India’s one of the largest salt
-                    industries, we started our journey over a decade ago by taking
+                    With a vision to set up one of India’s largest salt industries, 
+                    we started our journey over a decade ago by taking
                     small yet determined steps. What began as a dream has today
                     transformed into a strong and growing organization built on
                     trust, quality, and commitment.

@@ -102,7 +102,7 @@ export default function ProductInfoSection() {
               leading-relaxed font-normal mb-6 sm:mb-8
               max-w-xl mx-auto lg:mx-0
             ">
-              Experience the natural taste and wellness of premium-quality salt, sourced directly from mineral-rich regions. Whether it rock salt, black salt, or iodized varieties – our products are carefully processed to retain their purity and essential nutrients.
+              Experience the natural taste and wellness of premium-quality salt, sourced directly from mineral-rich regions. Whether it is rock salt, black salt, or iodized varieties – our products are carefully processed to retain their purity and essential nutrients.
             </p>
 
             {/* FEATURES GRID */}

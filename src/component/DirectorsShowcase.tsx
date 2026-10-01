@@ -44,7 +44,7 @@ const directorsData: Director[] = [
     image: "/Images/lokesh.jpg",
     highlights: ["BBA (Pune) & MBA (RTU)", "15+ Yrs Industry Exp.", "Product Innovation & Trade Control"],
     description:
-      "He is Whole Time Director of Goyal Salt Limited. He is a young and dynamic person who is always ready to take challenge & innovation technology. Completed his bachelor degree from Pune in Business Administration and then Master in Business Management & Marketing from Rajasthan Technical University. He Joined Goyal Salt in 2010 and was redesignated as Whole-Time Director in 2023. He has an experience of over 15 years in the salt industry. He has good control of man power & salt trade. He has a team of experienced employees and qualified technicians. He focuses & invests time in product development & innovation for customer satisfaction.",
+      "He is Whole Time Director of Goyal Salt Limited. He is a young and dynamic person who is always ready to take on challenges & innovation in technology. Completed his bachelor degree from Pune in Business Administration and then Master in Business Management & Marketing from Rajasthan Technical University. He joined Goyal Salt in 2010 and was redesignated as Whole-Time Director in 2023. He has an experience of over 15 years in the salt industry. He has good control of manpower & salt trade. He has a team of experienced employees and qualified technicians. He focuses & invests time in product development & innovation for customer satisfaction.",
   },
   {
     id: "priyanka-goyal",
@@ -54,7 +54,7 @@ const directorsData: Director[] = [
     image: "/Images/priyanka.jpg",
     highlights: ["Master's Degree (Univ of Raj)", "14+ Yrs Salt Business Exp.", "Board Member Since 2023"],
     description:
-      "She is the Non-Executive Director of the Company. She holds Master’s degree from the University of Rajasthan. She is engaged in the salt business for more than 14 years. In 2023, She has joined the Board as a Non-Executive Director.",
+      "She is the Non-Executive Director of the Company. She holds Master’s degree from the University of Rajasthan. She is engaged in the salt business for more than 14 years. In 2023, She joined the Board as a Non-Executive Director.",
   },
   {
     id: "narendra-dev-garg",
@@ -64,7 +64,7 @@ const directorsData: Director[] = [
     image: "/Images/narendra.jpg",
     highlights: ["40+ Yrs Banking Veteran", "CAIIB Certified", "Start-up Advisor & IBPS Panelist"],
     description:
-      "Mr. Narendra Dev Garg is an Independent Director of the Company. He is presently working as General Manager (Commercial) in M/s Mahavir Polymers Private Limited. He is a seasoned banker having over 40 years of work experience in almost every Banking Segment. Besides this, he is a Certified Associate of Indian Institute of Bankers (CAIIB), Advisor to various start-ups and is on panel of interview Board of IBPS. He is a person having entrepreneurial mind set with consistent result oriented high performance. He joined the Board on March 22, 2024.",
+      "Mr. Narendra Dev Garg is an Independent Director of the Company. He is presently working as General Manager (Commercial) in M/s Mahavir Polymers Private Limited. He is a seasoned banker having over 40 years of work experience in almost every Banking Segment. Besides this, he is a Certified Associate of Indian Institute of Bankers (CAIIB), Advisor to various start-ups and is on the interview panel of IBPS. He is a person having entrepreneurial mindset with consistent result oriented high performance. He joined the Board on March 22, 2024.",
   },
   {
     id: "manisha-godara",

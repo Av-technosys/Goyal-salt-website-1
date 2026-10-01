@@ -32,10 +32,10 @@ const reasons = [
   { id: "02", title: "Product Customization", icon: Settings, category: "Versatility" },
   { id: "03", title: "Research & Development Mastery", icon: Microscope, category: "Innovation" },
   { id: "04", title: "Strong Supply Chain Management", icon: Truck, category: "Logistics" },
-  { id: "05", title: "Customer Centric Approach", icon: HeartHandshake, category: "Partnership" },
-  { id: "06", title: "State of the Art Technology", icon: Cpu, category: "Automation" },
+  { id: "05", title: "Customer-Centric Approach", icon: HeartHandshake, category: "Partnership" },
+  { id: "06", title: "State-of-the-Art Technology", icon: Cpu, category: "Automation" },
   { id: "07", title: "Effective Control on Raw Salt Procurement", icon: Boxes, category: "Sourcing" },
-  { id: "08", title: "One of the Largest Salt Manufacturer in India", icon: Crown, category: "Scale" },
+  { id: "08", title: "One of the Largest Salt Manufacturers in India", icon: Crown, category: "Scale" },
 ];
 
 export default function WhyGoyalSalt() {

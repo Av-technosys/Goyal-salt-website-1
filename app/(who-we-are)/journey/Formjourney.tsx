@@ -17,7 +17,7 @@ const items: Milestone[] = [
     year: "1975",
     title: "Joined Family Business",
     badgeTag: "The Legacy Begins",
-    desc: "The family legacy began in 1975, late Mr. Kunj Bihari joined family business medical store at 15 years of age, marking the foundation of what would grow into a large-scale enterprise.",
+    desc: "The family legacy began in 1975, late Mr. Kunj Bihari joined family business, medical store at 15 years of age, marking the foundation of what would grow into a large-scale enterprise.",
   },
   {
     year: "1980",
@@ -41,7 +41,7 @@ const items: Milestone[] = [
     year: "2009",
     title: "Salt Washery Established",
     badgeTag: "Infrastructure Milestone",
-    desc: "Established Rajasthan's one of the largest Salt Washery.",
+    desc: "Established one of Rajasthan's largest salt washeries.",
   },
   {
     year: "2010",
