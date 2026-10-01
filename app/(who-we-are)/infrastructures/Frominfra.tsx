@@ -179,7 +179,7 @@ export default function Frominfra() {
               </div>
               <div className="mt-6 pt-4 border-t border-gray-100 flex flex-wrap gap-2 text-xs font-semibold text-gray-700">
                 <span className="px-3 py-1 bg-amber-50 text-amber-800 rounded-lg border border-amber-200/60">12 Acres Land Area</span>
-                <span className="px-3 py-1 bg-amber-50 text-amber-800 rounded-lg border border-amber-200/60">4,50,000 MT/Yr Capacity</span>
+                <span className="px-3 py-1 bg-amber-50 text-amber-800 rounded-lg border border-amber-200/60">4,50,000 MT/yr Capacity</span>
               </div>
             </motion.div>
 

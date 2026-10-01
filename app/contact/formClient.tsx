@@ -187,7 +187,7 @@ const ContactFormPage = () => {
               </div>
               <h3 className="text-lg font-bold text-gray-900">Call Us</h3>
               <p className="text-sm font-bold text-red-600 mt-1">+91 7568018883</p>
-              <p className="text-xs text-gray-500 mt-1">Mon-Sat 9am to 6pm</p>
+              <p className="text-xs text-gray-500 mt-1">Mon-Sat, 9am to 6pm</p>
             </div>
             <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
               <a

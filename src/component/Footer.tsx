@@ -165,12 +165,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 3: Factory & Administrator Office (Lg: 4 cols) */}
+          {/* Column 3: Factory & Administrative Office (Lg: 4 cols) */}
           <div className="lg:col-span-4 bg-gray-50/70 rounded-2xl p-6 sm:p-7 border border-gray-100 shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2.5 text-red-600 font-bold text-lg mb-4">
                 <FaIndustry className="text-red-600 shrink-0" size={20} />
-                <p>Factory & Administrator Office</p>
+                <p>Factory & Administrative Office</p>
               </div>
 
               {/* Unit 1 */}
