@@ -210,6 +210,10 @@ const documents = [
     title: "Regulation 30_Acquisition of Shares of Subsidiary Company 2",
     pdf: "/Brochure/Regulation 30_Acquisition of Shares of Subsidiary Company 2.pdf",
   },
+  {
+    title: "Regulation 30_Reappointment of Managing Director & Whole Time Director",
+    pdf: "/Brochure/Regulation 30_Reappointment of Managing Director & Whole Time Director.pdf",
+  },
 ];
 
 const Page = () => {
