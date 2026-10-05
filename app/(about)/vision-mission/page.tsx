@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/PrefetchLink";
 import { Sparkles, Eye, Target, ShieldCheck, Award, HeartHandshake, Leaf, ArrowRight } from "lucide-react";
 
 export const metadata = {

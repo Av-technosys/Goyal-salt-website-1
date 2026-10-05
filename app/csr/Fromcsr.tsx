@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/PrefetchLink";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,

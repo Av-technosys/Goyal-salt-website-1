@@ -2,7 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Link from "@/components/PrefetchLink";
 import SaltButton from "./SaltButton";
 
 interface ProductHighlightSectionProps {
