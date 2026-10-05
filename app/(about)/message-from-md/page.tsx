@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/PrefetchLink";
 import { Sparkles, Award, ShieldCheck, TrendingUp, ArrowRight, Quote } from "lucide-react";
 
 export const metadata = {

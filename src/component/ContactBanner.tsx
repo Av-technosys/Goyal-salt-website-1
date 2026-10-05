@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/PrefetchLink";
 import { motion } from "framer-motion";
 import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
 

@@ -3,7 +3,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ImagePlus, Save } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/PrefetchLink";
 
 import { Button } from "@/components/ui/button";
 import {
