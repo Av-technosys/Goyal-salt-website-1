@@ -13,6 +13,7 @@ export const metadata = {
 const documents = [
   { title: "Annual-Report-2024", pdf: "/Brochure/Annual-Report-2024-6.pdf" },
   { title: "Annual-Report-2025", pdf: "/Brochure/GSL_Annual-Report_FY-2024-25.pdf" },
+  { title: "Annual-Report-2025-26", pdf: "/Brochure/Annual_Report_of_2025-26.pdf" },
 ];
 
 const Page = () => {
