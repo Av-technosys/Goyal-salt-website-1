@@ -31,6 +31,10 @@ const documents = [
     title: "Shareholding Pattern as on March 31, 2026",
     pdf: "/Brochure/Shareholding Pattern as on March 31, 2026.pdf",
   },
+  {
+    title: "Shareholding Pattern as on september 30, 2026",
+    pdf: "/Brochure/Shareholding Pattern as on September 30, 2026.pdf",
+  },
 ];
 
 const Page = () => {

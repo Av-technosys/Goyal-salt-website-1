@@ -15,6 +15,14 @@ const documents = [
     title: "Trading Window Closure for the period ended 30.09.2026",
     pdf: "/Brochure/Trading Window Closure for the period ended 30.09.2026.pdf",
   },
+  {
+    title: "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+    pdf: "/Brochure/Certificate under SEBI (Depositories and Participants) Regulations, 2018 copy.pdf",
+  },
+  {
+    title: "Non-Applicability of Regulation 27(2)",
+    pdf: "/Brochure/Non-Applicability of Regulation 27(2) copy.pdf",
+  },
 ];
 
 const Page = () => {
