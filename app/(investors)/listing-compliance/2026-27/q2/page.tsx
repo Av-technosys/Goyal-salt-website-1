@@ -16,6 +16,14 @@ const documents = [
     pdf: "/Brochure/Trading Window Closure for the period ended 30.09.2026.pdf",
   },
   {
+    title: "Reconciliation of Share Capital Audit Report under Regulation 76",
+    pdf: "/Brochure/Reconciliation of Share Capital Audit Report under Regulation 76 new.pdf",
+  },
+  {
+    title: "Integrated Filing-Governance",
+    pdf: "/Brochure/Integrated Filing-Governance new.pdf",
+  },
+  {
     title: "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
     pdf: "/Brochure/Certificate under SEBI (Depositories and Participants) Regulations, 2018 copy.pdf",
   },

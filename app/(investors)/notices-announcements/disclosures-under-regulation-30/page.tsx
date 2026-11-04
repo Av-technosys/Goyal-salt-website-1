@@ -214,6 +214,14 @@ const documents = [
     title: "Regulation 30_Reappointment of Managing Director & Whole Time Director",
     pdf: "/Brochure/Regulation 30_Reappointment of Managing Director & Whole Time Director.pdf",
   },
+  {
+    title: "Regulation 30_Acquisition of Shares of Subsidiary Company",
+    pdf: "/Brochure/Regulation 30_Acquisition of Shares of Subsidiary Company new.pdf",
+  },
+  {
+    title: "Regulation 30_Acquisition of Shares of Subsidiary Company",
+    pdf: "/Brochure/Regulation 30_Acquisition of Shares of Subsidiary Company (1).pdf",
+  },
 ];
 
 const Page = () => {
