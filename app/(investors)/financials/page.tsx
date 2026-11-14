@@ -60,6 +60,10 @@ const documents = [
     title: "Financial Results for the Half Year and Year ended 31.03.2026 ",
     pdf: "/Brochure/Financial Results for the Half Year and Year ended 31.03.2026.pdf",
   },
+  {
+    title: "Audited Financial Statement for the Financial Year 2025-2026",
+    pdf: "/Brochure/Audited Financial Statement for the Financial Year 2025-2026.pdf",
+  },
 ];
 
 const Page = () => {
