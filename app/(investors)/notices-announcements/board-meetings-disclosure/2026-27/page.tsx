@@ -13,6 +13,14 @@ export const metadata = {
 
 const documents = [
   {
+    title: "Intimation of BM_14.11.2026",
+    pdf: "/Brochure/Intimation of BM_14.11.2026.pdf",
+  },
+  {
+    title: "Outcome of BM_14.11.2026",
+    pdf: "/Brochure/Outcome of BM_14.11.2026.pdf",
+  },
+  {
     title: "Intimation of BM_01.09.2026",
     pdf: "/Brochure/Intimation of BM_01.09.2026.pdf",
   },
